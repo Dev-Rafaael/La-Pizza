@@ -4,7 +4,7 @@
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&pause=1200&color=F75C7E&width=800&lines=La-Pizza+%7C+O+melhor+e-commerce+de+pizzas;Peça,+Personalize,+Aproveite)](https://git.io/typing-svg)
 
 
-![Pizza 3D animada](./assets/pizza-3d.svg)
+![Pizza 3D animada](../assets/pizza-3d.svg)
 
 
 ## O que é
