@@ -1,0 +1,563 @@
+/* ESTILOS */
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Lato:wght@400;700&family=Roboto+Mono:wght@100&display=swap');
+/* ICONE TELEFONE/CONTATO */
+  @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+ 
+}
+html{
+  width:100% ;
+  height: 100vh;
+  font-size: 16px;
+  font-family:  'Lato', sans-serif; 
+  scroll-behavior: smooth;
+}
+body{
+
+  background: linear-gradient(rgba(22,22,22,0.8), rgba(17,17,18,1)),url(../IMG/pizza.jpg);
+  background-size:  cover ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+}
+header{
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(30, 29, 29);
+position: fixed;
+ 
+}
+.content {
+    display: flex;
+   justify-content: space-around;
+    align-items: center;
+     height: 100%;
+     margin: 0 190px;
+}
+.title  {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 3px;
+  color: white;
+  font-family:cursive ;
+}
+.title img {
+ width: 31px;
+ height: 25px;
+ 
+}
+
+.navItens{
+  display: flex;
+  gap: 26px;
+  text-transform: uppercase;
+  list-style-type: none;
+}
+ li a:hover{
+  transition: none;
+  padding-bottom: 3px;
+  border-bottom: 2px solid rgb(247, 75, 7);
+} 
+.navItens li i{
+ color: white;
+ cursor: pointer;
+}
+.navItens li i:hover{
+  display: inline;
+ padding-bottom: 3px;
+ border-bottom: 2px solid rgb(247, 75, 7);
+
+}
+
+.navItens a{
+  text-decoration: none;
+  color: white;
+
+}
+/* MAIN / PRINCIPAL */
+main{
+  width: 100%;
+  height: 93vh;
+  
+}
+.mainContainer{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.primeText{
+  color: orange;
+  font-family: cursive;
+  font-size: 50px;
+  padding: 0.7rem;
+  font-weight:300;
+}
+.segundText{
+  font-weight: 100;
+  font-family: cursive;
+  font-size: 30px;
+  color: rgb(255, 255, 255);
+  padding-bottom: 5rem;
+}
+ .btns {
+  justify-content: center;
+  display: flex;
+   gap: 20px;
+} 
+.btns button{
+  padding: 10px 1;
+  text-transform: uppercase;
+  text-align: center;
+  width:250px ;
+  height: 60px;
+  background-color: orange;
+  border-radius: 19px;
+  color: rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  transition: 1.5s;
+   
+}
+.btns button:hover{
+  background-color: transparent;
+  color: orange;
+  border: 1px solid orange;
+   
+}
+/* SOBRE NOS */
+
+ .sobre{
+
+  width: 100%;
+  height: auto;
+  background-color: rgb(87, 83, 83);
+  font-family: cursive; 
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+}
+.titleSobre{
+  text-align: center;
+  padding-bottom: 1.9rem;
+  color: orange;
+  font-weight: bold;
+  font-size: 2.3rem;
+  text-shadow: 21px black;
+}
+.sobreInfo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+}
+.sobreInfo p{
+width: 500px;
+ font-size: 26px;
+ color: wheat;
+ font-weight: bold;
+ letter-spacing: 1px;
+}
+
+
+.slogan img{
+  width: 190px;
+  height: 170px;
+  border: 1px solid rgb(252, 76, 0);
+  border-radius: 6px;
+}
+/* CARDAPIO */
+
+.cardapio{
+  width: 100%;
+  padding: 2.0rem 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.cardapioItens{
+  display: grid;
+  grid-template-columns:repeat(3,1fr ) ; 
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width:100vh;
+}
+.titleCardapio{
+  font-size: 36px;
+  color: orange;
+ padding-bottom: 4.0rem;
+}
+.cardapioItens div{
+  width: 104%;
+  height: auto;
+  padding-top: 20px;
+  text-align: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 7px;
+ 
+}
+ .cardapioItens .infoItens{
+  background-color: white;
+  color: orange;
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+   padding-bottom: 18px;
+ }
+ .cardapioItens .infoItens h1{
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  color: orange;
+  text-shadow: 1px 0px 0px black;
+   text-align: center;
+}
+ .cardapioItens .infoItens h4{
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+   display: grid;
+  grid-template-columns:150px 150px ;
+ 
+}
+ .cardapioItens .infoItens h4 span{
+  color: black;
+}
+.btn{
+  font-size: 17px;
+  font-weight: bold;
+ margin-top: 20px;
+  width: 260px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: orange;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 1.5s;
+}
+.btn:hover{
+  background-color: transparent;
+  border: 1px solid orange;
+  color: orange;
+}
+
+.cardapio img{
+  border-radius: 7px;
+  width: 330px;
+ height: 250px;
+ 
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width:1100px){
+  .content {
+    display: flex;
+   justify-content: space-around;
+    align-items: center;
+     height: 100%;
+     margin: 0 70px;
+}
+  .cardapio-itens{
+    display: grid;
+    grid-template-columns:repeat(2,1fr ) ; 
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    width:100vh;
+  }
+}
+@media(max-width:768px){
+  .nav-itens{
+    display: flex;
+    gap: 17px;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 14px;
+  }
+  .content {
+    display: flex;
+   justify-content: space-around;
+    align-items: center;
+     height: 100%;
+     margin: 0 20px;
+}
+  .cardapio-itens{
+    display: grid;
+    grid-template-columns:repeat(2,1fr ) ; 
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    width:100vh;
+  }
+  .prime-text{
+    color: orange;
+    font-family: cursive;
+    font-size: 40px;
+    padding: 0.7rem;
+    font-weight:300;
+  }
+  .segund-text{
+    font-weight: 100;
+    font-family: cursive;
+    font-size: 24px;
+    color: rgb(255, 255, 255);
+    padding-bottom: 5rem;
+  }
+   .btns {
+    justify-content: center;
+    display: flex;
+     gap: 20px;
+  } 
+  .btns button{
+    padding: 10px 1;
+    text-transform: uppercase;
+    text-align: center;
+    width:220px ;
+    height: 60px;
+    background-color: orange;
+    border-radius: 19px;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: 1.5s;
+     
+  }
+  /* SOBRE */
+  .title-sobre{
+    text-align: center;
+    padding-bottom: 1.9rem;
+    color: orange;
+    font-weight: bold;
+    font-size: 2.1rem;
+    text-shadow: 21px black;
+  }
+  .sobre-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+  }
+  .sobre-info p{
+  width: 290px;
+   font-size: 19px;
+   color: wheat;
+   font-weight: bold;
+   letter-spacing: 1px;
+  }
+  /* CARDAPIO */
+
+
+
+  
+  .cardapio-itens{
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,550px)) ; 
+    width:100vh;
+  }
+  .cardapio-itens div{
+    width: 76%;
+    height: auto;
+    padding-top: 20px;
+    background-color: gray;
+    border-radius: 7px;
+   margin-left: 80px;
+   
+  }
+   .cardapio-itens .info-itens{
+    background-color: white;
+    color: orange;
+    width: 100%;
+    height: 140px;
+    padding-top: 10px;
+     padding-bottom: 19px;
+     margin-left: 0px;
+   }
+}
+@media(max-width:425px){
+  .title  {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 1px;
+    color: white;
+    font-family:cursive ;
+    font-size: 12px;
+    padding-right: 39px;
+  }
+  .title img {
+   width: 21px;
+   height: 16px;
+  }
+ 
+  .nav-itens{
+    display: flex;
+    gap: 12px;
+    text-transform: uppercase;
+    list-style-type: none;
+    font-size: 9px;
+  }
+  /* MAIN */
+  .content {
+    display: flex;
+   justify-content: space-around;
+    align-items: center;
+     height: 100%;
+     margin: 0 20px;
+}
+  .cardapio-itens{
+    display: grid;
+    grid-template-columns:repeat(2,1fr ) ; 
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    width:100vh;
+  }
+  .prime-text{
+    color: orange;
+    font-family: cursive;
+    font-size: 37px;
+    padding: 0.4rem;
+    width: 300px;
+    font-weight:300;
+  }
+  .segund-text{
+    font-weight: 100;
+    font-family: cursive;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    padding-bottom: 4.6rem;
+  }
+   .btns {
+    justify-content: center;
+    display: flex;
+     gap: 20px;
+  } 
+  .btns button{
+    padding: 6px 1;
+    text-transform: uppercase;
+    text-align: center;
+    width:150px ;
+    height: 50px;
+    background-color: orange;
+    border-radius: 19px;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: 1.5s;
+     
+  }
+  /* SOBRE */
+  .title-sobre{
+    text-align: center;
+    padding-bottom: 1.9rem;
+    color: orange;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow: 21px black;
+  }
+  .sobre-info{
+      flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 26px;
+  }
+  .sobre-info p{
+  width: 260px;
+   font-size: 17px;
+
+   color: wheat;
+   font-weight: bold;
+   letter-spacing: 1px;
+  }
+    .sobre-info img{
+  display: none;
+  }
+  /* CARDAPIO */
+  
+  
+  .cardapio-itens{
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,550px)) ; 
+    width: 60vh;
+  }
+  .cardapio-itens img{
+    width: 40vh;
+  } 
+  .cardapio-itens div{
+    width: 76%;
+    height: auto;
+    padding-top: 20px;
+    background-color: gray;
+    border-radius: 7px;
+   margin-left: 50px;
+   
+  }
+   .cardapio-itens .info-itens{
+    background-color: white;
+    color: orange;
+    width: 100%;
+    height: 140px;
+    padding-top: 10px;
+     padding-bottom: 19px;
+   
+   }
+   /* CONTATO */
+
+.contato{
+  width: 100%;
+  height: 250px;
+  display: flex;
+  background-color: gray;
+  flex-direction: column;
+}
+.contato h1{
+   text-align: center;
+   letter-spacing: 2px;
+}
+.info-contato ul {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.0rem;
+  padding-top: 2.0rem;
+  list-style: none;
+  
+}
+.info-contato  i {
+  margin-right: 5px;
+  border: none; 
+ font-size: 12px;
+  color: rebeccapurple;
+}
+
+.info-contato a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  color: rgb(251, 63, 0);
+  font-weight: bold;
+  border: none;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  transition: 1.6s;
+}
+
+}
+
+

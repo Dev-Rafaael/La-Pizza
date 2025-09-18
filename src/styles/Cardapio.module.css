@@ -1,0 +1,86 @@
+
+/* CARDAPIO */
+
+.cardapio{
+  width: 100%;
+  padding: 2.0rem 0;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.cardapioItens{
+  display: grid;
+  grid-template-columns:repeat(3,1fr ) ; 
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  width:100vh;
+}
+.titleCardapio{
+  font-size: 36px;
+  color: orange;
+ padding-bottom: 4.0rem;
+}
+.cardapioItens div{
+  width: 104%;
+  height: auto;
+  padding-top: 20px;
+  text-align: center;
+  align-items: center;
+  background-color: gray;
+  border-radius: 7px;
+ 
+}
+ .cardapioItens .infoItens{
+  background-color: white;
+  color: orange;
+  width: 100%;
+  height: auto;
+  padding-top: 10px;
+   padding-bottom: 18px;
+ }
+ .cardapioItens .infoItens h1{
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  color: orange;
+  text-shadow: 1px 0px 0px black;
+   text-align: center;
+}
+ .cardapioItens .infoItens h4{
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+   display: grid;
+  grid-template-columns:150px 150px ;
+ 
+}
+ .cardapioItens .infoItens h4 span{
+  color: black;
+}
+.btn{
+  font-size: 17px;
+  font-weight: bold;
+ margin-top: 20px;
+  width: 260px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: orange;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 1.5s;
+}
+.btn:hover{
+  background-color: transparent;
+  border: 1px solid orange;
+  color: orange;
+}
+
+.cardapio img{
+  border-radius: 7px;
+  width: 330px;
+ height: 250px;
+ 
+}
