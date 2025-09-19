@@ -10,7 +10,7 @@ function Orçamento() {
   const [preco,setPreco]= useState<string>('')
   const navigate = useNavigate()
   const {id}= useParams()
-  const dataOrcamento = orcamento.find((value)=> value.id === id)
+  const dataOrcamento = orcamento.find((value)=> value.id === Number(id))
 
   const handleSubmit = (e: React.FormEvent)=>{
     e.preventDefault()
