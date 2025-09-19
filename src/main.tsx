@@ -42,11 +42,11 @@ const router=createBrowserRouter([
         //   element:<Images/>
         // },
         {
-          path:"Orçamento",
+          path:"Orçamento/:id",
           element:<Orçamento/>
         },
         {
-          path:"/Identificação/",
+          path:"/Identificação/:id",
           element:<Checkout/>
         }, 
         // {

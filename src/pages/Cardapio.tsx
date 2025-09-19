@@ -27,7 +27,7 @@ function Cardapio() {
                 <h4>
                   12 Fatias <span>R$65.00</span>
                 </h4>
-                <Link to={'/Orçamento'} className={styles.btn}>Comprar</Link>
+                <Link to={`/Orçamento/${index + 1}`} className={styles.btn}>Comprar</Link>
               </div>
             </div>
           )
