@@ -11,5 +11,16 @@ export interface Orcamento {
     pedacos: string,
     sabores:string,
     preco:string,
-   
+}
+
+export interface Checkout {
+    id:number,
+    nome:string,
+    sobrenome:string,
+    cpf:string,
+    sexo:string,
+    idade:string,
+    email:string,
+    cep:string,
+    numero:string,
 }

@@ -10,14 +10,14 @@ function Orçamento() {
   const [preco,setPreco]= useState<string>('')
   const navigate = useNavigate()
   const {id}= useParams()
-  const dataOrcamento = orcamento.find((value)=> value.id === Number(id))
+  // const dataOrcamento = orcamento.find((value)=> value.id === Number(id))
 
   const handleSubmit = (e: React.FormEvent)=>{
     e.preventDefault()
 
     criarOrcamento(pedacos,sabores,preco)
     alert('Prosseguindo...')
-    navigate(`/Identificação/${dataOrcamento?.id}`)
+    navigate(`/Identificação/${id}`)
   }
   return (
     <section className={styles.formDetails}>
