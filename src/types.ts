@@ -24,3 +24,10 @@ export interface Checkout {
     cep:string,
     numero:string,
 }
+
+export interface Cart {
+    id:number,
+    produto:string,
+    preco:string,
+    quantidade:string
+}

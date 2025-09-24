@@ -43,7 +43,10 @@ function checkoutHook<T extends { id: number }>(
   };
 
   const atualizarIdentifier = (item: T) => {
-    setIdentifier((prev) => prev.map((u) => (u.id === item.id ? item : u)));
+    const updatedIdentifier = setIdentifier((prev) =>
+      prev.map((u) => (u.id === item.id ? item : u))
+    );
+    return updatedIdentifier;
   };
 
   const deletarIdentifier = (index: number) => {
