@@ -11,6 +11,7 @@ import Orçamento from './pages/Orçamento.tsx';
 import Checkout from './pages/Checkout.tsx';
 import Carrinho from './pages/Carrinho.tsx';
 import Account from './pages/Account.tsx';
+import Termos from './pages/Termos.tsx';
 
 
 const router=createBrowserRouter([
@@ -42,7 +43,7 @@ const router=createBrowserRouter([
         //   element:<Images/>
         // },
         {
-          path:"Orçamento/:id",
+          path:"Orçamento/:nome",
           element:<Orçamento/>
         },
         {
@@ -60,6 +61,10 @@ const router=createBrowserRouter([
         {
           path:"Minha Conta/",
           element:<Account/>
+        },
+         {
+          path:"/Termos-De-Uso",
+          element:<Termos/>
         },
       //    {
       //     path:"Search/",

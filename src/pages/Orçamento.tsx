@@ -3,21 +3,24 @@ import styles from "../styles/Orçamento.module.css";
 import React, { useState } from "react";
 import orcamentoHook from "../hooks/orcamentoHook";
 import type { Orcamento } from "../types";
+import pizzas from "../database/pizzas";
 function Orçamento() {
-  const {orcamento,criarOrcamento} = orcamentoHook<Orcamento>('orcamento',[])
-  const [pedacos,setPedacos]= useState<string>('')
-  const [sabores,setSabores]= useState<string>('')
-  const [preco,setPreco]= useState<string>('')
+  const {criarOrcamento} = orcamentoHook<Orcamento>('orcamento',[])
+  const [precoTotal,setPrecoTotal]= useState<string>('')
+  const [unidades,setUnidades]= useState<string>('')
+  const [adicionais,setAdicionais]= useState<string>('')
   const navigate = useNavigate()
-  const {id}= useParams()
-  // const dataOrcamento = orcamento.find((value)=> value.id === Number(id))
+  const {nome}= useParams()
+   const dataOrcamento = pizzas.find((value)=> value.nome === nome)
+  console.log(dataOrcamento);
+console.log(nome);
 
   const handleSubmit = (e: React.FormEvent)=>{
     e.preventDefault()
 
-    criarOrcamento(pedacos,sabores,preco)
+   const newOrcamento =  criarOrcamento({...dataOrcamento,precoTotal,unidades,adicionais});
     alert('Prosseguindo...')
-    navigate(`/Identificação/${id}`)
+    navigate(`/Identificação/${newOrcamento.cartId}`)
   }
   return (
     <section className={styles.formDetails}>
@@ -33,11 +36,31 @@ function Orçamento() {
         voluptatem beatae consequuntur vel quos voluptas. Provident temporibus
         voluptatibus beatae?
       </p>
+      <div className="">
+        <ul>
+           <li><img src={dataOrcamento?.imagem} alt="Imagem Pizza" /></li>
+          <li>{dataOrcamento?.nome}</li>
+          <li>{dataOrcamento?.preco}</li>
+          <li>{dataOrcamento?.descricao}</li>
+         
+        </ul>
+      </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="pedacos" value={pedacos}  onChange={(e)=> setPedacos(e.target.value)} placeholder="Pedaços" />
-        <input type="text" name="sabores" value={sabores} onChange={(e)=> setSabores(e.target.value)}  placeholder="Sabores"/>
-        <input type="text" name="preco" value={preco} onChange={(e)=> setPreco(e.target.value)}  placeholder="Preço"/>
-
+           <select  name="Unidades" value={unidades} onChange={(e)=> setUnidades(e.target.value)} >
+          <option value="">Selecione</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <select name="adionais" value={adicionais} onChange={(e)=> setAdicionais(e.target.value)}  >
+          <option value="">Selecione</option>
+          <option value="Salame">Salame</option>
+          <option value="Cheddar">Cheddar</option>
+          <option value="Catupiry">Catupiry</option>
+        </select>
+         <input type="text" name="precoTotal" value={precoTotal} onChange={(e)=> setPrecoTotal(e.target.value)}  disabled/>
+     
         {/* <Link to={"/Identificação/${}"} type="submit">
           Prosseguir
         </Link> */}

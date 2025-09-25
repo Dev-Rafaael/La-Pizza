@@ -17,8 +17,11 @@ function orcamentoHook<T extends { id: number }>(
     setOrcamento((prev) => [...prev, item]);
   };
 
-  const criarOrcamento = (pedacos: string, sabores: string, preco: string) => {
-    const newOrcamento: T = { pedacos, sabores, preco, id: Date.now() } as T;
+  const criarOrcamento = ( id:string, nome:string,descricao:string, preco: string, imagem:string,precoTotal:string,
+    unidades:string,
+    adicionais:string,) => {
+    const newOrcamento: T = { id,nome, descricao,preco,imagem,precoTotal,unidades,adicionais, cartId: Date.now() } as T;
+      
     addOrcamento(newOrcamento);
     return newOrcamento;
   };

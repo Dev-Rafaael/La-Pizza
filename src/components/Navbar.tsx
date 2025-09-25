@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 function Navbar() {
   return (
-    <header>
+    <section className={styles.navBar}>
       <div className={styles.content}>
         <a href="/" className={styles.title}>
           <img src={PizzaIcon} alt="Ícone de pizza" /> LAPIZZA
@@ -45,7 +45,7 @@ function Navbar() {
           </ul>
         </nav>
       </div>
-    </header>
+    </section>
   );
 }
 

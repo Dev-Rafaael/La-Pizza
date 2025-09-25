@@ -1,76 +1,105 @@
-/* CONTATO */
-
-.contato{
+/* =====================
+   SEÇÃO CONTATO
+===================== */
+.contato {
   width: 100%;
-  height: 250px;
+  padding: 2rem 1rem;
   display: flex;
-  background-color: gray;
   flex-direction: column;
+  align-items: center;
+  background-color: gray;
+  text-align: center;
 }
-.contato h1{
-   text-align: center;
-   letter-spacing: 2px;
+
+.contato h1 {
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+  color: #fff;
 }
+
 .infoContato ul {
   display: flex;
-  align-items: center;
+  gap: 5rem;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 7.0rem;
-  padding-top: 5.0rem;
   list-style: none;
-  
+  padding: 0;
 }
-.infoContato  i {
-  margin-right: 5px;
-  border: none; 
- font-size: 18px;
+
+.infoContato i {
+  margin-right: 8px;
+  font-size: 20px;
   color: rebeccapurple;
 }
 
 .infoContato a {
   text-decoration: none;
-  color: white;
   text-transform: uppercase;
-  color: rgb(251, 63, 0);
   font-weight: bold;
-  border: none;
-  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 20px;
-  transition: 1.6s;
+  font-size: 18px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: rgb(251, 63, 0);
+  transition: color 0.3s ease;
 }
 
-/* RODAPE */
-footer{
-  width: 100%;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:linear-gradient(rgba(22,22,22,0.8), rgba(17,17,18,1)),url(../IMG/pizza3.jpg);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.infoContato a:hover {
+  color: #fff;
 }
-.rodape h1{
-  margin-top: 2.0rem;
-  color: orangered;
-  margin-bottom: 1.0rem;
-  transition: 1.6s;
+
+/* =====================
+   FOOTER PRINCIPAL
+===================== */
+.footer {
+  background: linear-gradient(rgba(22,22,22,0.9), rgba(17,17,18,1)),
+              url("../IMG/pizza3.jpg") center/cover no-repeat;
+  color: #fff;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  padding: 3rem 2rem;
 }
-.rodape h1:hover{
-  
-  color: rgb(0, 0, 0);
-  
-}
-.rodape h4{
-  text-align: center;
+
+.footer h2 {
   font-size: 1.2rem;
-  color: black;
-  cursor: pointer;
-  transition: 1.6s;
+  margin-bottom: 1rem;
+  color: #facc15; /* dourado */
 }
-.rodape h4:hover{
- 
-  color: orangered;
-  
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer li {
+  margin: 0.5rem 0;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #facc15;
+}
+
+.bandeiras img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+/* =====================
+   COPYRIGHT
+===================== */
+.copy {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  color: #aaa;
 }

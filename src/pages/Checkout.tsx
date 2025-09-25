@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Checkout.module.css";
 import checkoutHook from "../hooks/checkoutHook";
-import type { Checkout } from "../types";
+import type { Checkout, Orcamento } from "../types";
+import orcamentoHook from "../hooks/orcamentoHook";
+import pizzas from "../database/pizzas";
+import { useParams } from "react-router-dom";
 function Checkout() {
+  const {orcamento} = orcamentoHook<Orcamento>('orcamento',[])
   const { identifier, criarIdentifier } = checkoutHook<Checkout>(
     "checkout",
     []
@@ -15,7 +19,11 @@ function Checkout() {
   const [email, setEmail] = useState<string>("");
   const [cep, setCEP] = useState<string>("");
   const [numero, setNumero] = useState<string>("");
-
+    const {cartId}= useParams()
+console.log(orcamento);
+ const dataOrcamento = orcamento.find((value)=> value.cartId === cartId)
+ console.log(dataOrcamento);
+ 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 

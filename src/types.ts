@@ -8,9 +8,14 @@ export interface Contato {
 
 export interface Orcamento {
     id:number,
-    pedacos: string,
-    sabores:string,
+    nome:string,
+    descricao:string,
     preco:string,
+    imagem:string,
+    precoTotal:string,
+    unidades:string,
+    adicionais:string,
+    cartId:string,
 }
 
 export interface Checkout {
