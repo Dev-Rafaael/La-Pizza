@@ -47,7 +47,7 @@ const router=createBrowserRouter([
           element:<Orçamento/>
         },
         {
-          path:"/Identificação/:id",
+          path:"/Identificação/:cartId",
           element:<Checkout/>
         }, 
         // {

@@ -15,7 +15,7 @@ export interface Orcamento {
     precoTotal:string,
     unidades:string,
     adicionais:string,
-    cartId:string,
+    cartId:string
 }
 
 export interface Checkout {

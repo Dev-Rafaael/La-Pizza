@@ -3,7 +3,7 @@ import styles from "../styles/Checkout.module.css";
 import checkoutHook from "../hooks/checkoutHook";
 import type { Checkout, Orcamento } from "../types";
 import orcamentoHook from "../hooks/orcamentoHook";
-import pizzas from "../database/pizzas";
+// import pizzas from "../database/pizzas";
 import { useParams } from "react-router-dom";
 function Checkout() {
   const {orcamento} = orcamentoHook<Orcamento>('orcamento',[])
@@ -20,10 +20,9 @@ function Checkout() {
   const [cep, setCEP] = useState<string>("");
   const [numero, setNumero] = useState<string>("");
     const {cartId}= useParams()
-console.log(orcamento);
- const dataOrcamento = orcamento.find((value)=> value.cartId === cartId)
- console.log(dataOrcamento);
- 
+ const dataOrcamento = orcamento.find((value)=> value.cartId === Number(cartId))
+  console.log(dataOrcamento);
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -58,6 +57,7 @@ console.log(orcamento);
     setNumero("");
   }, [identifier]);
   return (
+    <>
     <section className={styles.checkoutForm}>
       <h1>Identificação</h1>
       <p>Está quase Terminando</p>
@@ -114,6 +114,20 @@ console.log(orcamento);
         <button type="submit">Finalizar</button>
       </form>
     </section>
+    <section>
+{dataOrcamento ?
+        <div className="pizzaData">
+           
+         <img src={dataOrcamento?.imagem} alt="Imagem Pizza" />
+          <h2>{dataOrcamento?.nome}</h2>
+          <h2>{dataOrcamento?.descricao}</h2>
+          <h2>{dataOrcamento?.precoTotal}</h2>
+           <p>{dataOrcamento?.unidades}</p>
+           <p>{dataOrcamento?.adicionais}</p>
+        </div>
+        : ''}
+    </section>
+    </>
   );
 }
 

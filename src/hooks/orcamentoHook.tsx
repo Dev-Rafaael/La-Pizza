@@ -17,11 +17,28 @@ function orcamentoHook<T extends { id: number }>(
     setOrcamento((prev) => [...prev, item]);
   };
 
-  const criarOrcamento = ( id:string, nome:string,descricao:string, preco: string, imagem:string,precoTotal:string,
-    unidades:string,
-    adicionais:string,) => {
-    const newOrcamento: T = { id,nome, descricao,preco,imagem,precoTotal,unidades,adicionais, cartId: Date.now() } as T;
-      
+  const criarOrcamento = (
+    id: string,
+    nome: string,
+    descricao: string,
+    preco: string,
+    imagem: string,
+    precoTotal: string,
+    unidades: string,
+    adicionais: string
+  ) => {
+    const newOrcamento: T = {
+      id,
+      nome,
+      descricao,
+      preco,
+      imagem,
+      precoTotal,
+      unidades,
+      adicionais,
+      cartId: Date.now()
+    } as T;
+
     addOrcamento(newOrcamento);
     return newOrcamento;
   };
@@ -37,12 +54,18 @@ function orcamentoHook<T extends { id: number }>(
   const deletarOrcamento = (index: number) => {
     setOrcamento((prev) => prev.filter((_, i) => i !== index));
   };
+
+  const clearOrcamento = () => {
+    localStorage.clear();
+    setOrcamento([]);
+  };
   return {
     orcamento,
     addOrcamento,
     criarOrcamento,
     atualizarOrcamento,
     deletarOrcamento,
+    clearOrcamento,
   } as const;
 }
 
