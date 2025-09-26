@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function orcamentoHook<T extends { id: number }>(
   key: string,
@@ -19,7 +19,7 @@ function orcamentoHook<T extends { id: number }>(
 
   const criarOrcamento = (
     id: string,
-    nome: string,
+    sabor: string,
     descricao: string,
     preco: string,
     imagem: string,
@@ -29,7 +29,7 @@ function orcamentoHook<T extends { id: number }>(
   ) => {
     const newOrcamento: T = {
       id,
-      nome,
+      sabor,
       descricao,
       preco,
       imagem,

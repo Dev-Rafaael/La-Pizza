@@ -23,6 +23,9 @@ function Checkout() {
  const dataOrcamento = orcamento.find((value)=> value.cartId === Number(cartId))
   console.log(dataOrcamento);
   
+  if (!dataOrcamento) {
+    return <p>Pizza Não Encontrada</p>
+  }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -34,7 +37,15 @@ function Checkout() {
       idade,
       email,
       cep,
-      numero
+      numero,
+      dataOrcamento?.sabor,
+      dataOrcamento?.descricao,
+      dataOrcamento?.preco,
+      dataOrcamento?.imagem,
+      dataOrcamento?.precoTotal,
+      dataOrcamento?.unidades,
+      dataOrcamento?.adicionais,
+      dataOrcamento?.cartId
     );
 
     if (newIdentifier) {
@@ -52,7 +63,6 @@ function Checkout() {
     setSexo("");
     setIdade("");
     setEmail("");
-
     setCEP("");
     setNumero("");
   }, [identifier]);
@@ -119,7 +129,7 @@ function Checkout() {
         <div className="pizzaData">
            
          <img src={dataOrcamento?.imagem} alt="Imagem Pizza" />
-          <h2>{dataOrcamento?.nome}</h2>
+          <h2>{dataOrcamento?.sabor}</h2>
           <h2>{dataOrcamento?.descricao}</h2>
           <h2>{dataOrcamento?.precoTotal}</h2>
            <p>{dataOrcamento?.unidades}</p>

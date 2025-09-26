@@ -17,30 +17,47 @@ function checkoutHook<T extends { id: number }>(
     setIdentifier((prev) => [...prev, item]);
   };
 
-  const criarIdentifier = (
-    nome: string,
-    sobrenome: string,
-    cpf: string,
-    sexo: string,
-    idade: string,
-    email: string,
-    cep: string,
-    numero: string
-  ) => {
-    const newIdentifier: T = {
-      nome,
-      sobrenome,
-      cpf,
-      sexo,
-      idade,
-      email,
-      cep,
-      numero,
-      id: Date.now(),
-    } as T;
-    addIdentifier(newIdentifier);
-    return newIdentifier;
-  };
+ const criarIdentifier = (
+  nome: string,
+  sobrenome: string,
+  cpf: string,
+  sexo: string,
+  idade: string,
+  email: string,
+  cep: string,
+  numero: string,
+  sabor: string,
+  descricao: string,
+  preco: string,
+  imagem: string | undefined,
+  precoTotal: string,
+  unidades: string,
+  adicionais: string,
+  cartId: string 
+) => {
+  const newIdentifier: T = {
+    nome,
+    sobrenome,
+    cpf,
+    sexo,
+    idade,
+    email,
+    cep,
+    numero,
+    sabor,
+    descricao,
+    preco,
+    imagem,
+    precoTotal,
+    unidades,
+    adicionais,
+    cartId
+  } as T;
+
+  addIdentifier(newIdentifier);
+  return newIdentifier;
+};
+
 
   const atualizarIdentifier = (item: T) => {
     const updatedIdentifier = setIdentifier((prev) =>

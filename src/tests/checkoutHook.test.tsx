@@ -7,148 +7,87 @@ describe("Irei verificar Checkout", () => {
       "checkout",
       []
     );
-    criarIdentifier(
-      "Rafael",
-      "Moraes",
-      "22222",
-      "masculino",
-      "20",
-      "rafael@gmail",
-      "000099",
-      "90"
-    );
 
-    expect(identifier[0]).toMatchObject({
-      nome: "Rafael",
-      sobrenome: "Moraes",
+    criarIdentifier('Rafael','Moraes','22222','m','20','rafael@gmail','3333','90','mussarela','saborosa',
+      '29.99','foto','29.99','1','queijo','111233')
+ 
+      expect(identifier[0]).toMatchObject({
+        nome:'Rafael',
+        sobrenome:'Moraes'
+      })
+
     });
-  });
+
+
+  
   test("should build Identifiers", () => {
-    const { identifier, criarIdentifier } = checkoutHook<checkout>(
+    const { identifier, criarIdentifier } = checkoutHook<Checkout>(
       "checkout",
       []
     );
 
-    criarIdentifier(
-      "Rafael",
-      "Moraes",
-      "22222",
-      "masculino",
-      "20",
-      "rafael@gmail",
-      "000099",
-      "90"
-    );
-    criarIdentifier(
-      "Jack",
-      "Sparrow",
-      "7777",
-      "masculino",
-      "60",
-      "sparrow@gmail",
-      "33333",
-      "390"
-    );
+      criarIdentifier('Rafael','Moraes','22222','m','20','rafael@gmail','3333','90','mussarela','saborosa',
+      '29.99','foto','29.99','1','queijo','111233')
+ 
 
-    expect(identifier.length).toBe(2);
-    expect(identifier[1].nome).toBe("Jack");
+      expect(identifier[0].nome).toBe('Rafael')
+      expect(identifier).toHaveLength(1)
   });
   test("should update Identifiers", () => {
     const { identifier, criarIdentifier, atualizarIdentifier } =
-      checkoutHook<checkout>("checkout", []);
-    criarIdentifier(
-      "Rafael",
-      "Moraes",
-      "22222",
-      "masculino",
-      "20",
-      "rafael@gmail",
-      "000099",
-      "90"
-    );
-    criarIdentifier(
-      "Jack",
-      "Sparrow",
-      "7777",
-      "masculino",
-      "60",
-      "sparrow@gmail",
-      "33333",
-      "390"
-    );
+      checkoutHook<Checkout>("checkout", []);
 
-    const newIdentifier = identifier[0];
-    atualizarIdentifier({ ...newIdentifier, cep: "99999" });
+        criarIdentifier('Rafael','Moraes','22222','m','20','rafael@gmail','3333','90','mussarela','saborosa',
+      '29.99','foto','29.99','1','queijo','111233')
+ 
+        criarIdentifier('Jack','Sparrow','11111','m','40','sparrow@gmail','333','20','calabresa',' muito saborosa',
+      '39.99','foto','39.99','1','queijo','23333')
+ 
+      const newIdentifier = identifier[0]
+      atualizarIdentifier({...newIdentifier,idade:'60'})
 
-    expect(identifier.length).toBe(2);
-    expect(identifier[0].cep).toBe("99999");
+      expect(identifier).toHaveLength(2)
+      expect(identifier[0].idade).toBe('60')
+      expect(identifier[1].idade).toBe('40')
   });
   // TESTE PARA VERIFICAR OS OUTROS ITENS
-  test("should ", () => {
+  test("should update a lot identifiers ", () => {
     const { identifier, criarIdentifier, atualizarIdentifier } =
-      checkoutHook<checkout>("checkout", []);
-    criarIdentifier(
-      "Rafael",
-      "Moraes",
-      "22222",
-      "masculino",
-      "20",
-      "rafael@gmail",
-      "000099",
-      "90"
-    );
-    criarIdentifier(
-      "Jack",
-      "Sparrow",
-      "7777",
-      "masculino",
-      "60",
-      "sparrow@gmail",
-      "33333",
-      "390"
-    );
+      checkoutHook<Checkout>("checkout", []);
 
-    const newIdentifier = identifier[0];
-    atualizarIdentifier({ ...newIdentifier, cpf: "8888" });
 
-    expect(identifier.length).toBe(2);
+      
+        criarIdentifier('Rafael','Moraes','22222','m','20','rafael@gmail','3333','90','mussarela','saborosa',
+      '29.99','foto','29.99','1','queijo','111233')
+ 
+        criarIdentifier('Jack','Sparrow','11111','m','40','sparrow@gmail','333','20','calabresa',' muito saborosa',
+      '39.99','foto','39.99','1','queijo','23333')
+ 
+      const newIdentifier = identifier[0]
+      atualizarIdentifier({...newIdentifier,cpf:'8888'})
 
-    expect(identifier[1]).toMatchObject({
-      nome: "Jack",
-      sobrenome: "Sparrow",
-      cpf: "7777",
-    });
+      expect(identifier[1]).toMatchObject({
+        nome:'Jack',
+        sobrenome:'Sparrow'
+      })
 
-    expect(identifier[0].cpf).toBe("8888");
+      expect(identifier).toHaveLength(2)
+      expect(identifier[0].cpf).toBe('8888')
   });
-  test("should delete Identifiers", () => {
-    const { identifier, criarIdentifier, deletarIdentifier } =
-      checkoutHook<checkout>("checkout", []);
-    criarIdentifier(
-      "Rafael",
-      "Moraes",
-      "22222",
-      "masculino",
-      "20",
-      "rafael@gmail",
-      "000099",
-      "90"
-    );
-    criarIdentifier(
-      "Jack",
-      "Sparrow",
-      "7777",
-      "masculino",
-      "60",
-      "sparrow@gmail",
-      "33333",
-      "390"
-    );
+  test("should delete Identifiers", () => {});
+  const { identifier, criarIdentifier, deletarIdentifier } =
+      checkoutHook<Checkout>("checkout", []);
+   criarIdentifier('Rafael','Moraes','22222','m','20','rafael@gmail','3333','90','mussarela','saborosa',
+      '29.99','foto','29.99','1','queijo','111233')
+ 
+        criarIdentifier('Jack','Sparrow','11111','m','40','sparrow@gmail','333','20','calabresa',' muito saborosa',
+      '39.99','foto','39.99','1','queijo','23333')
+ 
+      const oldIdentifier = identifier[0]
+      deletarIdentifier(oldIdentifier.id)
 
-    const oldIdentifier = identifier[1];
-    deletarIdentifier(oldIdentifier.id);
-
-    expect(identifier.length).toBe(1);
-    expect(identifier).not.toContainEqual(oldIdentifier);
-  });
+      expect(identifier).toHaveLength(1)
+      expect(identifier).not.toContainEqual(oldIdentifier)
+      expect(identifier[0].nome).toBe('Jack')
+    
 });

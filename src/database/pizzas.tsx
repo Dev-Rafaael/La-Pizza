@@ -8,45 +8,45 @@ import Pizza6 from "../assets/IMG/pizza6.jpg";
 const pizzas = [
   {
     id: 1,
-    nome: "Margherita",
+    sabor: "Margherita",
     descricao: "Molho de tomate, mussarela, manjericão fresco e azeite.",
     preco: 35.90,
-    imagem: {Pizza1}
+    imagem: Pizza1
   },
   {
     id: 2,
-    nome: "Calabresa",
+    sabor: "Calabresa",
     descricao: "Molho de tomate, mussarela, calabresa fatiada e cebola roxa.",
     preco: 39.90,
-    imagem: {Pizza2}
+    imagem:Pizza2
   },
   {
     id: 3,
-    nome: "Portuguesa",
+    sabor: "Portuguesa",
     descricao: "Molho de tomate, mussarela, presunto, ovo, cebola, ervilha e azeitona.",
     preco: 42.90,
-    imagem: {Pizza3}
+    imagem: Pizza3
   },
   {
     id: 4,
-    nome: "Frango com Catupiry",
+    sabor: "Frango com Catupiry",
     descricao: "Molho de tomate, frango desfiado, catupiry e milho verde.",
     preco: 44.90,
-    imagem: {Pizza4}
+    imagem: Pizza4
   },
   {
     id: 5,
-    nome: "Quatro Queijos",
+    sabor: "Quatro Queijos",
     descricao: "Molho de tomate, mussarela, gorgonzola, provolone e parmesão.",
     preco: 46.90,
-    imagem: {Pizza5}
+    imagem: Pizza5
   },
   {
     id: 6,
-    nome: "Pepperoni",
+    sabor: "Pepperoni",
     descricao: "Molho de tomate, mussarela e pepperoni crocante.",
     preco: 47.90,
-    imagem: {Pizza6}
+    imagem: Pizza6
   }
 ];
 

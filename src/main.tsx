@@ -43,7 +43,7 @@ const router=createBrowserRouter([
         //   element:<Images/>
         // },
         {
-          path:"Orçamento/:nome",
+          path:"Orçamento/:sabor",
           element:<Orçamento/>
         },
         {
