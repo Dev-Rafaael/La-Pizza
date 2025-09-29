@@ -33,9 +33,9 @@ export interface Cart {
     sabor:string,
     descricao:string,
     preco:string,
-    imagem?:string,
     precoTotal:string,
     unidades:string,
     adicionais:string,
-    cartId:string
+    cartId:number,
+    imagem?:string
 }

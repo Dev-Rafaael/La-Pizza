@@ -2,14 +2,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "../styles/Orçamento.module.css";
 import React, { useEffect, useState } from "react";
 import orcamentoHook from "../hooks/orcamentoHook";
-import type { Orcamento } from "../types";
+import type { Cart, Orcamento } from "../types";
 import pizzas from "../database/pizzas";
+import cartHook from "../hooks/cartHook";
 function Orçamento() {
+  const { criarItem } = cartHook<Cart>("cart", []);
   const { criarOrcamento, clearOrcamento } = orcamentoHook<Orcamento>(
     "orcamento",
     []
   );
-  const [preco, setPreco] = useState<string>("0.00");
+  const [precoTotal, setPrecoTotal] = useState<string>("0.00");
   const [unidades, setUnidades] = useState<string>("");
   const [adicionais, setAdicionais] = useState<string>("");
   const navigate = useNavigate();
@@ -20,9 +22,9 @@ function Orçamento() {
   }
   useEffect(() => {
     const qtd = Number(unidades) || 0;
-    const precoTotal = (dataOrcamento.preco * qtd).toFixed(2);
-    setPreco(precoTotal);
-  }, [unidades, preco]);
+    const precoTotalPizza = (dataOrcamento.preco * qtd).toFixed(2);
+    setPrecoTotal(precoTotalPizza);
+  }, [unidades, precoTotal]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -32,9 +34,19 @@ function Orçamento() {
       dataOrcamento.descricao,
       String(dataOrcamento.preco),
       String(dataOrcamento.imagem),
-      preco,
+      precoTotal,
       unidades,
       adicionais
+    );
+    criarItem(
+      dataOrcamento.sabor,
+      dataOrcamento.descricao,
+      String(dataOrcamento.preco),
+      precoTotal,
+      unidades,
+      adicionais,
+      Number(newOrcamento.cartId),
+      String(dataOrcamento.imagem)
     );
     alert("Prosseguindo...");
     navigate(`/Identificação/${newOrcamento.cartId}`);
@@ -70,7 +82,9 @@ function Orçamento() {
           value={unidades}
           onChange={(e) => setUnidades(e.target.value)}
         >
-          <option value="" disabled>Selecione</option>
+          <option value="" disabled>
+            Selecione
+          </option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -81,14 +95,14 @@ function Orçamento() {
           value={adicionais}
           onChange={(e) => setAdicionais(e.target.value)}
         >
-          <option value="" disabled>Selecione</option>
+          <option value="" disabled>
+            Selecione
+          </option>
           <option value="Salame">Salame</option>
           <option value="Cheddar">Cheddar</option>
           <option value="Catupiry">Catupiry</option>
         </select>
-        {unidades ? 
-        <h1>{preco}</h1>
-: ''}
+        {unidades ? <h1>{precoTotal}</h1> : ""}
         {/* <Link to={"/Identificação/${}"} type="submit">
           Prosseguir
         </Link> */}
