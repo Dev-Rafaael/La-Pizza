@@ -1,51 +1,9 @@
 /* =====================
    SEÇÃO CONTATO
 ===================== */
-.contato {
-  width: 100%;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: gray;
-  text-align: center;
-}
 
-.contato h1 {
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-  margin-bottom: 2rem;
-  color: #fff;
-}
 
-.infoContato ul {
-  display: flex;
-  gap: 5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-}
 
-.infoContato i {
-  margin-right: 8px;
-  font-size: 20px;
-  color: rebeccapurple;
-}
-
-.infoContato a {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: rgb(251, 63, 0);
-  transition: color 0.3s ease;
-}
-
-.infoContato a:hover {
-  color: #fff;
-}
 
 /* =====================
    FOOTER PRINCIPAL
@@ -53,17 +11,20 @@
 .footer {
   background: linear-gradient(rgba(22,22,22,0.9), rgba(17,17,18,1)),
               url("../IMG/pizza3.jpg") center/cover no-repeat;
-  color: #fff;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 2rem;
-  padding: 3rem 2rem;
+  
+}
+.footerContent{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  margin:  0 auto;
+  padding: 2rem 0;
 }
 
 .footer h2 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #facc15; /* dourado */
+  color: #facc15; 
 }
 
 .footer ul {
@@ -73,11 +34,16 @@
 }
 
 .footer li {
-  margin: 0.5rem 0;
+  margin: 0.7rem 0;
+  display: flex;
+  gap: 1rem;
 }
-
+.footer i {
+  color: #dad9d6;
+}
 .footer a {
-  color: #fff;
+  color: #cac4c4;
+  font-size: 1rem;
   text-decoration: none;
   transition: color 0.3s ease;
 }
@@ -87,8 +53,9 @@
 }
 
 .bandeiras img {
-  width: 50px;
-  margin-right: 10px;
+  width: 2.4rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
 }
 
 /* =====================
@@ -100,6 +67,7 @@
   margin-top: 1.5rem;
   font-size: 0.9rem;
   border-top: 1px solid #333;
-  padding-top: 1rem;
+  padding: 1rem 0;
   color: #aaa;
+
 }

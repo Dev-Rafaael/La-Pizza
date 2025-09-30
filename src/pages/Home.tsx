@@ -16,6 +16,7 @@ import { FaPlay } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import AOS from 'aos';
 import Modal from 'react-modal';
+import pizzas from '../database/pizzas'
 const CustomPrevArrow: React.FC<CustomArrowProps> =(props) => {
   const { className, style, onClick } = props;
   return (
@@ -127,7 +128,7 @@ function Home() {
           X
         </button>
         <iframe
-          src="https://www.youtube.com/embed/GwS5ASoSQos"
+          src="https://www.youtube.com/watch?v=STa_UtZP3tg"
           title="La Pizza - Vídeo Promocional"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -154,7 +155,7 @@ function Home() {
  </div>
   <div className={styles.contentVideo}>
     <iframe
-      src="https://www.youtube.com/embed/GwS5ASoSQos"
+      src="https://www.youtube.com/watch?v=STa_UtZP3tg"
       title="Vídeo La Pizza"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen
@@ -166,18 +167,20 @@ function Home() {
 {/* CARDÁPIO */}
       <section className={styles.cardapio}>
         <h1 className={styles.titleCardapio}>CARDÁPIO</h1>
-        <div className={styles.cardapioItens}>
-          {[Pizza1, Pizza2, Pizza3].map((pizza, index) => (
-            <div key={index}>
-              <img src={pizza} alt={`Pizza sabor ${index + 1}`} />
-              <div className={styles.infoItens}>
-                <h1 className={styles.price}>Mussarela</h1>
-              
-              </div>
+        <article className={styles.cardapioItens}>
+          {pizzas.slice(0,3).map((pizza, index) => (
+            <div key={index} className={styles.pizzaItem}>
+              <img src={pizza.imagem} alt={`Pizza sabor ${index + 1}`} />
+                <h1 className={styles.price}>{pizza.sabor}</h1>
+                 <p>{pizza.descricao}</p>
+                <h4>R${pizza.preco.toFixed(2)}</h4>
+             
             </div>
           ))}
+             </article>
+          <article className={styles.cardapioOption}>
           <Link to={'/Cardapio'}>Ver Mais</Link>
-        </div>
+        </article>
       </section>
       {/* SOBRE */}
       <section className={styles.sobreSection} >
@@ -201,52 +204,42 @@ function Home() {
       
 
       {/* BENEFICIOS E DIFERENCIAS  */}
-        <section className={styles.beneficiosContent}>
-          <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>
-        ⭐ Nossos Diferenciais
-      </h2>
-            <ul style={{ maxWidth: "600px", margin: "0 auto", listStyle: "none" }}>
-        {lista.map((beneficio, index) => (
-          <li
-            key={index}
-            style={{
-              marginBottom: "0.8rem",
-              fontSize: "1.1rem",
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <span style={{ marginRight: "0.5rem" }}>✅</span> {beneficio}
-          </li>
-        ))}
-      </ul>
-        </section>
+      <section className={styles.beneficiosContent}>
+  <h2 className={styles.title}>
+    ⭐ Nossos Diferenciais
+  </h2>
+
+  <ul className={styles.lista}>
+    {lista.map((beneficio, index) => (
+      <li key={index} className={styles.item}>
+        <span className={styles.icone}>✅</span> 
+        {beneficio}
+      </li>
+    ))}
+  </ul>
+</section>
+
 
       {/* AVALIACOES  */}
-      <section className={styles.avaliacoesContent}>
-        {avaliacoes.map((avaliacao, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ddd",
-              borderRadius: "10px",
-              padding: "1rem",
-              width: "250px",
-              background: "#fff",
-              boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-            }}
-          >
-            <p style={{ fontSize: "1.2rem" }}>
-              {"⭐".repeat(avaliacao.estrelas)}
-              {"☆".repeat(5 - avaliacao.estrelas)}
-            </p>
-            <p>{avaliacao.texto}</p>
-            <p>
-              <strong>— {avaliacao.nome}</strong>
-            </p>
-          </div>
-        ))}
-      </section>
+ <section className={styles.avaliacoesContent}>
+  <h2 className={styles.title}>⭐ Avaliações</h2>
+
+  <div className={styles.grid}>
+    {avaliacoes.map((avaliacao, index) => (
+      <div key={index} className={styles.card}>
+        <p className={styles.estrelas}>
+          {"⭐".repeat(avaliacao.estrelas)}
+          {"☆".repeat(5 - avaliacao.estrelas)}
+        </p>
+        <p className={styles.texto}>{avaliacao.texto}</p>
+        <p className={styles.nome}>
+          <strong>— {avaliacao.nome}</strong>
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
     </section>  
   )
 }
