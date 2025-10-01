@@ -3,13 +3,17 @@
 
 .cardapio{
   width: 100%;
-  padding: 2.0rem 0;
+  padding: 2rem 0;
   background-color: black;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   color: white;
+background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814)), url(../assets/IMG/pizza6.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .cardapioItens{
   display: grid;
@@ -17,70 +21,70 @@
   gap: 50px;
   justify-content: center;
   align-items: center;
-  width:100vh;
+  width:70%;
+
+}
+.pizzaItem{
+  background-color: #d7d5d5;
+  border-radius: 1rem;
+  padding-bottom: 0.5rem;
 }
 .titleCardapio{
   font-size: 36px;
   color: orange;
  padding-bottom: 4.0rem;
 }
-.cardapioItens div{
-  width: 104%;
-  height: auto;
-  padding-top: 20px;
-  text-align: center;
-  align-items: center;
-  background-color: gray;
-  border-radius: 7px;
- 
-}
- .cardapioItens .infoItens{
-  background-color: white;
-  color: orange;
-  width: 100%;
-  height: auto;
-  padding-top: 10px;
-   padding-bottom: 18px;
- }
- .cardapioItens .infoItens h1{
-  padding-bottom: 8px;
-  text-transform: uppercase;
-  color: orange;
-  text-shadow: 1px 0px 0px black;
-   text-align: center;
-}
- .cardapioItens .infoItens h4{
-  text-transform: uppercase;
-  align-items: center;
-  justify-content: center;
-   display: grid;
-  grid-template-columns:150px 150px ;
- 
-}
- .cardapioItens .infoItens h4 span{
-  color: black;
-}
-.btn{
-  font-size: 17px;
-  font-weight: bold;
- margin-top: 20px;
-  width: 260px;
-  height: 36px;
-  border-radius: 8px;
-  background-color: orange;
-  border: 1px solid black;
-  cursor: pointer;
-  transition: 1.5s;
-}
-.btn:hover{
-  background-color: transparent;
-  border: 1px solid orange;
-  color: orange;
-}
 
-.cardapio img{
-  border-radius: 7px;
+
+ .cardapio img{
+  border-radius: 0.4rem 0.4rem 0 0;
   width: 330px;
  height: 250px;
+
+}
+.pizzaItem{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+ .pizzaItem h1{
+  text-transform: uppercase;
+  color: rgb(207, 152, 48);
+   text-align: center;
  
 }
+ .pizzaItem p{
+  width: 90%;
+margin: 0 auto;
+text-align: center;
+ color: #5d5b59;
+}
+ .pizzaItem h4 {
+  text-align: center;
+  color: rgb(209, 151, 43);
+}
+.cardapioOption{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardapioOption a{
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;  
+  text-decoration: none;
+  color: white;
+  background-color: #d1aa49;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: 1.5s;
+  margin-top: 1rem;
+  opacity: 0.8;
+  transition: 0.7s;
+}
+.cardapioItens a:hover{
+  opacity: 1;
+}
+

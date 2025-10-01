@@ -5,7 +5,7 @@ import type { Checkout, Orcamento } from "../types";
 import orcamentoHook from "../hooks/orcamentoHook";
 // import pizzas from "../database/pizzas";
 import { useParams } from "react-router-dom";
-function Checkout() {
+function Identificacao() {
   const {orcamento} = orcamentoHook<Orcamento>('orcamento',[])
   const { identifier, criarIdentifier } = checkoutHook<Checkout>(
     "checkout",
@@ -141,4 +141,4 @@ function Checkout() {
   );
 }
 
-export default Checkout;
+export default Identificacao;

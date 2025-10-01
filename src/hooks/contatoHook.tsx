@@ -15,8 +15,8 @@ function contatoHook<T extends {id:number}>(key:string, initialValue: T[]= []) {
         setContatos((prev)=> [...prev,item])
      }
 
-     const criarContato = (nome:string,sobrenome:string,email:string,assunto:string)=>{
-        const newContato: T = {nome,sobrenome,email,assunto,id: Date.now()} as T
+     const criarContato = (nome:string,sobrenome:string,email:string,assunto:string,mensagem:string)=>{
+        const newContato: T = {nome,sobrenome,email,assunto,mensagem,id: Date.now()} as T
         addContatos(newContato)
      }
 

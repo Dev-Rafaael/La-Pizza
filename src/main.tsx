@@ -8,11 +8,11 @@ import Sobre from './pages/Sobre.tsx';
 import PoliticaPrivacidade from './pages/PoliticaPrivacidade.tsx';
 import Cardapio from './pages/Cardapio.tsx';
 import Orçamento from './pages/Orçamento.tsx';
-import Checkout from './pages/Checkout.tsx';
+import Identificacao from './pages/Identificacao.tsx';
 import Carrinho from './pages/Carrinho.tsx';
 import Account from './pages/Account.tsx';
 import Termos from './pages/Termos.tsx';
-
+import './index.css'
 
 const router=createBrowserRouter([
   {
@@ -48,7 +48,7 @@ const router=createBrowserRouter([
         },
         {
           path:"/Identificação/:cartId",
-          element:<Checkout/>
+          element:<Identificacao/>
         }, 
         // {
         //   path:"/Checkout/",

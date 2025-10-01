@@ -4,6 +4,7 @@ import Pizza from "../assets/IMG/pizza.jpg";
 function Sobre() {
   return (
     <section className={styles.sobre}>
+      
       <h1 className={styles.titleSobre}>Sobre Nós – La Pizza 🍕</h1>
       <div className={styles.sobreInfo}>
         <p>

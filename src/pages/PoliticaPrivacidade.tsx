@@ -1,106 +1,96 @@
-import styles from "../styles/PoliticaPrivacidade.module.css";
+
 
 function PoliticaPrivacidade() {
   return (
-    <section className={styles.politicaContent}>
-      <h2>Coleta de Informações</h2>
-      <p>Ao utilizar nosso e-commerce, poderemos coletar os seguintes dados:</p>
-      <ul>
-        <li>
-          <strong>Dados pessoais:</strong> nome, e-mail, telefone e endereço de
-          entrega.
-        </li>
-        <li>
-          <strong>Dados de pagamento: </strong>processados por meio de parceiros
-          (como Stripe, PayPal ou instituições bancárias), não sendo armazenados
-          diretamente por nós.
-        </li>
-        <li>
-          <strong>Dados de navegação:</strong> como cookies, endereço IP, tipo
-          de dispositivo e páginas acessadas, para melhorar sua experiência.
-        </li>
-      </ul>
+<section className="flex flex-col items-center bg-black-900 pt-20 pb-20">
+  <div className="flex flex-col gap-8 w-5/5 max-w-5xl ">
+    
+    <h1 className="text-3xl font-bold text-center text-white">Política de Privacidade</h1>
 
-      <h2>Uso das Informações</h2>
-      <p>As informações coletadas são utilizadas para:</p>
-      <ul>
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white" >Política de Privacidade</h2>
+      <p className="mt-2 text-gray-400">Ao utilizar nosso e-commerce, poderemos coletar os seguintes dados:</p>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
+        <li><strong>Dados pessoais:</strong> nome, e-mail, telefone e endereço de entrega.</li>
+        <li><strong>Dados de pagamento:</strong> processados por meio de parceiros (Stripe, PayPal, instituições bancárias), não sendo armazenados diretamente por nós.</li>
+        <li><strong>Dados de navegação:</strong> cookies, endereço IP, tipo de dispositivo e páginas acessadas.</li>
+      </ul>
+    </article>
+
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Uso das Informações</h2>
+      <p className="mt-2 text-gray-400">As informações coletadas são utilizadas para:</p>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
         <li>Processar e entregar seus pedidos;</li>
         <li>Enviar confirmações, notas fiscais e atualizações do pedido;</li>
         <li>Melhorar a navegação no site e personalizar a experiência;</li>
         <li>Entrar em contato em caso de dúvidas ou suporte;</li>
         <li>Divulgar promoções e novidades, quando autorizado.</li>
       </ul>
+    </article>
 
-      <h2>Compartilhamento de Informações</h2>
-      <p>
-        A La Pizza <strong>não vende nem aluga seus dados pessoais.</strong>
-      </p>
-      <p>Podemos compartilhar informações apenas com:</p>
-      <ul>
-        <li>
-          Parceiros logísticos (entregadores e transportadoras) para a entrega
-          dos pedidos;
-        </li>
-        <li>
-          Processadores de pagamento, responsáveis por garantir transações
-          seguras;;
-        </li>
-        <li>Autoridades legais, caso haja obrigação por lei.</li>
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Compartilhamento de Informações</h2>
+      <p className="mt-2 text-gray-400">A La Pizza <strong>não vende nem aluga seus dados pessoais.</strong></p>
+      <p className="mt-2 text-gray-400">Podemos compartilhar informações apenas com:</p>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
+        <li>Parceiros logísticos (entregadores e transportadoras);</li>
+        <li>Processadores de pagamento (transações seguras);</li>
+        <li>Autoridades legais, quando exigido por lei.</li>
       </ul>
+    </article>
 
-      <h2>Armazenamento e Segurança</h2>
-      <ul>
-        <li>
-          Utilizamos medidas de segurança para proteger suas informações contra
-          acessos não autorizados.
-        </li>
-        <li>Os dados são armazenados em servidores seguros.</li>
-        <li>
-          Você pode solicitar a exclusão ou alteração de seus dados a qualquer
-          momento.
-        </li>
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Armazenamento e Segurança</h2>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
+        <li>Utilizamos medidas de segurança contra acessos não autorizados;</li>
+        <li>Os dados são armazenados em servidores seguros;</li>
+        <li>Você pode solicitar exclusão ou alteração dos seus dados.</li>
       </ul>
+    </article>
 
-      <h2>Cookies</h2>
-      <p>
-        Nosso site utiliza <strong>cookies</strong> para:
-      </p>
-      <ul>
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Cookies</h2>
+      <p className="mt-2 text-gray-400">Nosso site utiliza <strong>cookies</strong> para:</p>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
         <li>Melhorar a usabilidade;</li>
         <li>Memorizar preferências de navegação;</li>
-        <li>
-          Oferecer recomendações personalizadas. Você pode desativar os cookies
-          no navegador, mas algumas funcionalidades podem ser afetadas.
-        </li>
+        <li>Oferecer recomendações personalizadas. Você pode desativar os cookies, mas algumas funções podem ser afetadas.</li>
       </ul>
+    </article>
 
-      <h2>Direitos do Usuário</h2>
-      <p>
-        De acordo com a{" "}
-        <strong>
-          {" "}
-          Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018)
-        </strong>
-        , você tem direito de:
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Direitos do Usuário</h2>
+      <p className="mt-2 text-gray-400">
+        Conforme a <strong>Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018)</strong>, você tem direito de:
       </p>
-      <ul>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
         <li>Solicitar acesso aos seus dados;</li>
         <li>Corrigir informações incorretas;</li>
-        <li>Solicitar a exclusão de seus dados pessoais;</li>
+        <li>Solicitar a exclusão de dados pessoais;</li>
         <li>Revogar consentimentos dados anteriormente.</li>
       </ul>
+    </article>
 
-      <h2>Alterações desta Política</h2>
-      <p>
-        A La Pizza pode atualizar esta Política de Privacidade periodicamente.
-        Sempre que houver alterações, a nova versão estará disponível em nosso
-        site.
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Alterações desta Política</h2>
+      <p className="mt-2 text-gray-300">
+        A La Pizza pode atualizar esta Política periodicamente. Sempre que houver alterações, a nova versão estará disponível no site.
       </p>
+    </article>
 
-      <h2>Contato</h2>
-      <p>📧 [seuemail@lapizza.com ]</p>
-      <p>📞 [11111]</p>
-    </section>
+    <article>
+      <h2 className="text-2xl font-bold mt-4 text-white">Contato</h2>
+      <ul className="list-disc list-inside mt-2 text-gray-300">
+        <li>📧 seuemail@lapizza.com</li>
+        <li>📞 (11) 1111-1111</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+
   );
 }
 

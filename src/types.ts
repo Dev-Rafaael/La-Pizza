@@ -1,9 +1,10 @@
-export interface Contato {
+export interface Contact {
     id:number,
     nome: string,
     sobrenome:string,
     email:string,
-    assunto:string
+    assunto:string,
+    mensagem:string
 }
 
 export interface Orcamento {

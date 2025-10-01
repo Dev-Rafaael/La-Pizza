@@ -27,16 +27,8 @@ function Navbar() {
             <li>
               <Link to="/Politica-Privacidade">Politica</Link>
             </li>
-            <li>
-              <Link to="/#id-contato">
-                <i className="fi fi-brands-instagram"></i>
-              </Link>
-            </li>
-            <li>
-              <Link to="/#id-contato">
-                <i className="fi fi-rr-phone-call"></i>
-              </Link>
-            </li>
+          
+          
             <li>
               <Link to="/Carrinho">
               <FontAwesomeIcon icon={faCartShopping} />
