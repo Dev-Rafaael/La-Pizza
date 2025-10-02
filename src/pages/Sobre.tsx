@@ -1,11 +1,11 @@
 import styles from "../styles/Sobre.module.css";
-
-import Pizza from "../assets/IMG/pizza.jpg";
+import PizzaSobre from '../assets/IMG/sobrePizza.png'
 function Sobre() {
   return (
     <section className={styles.sobre}>
       
-      <h1 className={styles.titleSobre}>Sobre Nós – La Pizza 🍕</h1>
+      <h1 className={styles.titleSobre}>Sobre Nós – La Pizza </h1>
+     <article className={styles.sobreContent}>
       <div className={styles.sobreInfo}>
         <p>
           Bem-vindo à <strong>La Pizza</strong>, o lugar onde tradição, sabor e qualidade se
@@ -16,11 +16,7 @@ function Sobre() {
           momentos especiais em família, entre amigos ou até mesmo naquela noite
           que você merece saborear algo único.
         </p>
-  
-        <div className={styles.slogan}>
-          <img src={Pizza} alt="Pizza representando nosso slogan" />
-        </div>
-        <div className="">
+        <div className={styles.sobreValores}>
                 <h2>Nossa Missão</h2>
         <p>Oferecer pizzas de qualidade, com sabor autêntico e atendimento diferenciado, sempre prezando pela satisfação de nossos clientes.</p>
           <h2>Nossos Valores</h2>
@@ -31,7 +27,14 @@ function Sobre() {
             <li><strong>Respeito:</strong> valorizamos nossos clientes, colaboradores e fornecedores.</li>
           </ul>
         </div>
-      </div>
+  </div>
+        
+        
+      <article className={styles.pizzaSobre}>
+        <img src={PizzaSobre} alt="" />
+      </article>
+      </article>
+      
     </section>
   );
 }
