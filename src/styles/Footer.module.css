@@ -51,7 +51,9 @@
 .footer a:hover {
   color: #facc15;
 }
-
+.bandeiras{
+  display: flex;
+}
 .bandeiras img {
   width: 2.4rem;
   margin-right: 0.5rem;

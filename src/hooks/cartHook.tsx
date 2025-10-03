@@ -19,7 +19,7 @@ function cartHook<T extends {cartId:number}>(key:string,initialValue: T[]=[]) {
     sabor:string,
     descricao:string,
     preco:string,
-    precoTotal:string,
+    precoTotal:number,
     unidades:string,
     adicionais:string,
     cartId:number,

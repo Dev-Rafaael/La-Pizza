@@ -42,7 +42,7 @@ function Orçamento() {
       dataOrcamento.sabor,
       dataOrcamento.descricao,
       String(dataOrcamento.preco),
-      precoTotal,
+      Number(precoTotal),
       unidades,
       adicionais,
       Number(newOrcamento.cartId),
