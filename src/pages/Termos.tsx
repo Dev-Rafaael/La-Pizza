@@ -1,7 +1,8 @@
 import styles from "../styles/Termos.module.css";
 function Termos() {
   return (
-<section className={styles.termosContent}>
+<section className={styles.termosSection}>
+  <article className={styles.termosContent}> 
   <header className={styles.termosHeader}>
     <h1>Termos de Uso – La Pizza 🍕</h1>
     <h2>Bem-vindo ao site da La Pizza!</h2>
@@ -12,7 +13,7 @@ function Termos() {
     </p>
   </header>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Aceitação dos Termos</h2>
     <p className={styles.termosParagraph}>
       O uso do site da La Pizza implica na aceitação integral e irrestrita
@@ -22,7 +23,7 @@ function Termos() {
     </p>
   </section>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Cadastro do Usuário</h2>
     <ul className={styles.termosList}>
       <li>
@@ -34,7 +35,7 @@ function Termos() {
     </ul>
   </section>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Pedidos e Entregas</h2>
     <ul className={styles.termosList}>
       <li>
@@ -51,7 +52,7 @@ function Termos() {
     </ul>
   </section>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Pagamentos</h2>
     <ul className={styles.termosList}>
       <li>
@@ -68,7 +69,7 @@ function Termos() {
     </ul>
   </section>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Trocas e Cancelamentos</h2>
     <ul className={styles.termosList}>
       <li>
@@ -90,7 +91,7 @@ function Termos() {
     </ul>
   </section>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Direitos e Responsabilidades</h2>
     <ul className={styles.termosList}>
       <li>
@@ -108,7 +109,7 @@ function Termos() {
     </ul>
   </section>
 
-  <section className={styles.termosSection}>
+  <section >
     <h2>Alterações nos Termos</h2>
     <p className={styles.termosParagraph}>
       A La Pizza pode atualizar estes Termos de Uso a qualquer momento. As
@@ -116,11 +117,12 @@ function Termos() {
     </p>
   </section>
 
-  <section className={styles.termosSection}>
+  <section>
     <h2>Contato</h2>
-    <p className={styles.termosParagraph}>📧 [seuemail@lapizza.com]</p>
-    <p className={styles.termosParagraph}>📞 [11111]</p>
+    <p className={styles.termosParagraph}>📧 pizzaria@lapizza.com</p>
+    <p className={styles.termosParagraph}>📞 (11)98147-4757</p>
   </section>
+</article>
 </section>
 
   );

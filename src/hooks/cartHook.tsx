@@ -18,9 +18,9 @@ function cartHook<T extends {cartId:number}>(key:string,initialValue: T[]=[]) {
     const criarItem = (
     sabor:string,
     descricao:string,
-    preco:string,
+    preco:number,
     precoTotal:number,
-    unidades:string,
+    unidades:number,
     adicionais:string,
     cartId:number,
    imagem?:string,) =>{

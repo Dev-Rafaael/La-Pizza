@@ -11,8 +11,8 @@ function Orçamento() {
     "orcamento",
     []
   );
-  const [precoTotal, setPrecoTotal] = useState<string>("0.00");
-  const [unidades, setUnidades] = useState<string>("");
+  const [precoTotal, setPrecoTotal] = useState<number>(0.00);
+  const [unidades, setUnidades] = useState<number>(0);
   const [adicionais, setAdicionais] = useState<string>("");
   const navigate = useNavigate();
   const { sabor } = useParams();
@@ -23,7 +23,7 @@ function Orçamento() {
   useEffect(() => {
     const qtd = Number(unidades) || 0;
     const precoTotalPizza = (dataOrcamento.preco * qtd).toFixed(2);
-    setPrecoTotal(precoTotalPizza);
+    setPrecoTotal(Number(precoTotalPizza));
   }, [unidades, precoTotal]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ function Orçamento() {
       String(dataOrcamento.id),
       dataOrcamento.sabor,
       dataOrcamento.descricao,
-      String(dataOrcamento.preco),
+      dataOrcamento.preco,
       String(dataOrcamento.imagem),
       precoTotal,
       unidades,
@@ -41,8 +41,8 @@ function Orçamento() {
     criarItem(
       dataOrcamento.sabor,
       dataOrcamento.descricao,
-      String(dataOrcamento.preco),
-      Number(precoTotal),
+      dataOrcamento.preco,
+      precoTotal,
       unidades,
       adicionais,
       Number(newOrcamento.cartId),
@@ -77,19 +77,13 @@ function Orçamento() {
         </ul>
       </div>
       <form onSubmit={handleSubmit}>
-        <select
+        <input
+          type="number"
           name="Unidades"
           value={unidades}
-          onChange={(e) => setUnidades(e.target.value)}
-        >
-          <option value="" disabled>
-            Selecione
-          </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
+          onChange={(e) => setUnidades(Number(e.target.value))}
+        />
+        
         <select
           name="adionais"
           value={adicionais}

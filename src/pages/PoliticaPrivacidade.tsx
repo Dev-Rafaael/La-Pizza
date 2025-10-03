@@ -1,7 +1,8 @@
 
-
+import styles from "../styles/PoliticaPrivacidade.module.css";
 function PoliticaPrivacidade() {
   return (
+    <section className={styles.PoliticaSection}>
 <section className="flex flex-col items-center bg-black-900 pt-20 pb-20">
   <div className="flex flex-col gap-8 w-5/5 max-w-5xl ">
     
@@ -82,14 +83,14 @@ function PoliticaPrivacidade() {
     <article>
       <h2 className="text-2xl font-bold mt-4 text-white">Contato</h2>
       <ul className="list-disc list-inside mt-2 text-gray-300">
-        <li>📧 seuemail@lapizza.com</li>
-        <li>📞 (11) 1111-1111</li>
+        <li>📧 pizzaria@lapizza.com</li>
+        <li>📞 (11) 98147-4757</li>
       </ul>
     </article>
 
   </div>
 </section>
-
+</section>
 
   );
 }

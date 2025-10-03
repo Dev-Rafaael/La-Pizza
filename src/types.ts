@@ -11,10 +11,10 @@ export interface Orcamento {
     id:number,
     sabor:string,
     descricao:string,
-    preco:string,
+    preco:number,
     imagem?:string,
-    precoTotal:string,
-    unidades:string,
+    precoTotal:number,
+    unidades:number,
     adicionais:string,
     cartId:string
 }
@@ -33,9 +33,9 @@ export interface Checkout extends Orcamento {
 export interface Cart {
     sabor:string,
     descricao:string,
-    preco:string,
+    preco:number,
     precoTotal:number,
-    unidades:string,
+    unidades:number,
     adicionais:string,
     cartId:number,
     imagem?:string

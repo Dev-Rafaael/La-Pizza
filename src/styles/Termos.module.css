@@ -1,0 +1,36 @@
+.termosSection{
+     background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814)), url(../assets/IMG/termosLaPizza.png);
+      background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+   backdrop-filter: blur(2px);
+}
+
+.termosContent{
+    width: 80%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+   
+}
+
+.termosHeader h1{
+    text-align: center;
+    font-size: 2rem;
+     color: white;
+     font-weight: bold;
+     margin-bottom: 1rem;
+}
+.termosContent h2{
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 700;
+}
+.termosContent p, li{
+    
+    font-size: 1rem;
+    color: rgb(156, 154, 154);
+
+}

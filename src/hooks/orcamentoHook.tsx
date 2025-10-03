@@ -21,10 +21,10 @@ function orcamentoHook<T extends { id: number }>(
     id: string,
     sabor: string,
     descricao: string,
-    preco: string,
+    preco: number,
     imagem: string,
-    precoTotal: string,
-    unidades: string,
+    precoTotal: number,
+    unidades: number,
     adicionais: string
   ) => {
     const newOrcamento: T = {
