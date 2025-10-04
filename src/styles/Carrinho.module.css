@@ -26,7 +26,6 @@ justify-content: space-around;
   flex-direction: column;
   gap: 1.5rem;
   width: 70%;
-
   margin: 0 auto;
 }
 
@@ -47,7 +46,6 @@ justify-content: space-around;
 }
 .infoItem{
   width: 60%;
-
   display: flex;
   justify-content: space-around;
   gap: 1rem;
@@ -59,14 +57,67 @@ flex-direction: column;
   font-size: 1rem;
   color: #fff;
   align-items: center;
-  gap: 2rem;
-}
-.infoItem input{
-  width: 20%;
+  gap: 1.5rem;
 }
 .infoItem span {
   font-weight: bold;
   color: goldenrod;
+  
+}
+.quantityForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.qtyInput {
+  width: 50px;
+  text-align: center;
+  -moz-appearance: textfield; 
+}
+
+.qtyInput::-webkit-inner-spin-button,
+.qtyInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; 
+}
+
+.qtyBtn {
+  background-color: #ffcc00;
+  border: none;
+  padding: 4px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.qtyBtn:hover {
+  background-color: #e6b800;
+}
+
+
+.saveButton {
+  background-color:#e6b800; 
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-left: 8px;
+}
+
+.saveButton:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+.saveButton:active {
+  transform: scale(0.97);
 }
 
 .actions {
@@ -85,7 +136,6 @@ flex-direction: column;
 .actionBtn button {
   flex: 1;
   text-align: center;
-  
   width: 2rem;
   height: 2rem;
   border: none;
@@ -103,21 +153,21 @@ flex-direction: column;
 .actionPay a{
   text-align: center;
   padding: 1rem 2.5rem ;
-
   border: none;
   border-radius: 1rem;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
   transition: opacity 0.3s;
-   background-color: rgb(6, 210, 40);
+   background-color: #e6b800;
+    font-weight: bold;
 }
 
 .actions button {
   background-color: rgb(210, 6, 33);
 }
 .actions .editBtn{
-    background-color: yellow;
+    background-color: #e6b800;
 }
 
 .actions a:hover,
@@ -160,6 +210,7 @@ flex-direction: column;
     padding: 0.5rem;
     border-radius: 1rem;
     text-align: center;
-    background-color: rgb(22, 93, 208);
+    background-color: #e6b800;
+    font-weight: bold;
     cursor: pointer;
 }

@@ -154,12 +154,14 @@ function Home() {
     </div>
  </div>
   <div className={styles.contentVideo}>
-    <iframe
-      src="https://www.youtube.com/watch?v=STa_UtZP3tg"
-      title="Vídeo La Pizza"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-    ></iframe>
+  <iframe
+        src="https://www.youtube.com/embed/STa_UtZP3tg"
+        title="Vídeo La Pizza"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        
+      ></iframe>
+    
   </div>
   </article>
 </section>
