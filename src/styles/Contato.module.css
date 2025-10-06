@@ -1,0 +1,150 @@
+.contatoMain {
+background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814)), url(../assets/IMG/contatoLaPizza.png);
+  background-position:bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 3rem;
+
+  height: 100%;
+  text-align: center;
+}
+.contatoMain h1{
+    color: rgb(207, 148, 38);
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+.contatoMain p{
+    width: 80%;
+    margin: 0 auto ;
+    color: rgb(210, 205, 205);
+    font-size: 1.1rem;
+}
+.contatoSection{
+    height: 100%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formContainer {
+  width: 100%;
+  max-width: 42rem; 
+  margin: 2rem auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #f3f4f626; 
+  width: 100%;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.nomeGroup {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+}
+.nomeGroup label, .inline label{
+    width: 100%;
+}
+.nomeGroup p, .inline p{
+    width: 100%;
+    color: rgb(207, 148, 38);
+    text-align: start;
+}
+.input, textarea {
+  width: 100%;
+  background-color: #e9ebee; 
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  resize: none;
+  border: none;
+}
+
+
+
+.submitButton {
+  background-color: rgb(207, 148, 38);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  opacity: 0.9;
+}
+
+.submitButton:hover {
+ opacity: 1;
+}
+.contatos{
+   width: 80%;
+    height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+.container{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.infoItem {
+    width: 100%;
+    display: flex;
+ gap: 3rem;
+align-items: center;
+}
+.info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.4rem 0;
+}
+.info h3{
+color: rgb(207, 148, 38);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.infoItem p{
+    width: 100%;
+  font-size: 1rem;
+font-weight: 500;
+color: white;
+}
+.infoItem i{ 
+  background-color: rgb(207, 148, 38);
+  font-size: 20px;
+  width: 44px;
+  height: 100%;
+  padding: 1rem 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+  
+}

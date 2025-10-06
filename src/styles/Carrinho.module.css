@@ -98,6 +98,15 @@ flex-direction: column;
   background-color: #e6b800;
 }
 
+.totalPrice {
+  transition: transform 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+
+.animate {
+  transform: scale(1.2);
+  color:#e6b800; 
+}
 
 .saveButton {
   background-color:#e6b800; 

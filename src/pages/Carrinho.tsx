@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import visa from "../assets/IMG/visa.png";
 import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
-import { useState, type FormEvent } from "react";
+import {useState, type FormEvent } from "react";
 function Carrinho() {
   const [newQuantidade, setNewQuantidade] = useState<number>(0);
   const { itens, deletarItem, atualizarItem } = cartHook<Cart>("cart", []);
   const [editId, setEditId] = useState<number | null>(null);
+const [animatePrices, setAnimatePrices] = useState<{ [key: number]: boolean }>({});
+
 
   const deletar = (index: number) => {
     const confirm = window.confirm("Tem Certeza que deseja Deletar?");
@@ -41,8 +43,17 @@ function Carrinho() {
       return itens;
     }
   };
+   const valorTotal = itens.reduce((acc, cur) => cur.precoTotal + acc, 0);
+const triggerAnimation = (cartId:number) => {
+  setAnimatePrices((prev) => ({ ...prev, [cartId]: true }));
 
-  const valorTotal = itens.reduce((acc, cur) => cur.precoTotal + acc, 0);
+  setTimeout(() => {
+    setAnimatePrices((prev) => ({ ...prev, [cartId]: false }));
+  }, 400);
+};
+
+
+  
   return (
     <section className={styles.cartSection}>
       <div className={styles.titleCart}>
@@ -65,13 +76,15 @@ function Carrinho() {
                   <span>Quantidade</span>
                   {editId === pizza.cartId ? (
                     <form onSubmit={editar} className={styles.quantityForm}>
-                      <div className="">
+                             <div className="">
                         <button
                           type="button"
                           className={styles.qtyBtn}
-                          onClick={() =>
-                            setNewQuantidade((q) => Math.max(1, q - 1))
-                          }
+                          onClick={() => {
+  setNewQuantidade((q) => q - 1);
+  triggerAnimation(pizza.cartId);
+}}
+
                         >
                           −
                         </button>
@@ -80,16 +93,22 @@ function Carrinho() {
                           type="number"
                           min="1"
                           value={newQuantidade}
-                          onChange={(e) =>
-                            setNewQuantidade(Number(e.target.value))
-                          }
+                          onChange={(e) =>{
+                      setNewQuantidade(Number(e.target.value));
+                      triggerAnimation(pizza.cartId);
+                    }}
+                          
                           className={styles.qtyInput}
                         />
 
                         <button
                           type="button"
                           className={styles.qtyBtn}
-                          onClick={() => setNewQuantidade((q) => q + 1)}
+                         onClick={() => {
+  setNewQuantidade((q) => q + 1);
+  triggerAnimation(pizza.cartId);
+}}
+
                         >
                           +
                         </button>
@@ -106,7 +125,14 @@ function Carrinho() {
                 </h2>
 
                 <h2>
-                  <span>Preço Total</span> {pizza.precoTotal.toFixed(2)}
+                  <span>Preço Total</span>
+      <p
+  className={`${styles.totalPrice} ${
+    animatePrices[pizza.cartId] ? styles.animate : ""
+  }`}
+>
+{editId === pizza.cartId ? (pizza.preco * newQuantidade).toFixed(2) : pizza.precoTotal.toFixed(2)}
+  </p>
                 </h2>
               </div>
 
