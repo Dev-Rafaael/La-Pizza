@@ -16,7 +16,7 @@ export interface Orcamento {
     precoTotal:number,
     unidades:number,
     adicionais:string,
-    cartId:string
+    cartId:number
 }
 
 export interface Checkout extends Orcamento {

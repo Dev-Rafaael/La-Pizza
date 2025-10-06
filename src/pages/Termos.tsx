@@ -2,9 +2,12 @@ import styles from "../styles/Termos.module.css";
 function Termos() {
   return (
 <section className={styles.termosSection}>
+  <div className={styles.navTermos}>
+          <h1>TERMOS</h1>
+        </div>
   <article className={styles.termosContent}> 
   <header className={styles.termosHeader}>
-    <h1>Termos de Uso – La Pizza 🍕</h1>
+     
     <h2>Bem-vindo ao site da La Pizza!</h2>
     <p>
       Ao acessar e utilizar nosso e-commerce, você concorda com os presentes

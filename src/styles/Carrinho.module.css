@@ -5,16 +5,27 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81)),
-    url(../assets/IMG/sobrePizza.png) center/cover no-repeat;
-  padding: 2rem 0;
+  background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81));
 }
 
-.titleCart {
-  text-align: center;
-  font-size: 2.5rem;
-  color: rgb(231, 138, 38);
+.navCart{
+  width: 100%;
+ height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)), url(../assets/IMG/orcamentoLaPizza.jpg);;
+  background-position:center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.navCart h1{
+  margin-bottom: 1rem;
+ font-size: 3rem;
   font-weight: bold;
+  letter-spacing: -2px;
+   font-style:italic;
+  color: rgb(146, 117, 60);
 }
 .cartContent{
 display: flex;
@@ -222,4 +233,34 @@ flex-direction: column;
     background-color: #e6b800;
     font-weight: bold;
     cursor: pointer;
+}
+/* NAO ENCONTRADO  */
+
+.notFoundItem{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+.notFoundItem h1{
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.notFoundItem a {
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: orange;
+  color:  white;
+  opacity: 0.9;
+  font-weight: bold;
+}
+.notFoundItem a:hover{
+  opacity: 1;
 }

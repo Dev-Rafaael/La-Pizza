@@ -26,14 +26,15 @@ function checkoutHook<T extends { id: number }>(
   email: string,
   cep: string,
   numero: string,
-  sabor: string,
-  descricao: string,
-  preco: string,
-  imagem: string | undefined,
-  precoTotal: string,
-  unidades: string,
-  adicionais: string,
-  cartId: string 
+ sabor: string,
+    descricao: string,
+    preco: number,
+    imagem: string | undefined,
+    precoTotal: number,
+    unidades: number,
+    adicionais: string,
+  cartId: number 
+  
 ) => {
   const newIdentifier: T = {
     nome,

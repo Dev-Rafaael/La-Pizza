@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Checkout.module.css";
+import styles from "../styles/Identificacao.module.css";
 import checkoutHook from "../hooks/checkoutHook";
 import type { Checkout, Orcamento } from "../types";
 import orcamentoHook from "../hooks/orcamentoHook";
 // import pizzas from "../database/pizzas";
 import { useParams } from "react-router-dom";
 function Identificacao() {
-  const {orcamento} = orcamentoHook<Orcamento>('orcamento',[])
+  const { orcamento } = orcamentoHook<Orcamento>("orcamento", []);
   const { identifier, criarIdentifier } = checkoutHook<Checkout>(
     "checkout",
     []
@@ -15,16 +15,18 @@ function Identificacao() {
   const [sobrenome, setSobrenome] = useState<string>("");
   const [cpf, setCPF] = useState<string>("");
   const [sexo, setSexo] = useState<string>("");
-  const [idade, setIdade] = useState<string>("");
+  const [nascimento, setNascimento] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [cep, setCEP] = useState<string>("");
   const [numero, setNumero] = useState<string>("");
-    const {cartId}= useParams()
- const dataOrcamento = orcamento.find((value)=> value.cartId === Number(cartId))
+  const { cartId } = useParams();
+  const dataOrcamento = orcamento.find(
+    (value) => value.cartId === Number(cartId)
+  );
   console.log(dataOrcamento);
-  
+
   if (!dataOrcamento) {
-    return <p>Pizza Não Encontrada</p>
+    return <p>Pizza Não Encontrada</p>;
   }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +36,7 @@ function Identificacao() {
       sobrenome,
       cpf,
       sexo,
-      idade,
+      nascimento,
       email,
       cep,
       numero,
@@ -61,82 +63,143 @@ function Identificacao() {
     setSobrenome("");
     setCPF("");
     setSexo("");
-    setIdade("");
+    setNascimento("");
     setEmail("");
     setCEP("");
     setNumero("");
   }, [identifier]);
   return (
     <>
-    <section className={styles.checkoutForm}>
-      <h1>Identificação</h1>
-      <p>Está quase Terminando</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={nome}
-          placeholder="Digite Seu Nome"
-          onChange={(e) => setNome(e.target.value)}
-        />
-        <input
-          type="text"
-          value={sobrenome}
-          placeholder="Digite Seu Sobre Nome"
-          onChange={(e) => setSobrenome(e.target.value)}
-        />
-        <input
-          type="text"
-          value={cpf}
-          placeholder="Digite Seu CPF"
-          onChange={(e) => setCPF(e.target.value)}
-        />
-        <select value={sexo} onChange={(e) => setSexo(e.target.value)}>
-          <option value="" selected>
-            Selecione
-          </option>
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
-        </select>
-        <input
-          type="text"
-          value={idade}
-          placeholder="Digite Sua Idade"
-          onChange={(e) => setIdade(e.target.value)}
-        />
-        <input
-          type="email"
-          value={email}
-          placeholder="Digite Seu E-Mail"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          value={cep}
-          placeholder="Digite Seu CEP"
-          onChange={(e) => setCEP(e.target.value)}
-        />
-        <input
-          type="text"
-          value={numero}
-          placeholder="Digite o Numero"
-          onChange={(e) => setNumero(e.target.value)}
-        />
-        <button type="submit">Finalizar</button>
-      </form>
-    </section>
-    <section>
-{dataOrcamento ?
-        <div className="pizzaData">
-           
-         <img src={dataOrcamento?.imagem} alt="Imagem Pizza" />
-          <h2>{dataOrcamento?.sabor}</h2>
-          <h2>{dataOrcamento?.descricao}</h2>
-          <h2>{dataOrcamento?.precoTotal}</h2>
-           <p>{dataOrcamento?.unidades}</p>
-           <p>{dataOrcamento?.adicionais}</p>
+      <section className={styles.Identificacao}>
+        <div className={styles.navIdentificacao}>
+          <h1>IDENTIFICAÇÃO</h1>
         </div>
-        : ''}
-    </section>
+        <article className={styles.IdentificacaoContent}>
+          <h2>Agora, iremos criar o seu cadastro:</h2>
+          <p>Está quase acabando...</p>
+          <article className={styles.cadastroIdentificacao}>
+            <div className={styles.ContentIdentificacao}>
+              <form
+                onSubmit={handleSubmit}
+                className={styles.formIdentificacao}
+              >
+                <label htmlFor="cpf">CPF</label>
+                <input
+                  type="text"
+                  name="cpf"
+                  id="cpf"
+                  placeholder="Digite Seu CPF"
+                  value={cpf}
+                  onChange={(e) => setCPF(e.target.value)}
+                  required
+                />
+
+                <label htmlFor="nome">Nome Completo</label>
+                <input
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder="Digite Seu Nome Completo"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                />
+
+                <label htmlFor="email">E-Mail</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Digite Seu E-Mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+
+                <label htmlFor="sexo">Sexo</label>
+                <select
+                  name="sexo"
+                  id="sexo"
+                  value={sexo}
+                  onChange={(e) => setSexo(e.target.value)}
+                  required
+                >
+                  <option value="" disabled>
+                    Selecione uma Opção
+                  </option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                </select>
+
+                <label htmlFor="telefone">DDD + Celular</label>
+                <input
+                  type="text"
+                  name="telefone"
+                  id="telefone"
+                  placeholder="(11) 91092-8922"
+                  value={numero}
+                  onChange={(e) => setNumero(e.target.value)}
+                  required
+                />
+
+                <label htmlFor="data">Data de Nascimento</label>
+                <input
+                  type="date"
+                  name="data"
+                  id="data"
+                  value={nascimento}
+                  onChange={(e) => setNascimento(e.target.value)}
+                  required
+                />
+
+                <label htmlFor="CEP">CEP</label>
+                <input
+                  type="text"
+                  name="CEP"
+                  id="CEP"
+                  value={cep}
+                  onChange={(e) => setCEP(e.target.value)}
+                  required
+                />
+              </form>
+              <div className={styles.InfoCadastro}>
+                <p>
+                  Utilizamos seus dados pessoais somente para o cadastro em
+                  nossa plataforma, que nos permite lhe prestar nossos serviços.
+                </p>
+              </div>
+              <div className={styles.btn}>
+                <button type="submit">COMPRAR</button>
+              </div>
+            </div>
+
+            {dataOrcamento ? (
+              <section className={styles.InfoPacote}>
+                <div className={styles.imgPacote}>
+                  <img src={dataOrcamento.imagem} alt="Imagem Pizza" />
+                </div>
+                <h4>{dataOrcamento.sabor}</h4>
+                <p>{dataOrcamento.descricao}</p>
+                <div className={styles.itemPrice}>
+                  <p>R${dataOrcamento.precoTotal.toFixed(2)}</p>
+                </div>
+                <div className={styles.infoAdicionais}>
+                  <div className={styles.info}>
+                         <p>Unidades:</p>
+                    <p>Unidades {dataOrcamento.unidades}</p>
+                  </div>
+                  <div className={styles.info}>
+                         <p>Adicionais:</p>
+                    <p>{dataOrcamento.adicionais}</p>
+                  </div>
+                </div>
+              </section>
+            ) : (
+              ""
+            )}
+          </article>
+        </article>
+      </section>
     </>
   );
 }

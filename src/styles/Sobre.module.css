@@ -1,20 +1,30 @@
 .sobreSection {
   width: 100%;
-  padding: 3rem 0;
-  background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81)),
-    url(../assets/IMG/sobrePizza.png) center/cover no-repeat;
+  background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81));
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding-bottom: 3rem;
 }
 
-.title {
-  text-align: center;
-  padding-bottom: 1.5rem;
-  color: orange;
+.navSobre{
+  width: 100%;
+ height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/pizza.jpg);
+  background-position:center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.navSobre h1{
+  margin-bottom: 1rem;
+ font-size: 3rem;
   font-weight: bold;
-  font-size: 2.3rem;
-  text-shadow: 0 0 8px black;
+  letter-spacing: -2px;
+   font-style:italic;
+  color: rgb(146, 117, 60);
 }
 
 .content {

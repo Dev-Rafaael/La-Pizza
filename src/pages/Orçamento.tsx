@@ -11,7 +11,7 @@ function Orçamento() {
     "orcamento",
     []
   );
-  const [precoTotal, setPrecoTotal] = useState<number>(0.00);
+  const [precoTotal, setPrecoTotal] = useState<number>(0.0);
   const [unidades, setUnidades] = useState<number>(0);
   const [adicionais, setAdicionais] = useState<string>("");
   const navigate = useNavigate();
@@ -41,11 +41,11 @@ function Orçamento() {
     criarItem(
       dataOrcamento.sabor,
       dataOrcamento.descricao,
-      dataOrcamento.preco,
+      Number(dataOrcamento.preco),
       precoTotal,
       unidades,
       adicionais,
-      Number(newOrcamento.cartId),
+      newOrcamento.cartId,
       String(dataOrcamento.imagem)
     );
     alert("Prosseguindo...");
@@ -53,59 +53,64 @@ function Orçamento() {
   };
 
   return (
-    <section className={styles.formDetails}>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat officia
-        animi quia temporibus unde voluptas, eius illum. In excepturi delectus
-        voluptatem beatae consequuntur vel quos voluptas. Provident temporibus
-        voluptatibus beatae?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat officia
-        animi quia temporibus unde voluptas, eius illum. In excepturi delectus
-        voluptatem beatae consequuntur vel quos voluptas. Provident temporibus
-        voluptatibus beatae?
-      </p>
-      <div className="">
-        <ul>
-          <li>
-            <img src={dataOrcamento?.imagem} alt="Imagem Pizza" />
-          </li>
-          <li>{dataOrcamento?.sabor}</li>
-          <li>{dataOrcamento?.preco}</li>
-          <li>{dataOrcamento?.descricao}</li>
-        </ul>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          name="Unidades"
-          value={unidades}
-          onChange={(e) => setUnidades(Number(e.target.value))}
-        />
+    <main className={styles.orcamento}>
+  <div className={styles.navOrcamento}>
+          <h1>ORÇAMENTO Pizza {dataOrcamento.sabor}</h1>
+         
+        </div>
+      <section className={styles.orcamentoSection}>
+        <article className={styles.productImage}>
+          <img src={dataOrcamento.imagem} alt="Imagem Pizza" />
+        </article>
+        <article className={styles.orcamentoContent}>
+          <h1>{dataOrcamento.sabor}</h1>
+          <p>Pacote {dataOrcamento.descricao}</p>
+          <h2>Preço: {dataOrcamento.preco.toFixed(2)}</h2>
+          <div className={styles.form}>
+            <form onSubmit={handleSubmit}>
+                 <div className={styles.inputForm}>
+            <label htmlFor="Unidades">Unidades:</label>
+           <select
+                name="Unidades"
+                value={unidades}
+                onChange={(e) => setUnidades(Number(e.target.value))}
+                required
+              >
+              <option value="" disabled>Selecione as Unidades</option>
+              <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+          </div>
+          <div className={styles.inputForm}>
+            <label htmlFor="Adicionais">Adicionais:</label>
+            <select
+                name="adionais"
+                value={adicionais}
+                onChange={(e) => setAdicionais(e.target.value)}
+                required
+              >
+                 <option value="" disabled>Selecione</option>
+                 <option value="Salame">Salame</option>
+                <option value="Cheddar">Cheddar</option>
+                <option value="Catupiry">Catupiry</option>
+            </select>
+          </div>
         
-        <select
-          name="adionais"
-          value={adicionais}
-          onChange={(e) => setAdicionais(e.target.value)}
-        >
-          <option value="" disabled>
-            Selecione
-          </option>
-          <option value="Salame">Salame</option>
-          <option value="Cheddar">Cheddar</option>
-          <option value="Catupiry">Catupiry</option>
-        </select>
-        {unidades ? <h1>{precoTotal}</h1> : ""}
-        {/* <Link to={"/Identificação/${}"} type="submit">
+             { <h3 className={styles.valor}> Total a Pagar: R${ precoTotal ? precoTotal.toFixed(2) : dataOrcamento.preco.toFixed(2)}</h3> }
+              {/* <Link to={"/Identificação/${}"} type="submit">
           Prosseguir
         </Link> */}
 
-        <button type="submit">Prosseguir</button>
-      </form>
-
+              <button type="submit">Prosseguir</button>
+            </form>
+          </div>
+        </article>
+      </section>
       <button onClick={() => clearOrcamento()}>Limpar Tudo</button>
-    </section>
+    </main>
   );
 }
 

@@ -17,12 +17,14 @@ function Contato() {
   };
   return (
     <main className={styles.contatoMain}>
-      <h1>Fale Conosco</h1>
-      <p>
+  <div className={styles.navContato}>
+          <h1>FALE CONOSCO</h1> <p>
         Estamos aqui para ajudar! Se tiver dúvidas sobre nossos produtos,
         pedidos ou qualquer outro assunto, envie sua mensagem e nossa equipe
         entrará em contato o mais rápido possível.
       </p>
+        </div>
+     
       <section className={styles.contatoSection}>
         <article className={styles.formContainer}>
           <form onSubmit={handleSubmit} className={styles.form}>

@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 import visa from "../assets/IMG/visa.png";
 import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
-import {useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 function Carrinho() {
   const [newQuantidade, setNewQuantidade] = useState<number>(0);
   const { itens, deletarItem, atualizarItem } = cartHook<Cart>("cart", []);
   const [editId, setEditId] = useState<number | null>(null);
-const [animatePrices, setAnimatePrices] = useState<{ [key: number]: boolean }>({});
+  const [animatePrices, setAnimatePrices] = useState<{
+    [key: number]: boolean;
+  }>({});
 
+  console.log(itens);
 
   const deletar = (index: number) => {
     const confirm = window.confirm("Tem Certeza que deseja Deletar?");
@@ -33,7 +36,7 @@ const [animatePrices, setAnimatePrices] = useState<{ [key: number]: boolean }>({
       const novoItem = {
         ...itemOriginal,
         unidades: newQuantidade,
-        precoTotal: itemOriginal.preco * newQuantidade
+        precoTotal: itemOriginal.preco * newQuantidade,
       };
 
       atualizarItem(novoItem);
@@ -43,25 +46,25 @@ const [animatePrices, setAnimatePrices] = useState<{ [key: number]: boolean }>({
       return itens;
     }
   };
-   const valorTotal = itens.reduce((acc, cur) => cur.precoTotal + acc, 0);
-const triggerAnimation = (cartId:number) => {
-  setAnimatePrices((prev) => ({ ...prev, [cartId]: true }));
+  const valorTotal = itens.reduce((acc, cur) => cur.precoTotal + acc, 0);
+  const triggerAnimation = (cartId: number) => {
+    setAnimatePrices((prev) => ({ ...prev, [cartId]: true }));
 
-  setTimeout(() => {
-    setAnimatePrices((prev) => ({ ...prev, [cartId]: false }));
-  }, 400);
-};
+    setTimeout(() => {
+      setAnimatePrices((prev) => ({ ...prev, [cartId]: false }));
+    }, 400);
+  };
 
-
-  
   return (
     <section className={styles.cartSection}>
-      <div className={styles.titleCart}>
-        <h1>Carrinho</h1>
-      </div>
+       <div className={styles.navCart}>
+          <h1>CARRINHO</h1>
+         
+        </div>
+      {itens.length != 0 ?
       <article className={styles.cartContent}>
         <div className={styles.itensList}>
-          {itens.map((pizza) => (
+          { itens.map((pizza) => (
             <article key={pizza.cartId} className={styles.item}>
               <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
 
@@ -70,21 +73,20 @@ const triggerAnimation = (cartId:number) => {
                   <span>Sabor</span> {pizza.sabor}
                 </h2>
                 <h2>
-                  <span>Preço Unitario</span> {pizza.preco}
+                  <span>Preço Unitario</span> {pizza.preco.toFixed(2)}
                 </h2>
                 <h2>
                   <span>Quantidade</span>
                   {editId === pizza.cartId ? (
                     <form onSubmit={editar} className={styles.quantityForm}>
-                             <div className="">
+                      <div className="">
                         <button
                           type="button"
                           className={styles.qtyBtn}
                           onClick={() => {
-  setNewQuantidade((q) => q - 1);
-  triggerAnimation(pizza.cartId);
-}}
-
+                            setNewQuantidade((q) => q - 1);
+                            triggerAnimation(pizza.cartId);
+                          }}
                         >
                           −
                         </button>
@@ -93,22 +95,20 @@ const triggerAnimation = (cartId:number) => {
                           type="number"
                           min="1"
                           value={newQuantidade}
-                          onChange={(e) =>{
-                      setNewQuantidade(Number(e.target.value));
-                      triggerAnimation(pizza.cartId);
-                    }}
-                          
+                          onChange={(e) => {
+                            setNewQuantidade(Number(e.target.value));
+                            triggerAnimation(pizza.cartId);
+                          }}
                           className={styles.qtyInput}
                         />
 
                         <button
                           type="button"
                           className={styles.qtyBtn}
-                         onClick={() => {
-  setNewQuantidade((q) => q + 1);
-  triggerAnimation(pizza.cartId);
-}}
-
+                          onClick={() => {
+                            setNewQuantidade((q) => q + 1);
+                            triggerAnimation(pizza.cartId);
+                          }}
                         >
                           +
                         </button>
@@ -126,13 +126,15 @@ const triggerAnimation = (cartId:number) => {
 
                 <h2>
                   <span>Preço Total</span>
-      <p
-  className={`${styles.totalPrice} ${
-    animatePrices[pizza.cartId] ? styles.animate : ""
-  }`}
->
-{editId === pizza.cartId ? (pizza.preco * newQuantidade).toFixed(2) : pizza.precoTotal.toFixed(2)}
-  </p>
+                  <p
+                    className={`${styles.totalPrice} ${
+                      animatePrices[pizza.cartId] ? styles.animate : ""
+                    }`}
+                  >
+                    {editId === pizza.cartId
+                      ? (pizza.preco * newQuantidade).toFixed(2)
+                      : pizza.precoTotal.toFixed(2)}
+                  </p>
                 </h2>
               </div>
 
@@ -151,7 +153,7 @@ const triggerAnimation = (cartId:number) => {
                 </div>
               </div>
             </article>
-          ))}
+          )) }
         </div>
 
         <div className={styles.valoresContent}>
@@ -169,7 +171,11 @@ const triggerAnimation = (cartId:number) => {
           </div>
           <button>PAGAR</button>
         </div>
+         
       </article>
+    : <div className={styles.notFoundItem}><h1 >Ops! Carrinho Vazio</h1>
+           <Link to={'/Cardapio'}>Ver Cardapio</Link>
+            </div>} 
     </section>
   );
 }

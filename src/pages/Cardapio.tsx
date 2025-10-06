@@ -5,7 +5,10 @@
   function Cardapio() {
     return (
       <section className={styles.cardapio}>
-        <h1 className={styles.titleCardapio}>CARDÁPIO</h1>
+       <div className={styles.navCardapio}>
+          <h1>CARDAPIO</h1>
+         
+        </div>
         <div className={styles.cardapioItens}>
           {pizzas.map((pizza) => (
               <div key={pizza.id}  className={styles.pizzaItem}>
@@ -15,7 +18,7 @@
                  
                     <p>{pizza.descricao}</p>
                      <h4>
-                  {pizza.preco}
+                  {pizza.preco.toFixed(2)}
                   </h4>
                   <article className={styles.cardapioOption}>
                   <Link to={`/Orçamento/${pizza.sabor}`} className={styles.btn}>Comprar</Link>

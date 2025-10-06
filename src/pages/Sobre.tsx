@@ -2,8 +2,10 @@ import styles from "../styles/Sobre.module.css";
 function Sobre() {
   return (
 <section className={styles.sobreSection}>
-  <h1 className={styles.title}>Sobre Nós – La Pizza</h1>
 
+ <div className={styles.navSobre}>
+          <h1>SOBRE NÓS</h1>
+        </div>
   <div className={styles.content}>
     <div className={styles.text}>
       <p>

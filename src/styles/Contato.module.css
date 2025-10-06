@@ -1,17 +1,29 @@
 .contatoMain {
-background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814)), url(../assets/IMG/contatoLaPizza.png);
+background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
   background-position:bottom;
   background-size: cover;
   background-repeat: no-repeat;
-  padding-top: 3rem;
-
   height: 100%;
   text-align: center;
 }
-.contatoMain h1{
-    color: rgb(207, 148, 38);
-    font-weight: 800;
-    font-size: 2.5rem;
+.navContato{
+  width: 100%;
+ height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/pizza.jpg);
+  background-position:center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.navContato h1{
+  margin-bottom: 1rem;
+ font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: -2px;
+   font-style:italic;
+  color: rgb(146, 117, 60);
 }
 .contatoMain p{
     width: 80%;
