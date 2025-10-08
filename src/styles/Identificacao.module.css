@@ -12,7 +12,7 @@
 .navIdentificacao{
   width: 100%;
  height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/pizza.jpg);
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/orcamentoLaPizza.jpg);
   background-position:center;
   background-size: cover;
   display: flex;
@@ -58,7 +58,7 @@ justify-content: space-between;
   font-family: "Bebas Neue", sans-serif;
 }
 .ContentIdentificacao{
-  margin-top: 2rem;
+  margin: 2rem 0;
   width: 44%;
  padding-left: 7rem;
 
@@ -122,7 +122,8 @@ select option {
   margin-top: 0.6rem;
   font-size: 1rem;
   font-weight: bold;
-  background-color: rgb(146, 117, 60);;
+ background-color: #e6b800;
+  color: white;
   transition: 0.1s;
   opacity: 0.8;
   cursor: pointer;
@@ -160,7 +161,6 @@ button:hover{
   text-align: start;
   font-weight: 600;
   color: rgb(158, 123, 53);
-  font-family: "Bebas Neue", sans-serif;
 }
 .InfoPacote p{
    width: 85%;
@@ -177,7 +177,7 @@ button:hover{
 .itemPrice p{
   font-size: 1.25rem;
   color:  rgb(146, 117, 60);
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 .InfoPacote h2{
   width: 78%;
@@ -185,13 +185,13 @@ button:hover{
   font-weight: 500;
   color:  rgb(146, 117, 60);
   margin-top: 1rem;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 /* INFO ADICIONAIS  */
 .infoAdicionais{
   border-top: 1px solid rgb(146, 117, 60);
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   padding-top: 0.5rem;
   overflow-wrap: break-word;

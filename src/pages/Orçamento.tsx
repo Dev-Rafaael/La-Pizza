@@ -5,6 +5,7 @@ import orcamentoHook from "../hooks/orcamentoHook";
 import type { Cart, Orcamento } from "../types";
 import pizzas from "../database/pizzas";
 import cartHook from "../hooks/cartHook";
+import { toast } from "react-toastify";
 function Orçamento() {
   const { criarItem } = cartHook<Cart>("cart", []);
   const { criarOrcamento, clearOrcamento } = orcamentoHook<Orcamento>(
@@ -48,7 +49,7 @@ function Orçamento() {
       newOrcamento.cartId,
       String(dataOrcamento.imagem)
     );
-    alert("Prosseguindo...");
+  
     navigate(`/Identificação/${newOrcamento.cartId}`);
   };
 

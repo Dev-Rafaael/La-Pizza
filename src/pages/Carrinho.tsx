@@ -6,6 +6,7 @@ import visa from "../assets/IMG/visa.png";
 import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
 import { useState, type FormEvent } from "react";
+import { toast } from "react-toastify";
 function Carrinho() {
   const [newQuantidade, setNewQuantidade] = useState<number>(0);
   const { itens, deletarItem, atualizarItem } = cartHook<Cart>("cart", []);
@@ -14,7 +15,7 @@ function Carrinho() {
     [key: number]: boolean;
   }>({});
 
-  console.log(itens);
+  // console.log(itens);
 
   const deletar = (index: number) => {
     const confirm = window.confirm("Tem Certeza que deseja Deletar?");
@@ -38,8 +39,9 @@ function Carrinho() {
         unidades: newQuantidade,
         precoTotal: itemOriginal.preco * newQuantidade,
       };
-
+      
       atualizarItem(novoItem);
+         toast.success("🍕 Pedido Atualizado com sucesso!");
       setEditId(null);
       setNewQuantidade(0);
     } else {
@@ -67,7 +69,7 @@ function Carrinho() {
           { itens.map((pizza) => (
             <article key={pizza.cartId} className={styles.item}>
               <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
-
+            <article className={styles.detailsList}>
               <div className={styles.infoItem}>
                 <h2>
                   <span>Sabor</span> {pizza.sabor}
@@ -136,8 +138,17 @@ function Carrinho() {
                       : pizza.precoTotal.toFixed(2)}
                   </p>
                 </h2>
+                
               </div>
-
+                <div className={styles.infoAdicionais}>
+                   <h2>
+                  <span>Descrição</span> {pizza.descricao}
+                </h2>
+                 <h2>
+                  <span>Adicionais</span> {pizza.adicionais}
+                </h2>
+                </div>
+                </article>
               <div className={styles.actions}>
                 <div className={styles.actionBtn}>
                   <button onClick={() => deletar(pizza.cartId)}>🗑️</button>

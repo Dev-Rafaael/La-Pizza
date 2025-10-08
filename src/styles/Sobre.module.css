@@ -10,7 +10,7 @@
 .navSobre{
   width: 100%;
  height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/pizza.jpg);
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/orcamentoLaPizza.jpg);
   background-position:center;
   background-size: cover;
   display: flex;
@@ -60,13 +60,14 @@
 }
 
 .infoBlocks h2 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: orange;
 }
 
 .infoBlocks p {
   color: #c5c3bf;
+  font-size: 1rem;
 }
 
 .infoBlocks ul {
@@ -81,7 +82,7 @@
 }
 
 .infoBlocks li strong {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .video {

@@ -3,10 +3,13 @@ import styles from "../styles/PoliticaPrivacidade.module.css";
 function PoliticaPrivacidade() {
   return (
     <section className={styles.PoliticaSection}>
+        <div className={styles.navPoliticaPrivacidade}>
+             <h1>POLÍTICA DE PRIVACIDADE</h1>
+           </div>
 <section className="flex flex-col items-center bg-black-900 pt-20 pb-20">
-  <div className="flex flex-col gap-8 w-5/5 max-w-5xl ">
+  <div className="flex flex-col gap-8 w-5/5 max-w-6xl ">
     
-    <h1 className="text-3xl font-bold text-center text-white">Política de Privacidade</h1>
+  
 
     <article>
       <h2 className="text-2xl font-bold mt-4 text-white" >Política de Privacidade</h2>

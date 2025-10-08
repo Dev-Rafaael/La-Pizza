@@ -18,7 +18,7 @@ background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
 .navCardapio{
   width: 100%;
   height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/pizza.jpg);
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/orcamentoLaPizza.jpg);
   background-position:center;
   background-size: cover;
   display: flex;

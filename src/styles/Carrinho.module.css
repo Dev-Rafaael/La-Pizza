@@ -51,26 +51,41 @@ justify-content: space-around;
 
 .item img {
   width: 30%;
-  height: 10rem;
+  height: 100%;
   object-fit: cover;
   border-radius: 1rem;
 }
-.infoItem{
-  width: 60%;
+.detailsList{
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.infoItem{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   gap: 1rem;
 }
-
-.infoItem h2 {
+.infoAdicionais{
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;  
+}
+.infoItem h2{
   display: flex;
 flex-direction: column;
   font-size: 1rem;
   color: #fff;
-  align-items: center;
-  gap: 1.5rem;
+text-align: center;
+  gap: 0.5rem;
 }
-.infoItem span {
+.infoAdicionais h2 {
+  display: flex;
+flex-direction: column;
+  font-size: 1rem;
+  color: #fff;
+}
+.infoItem span, .infoAdicionais span {
   font-weight: bold;
   color: goldenrod;
   
@@ -172,14 +187,15 @@ flex-direction: column;
 }
 .actionPay a{
   text-align: center;
-  padding: 1rem 2.5rem ;
+  padding: 0.7rem 2.5rem ;
   border: none;
-  border-radius: 1rem;
+  border-radius: 1.1rem;
   font-weight: bold;
+  text-transform: uppercase;
   color: #fff;
   cursor: pointer;
   transition: opacity 0.3s;
-   background-color: #e6b800;
+   background-color: #d18b08;
     font-weight: bold;
 }
 
@@ -187,7 +203,7 @@ flex-direction: column;
   background-color: rgb(210, 6, 33);
 }
 .actions .editBtn{
-    background-color: #e6b800;
+    background-color:  #0099e6;
 }
 
 .actions a:hover,
@@ -200,7 +216,7 @@ flex-direction: column;
   height: 100%;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 1rem;
+  padding: 2rem 1.5rem ;
   border-radius: 1rem;
   text-align: right;
   color: #fff;
@@ -230,9 +246,10 @@ flex-direction: column;
     padding: 0.5rem;
     border-radius: 1rem;
     text-align: center;
-    background-color: #e6b800;
+    background-color: #d18b08;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 0.7rem;
 }
 /* NAO ENCONTRADO  */
 

@@ -3,7 +3,7 @@ import styles from "../styles/Identificacao.module.css";
 import checkoutHook from "../hooks/checkoutHook";
 import type { Checkout, Orcamento } from "../types";
 import orcamentoHook from "../hooks/orcamentoHook";
-// import pizzas from "../database/pizzas";
+import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 function Identificacao() {
   const { orcamento } = orcamentoHook<Orcamento>("orcamento", []);
@@ -23,7 +23,7 @@ function Identificacao() {
   const dataOrcamento = orcamento.find(
     (value) => value.cartId === Number(cartId)
   );
-  console.log(dataOrcamento);
+  // console.log(dataOrcamento);
 
   if (!dataOrcamento) {
     return <p>Pizza Não Encontrada</p>;
@@ -51,10 +51,11 @@ function Identificacao() {
     );
 
     if (newIdentifier) {
-      alert("Deu certo....");
+    toast.success("🍕 Pedido realizado com sucesso!");
       console.log(newIdentifier);
     } else {
-      alert("Não foi possivel fazer a compra! Tente Novamente Mais tarde");
+       toast.error("Não foi possivel fazer a compra! Tente Novamente Mais tarde!");
+
       return;
     }
   };
@@ -186,7 +187,7 @@ function Identificacao() {
                 <div className={styles.infoAdicionais}>
                   <div className={styles.info}>
                          <p>Unidades:</p>
-                    <p>Unidades {dataOrcamento.unidades}</p>
+                    <p>{dataOrcamento.unidades}</p>
                   </div>
                   <div className={styles.info}>
                          <p>Adicionais:</p>

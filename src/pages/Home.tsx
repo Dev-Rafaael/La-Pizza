@@ -128,7 +128,7 @@ function Home() {
           X
         </button>
         <iframe
-          src="https://www.youtube.com/watch?v=STa_UtZP3tg"
+            src="https://www.youtube.com/embed/STa_UtZP3tg?autoplay=1"
           title="La Pizza - Vídeo Promocional"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -146,8 +146,8 @@ function Home() {
     <h3>Experimente nossas pizzas com</h3>
     <h4>Sabor e Qualidade Incomparáveis</h4>
     <p>
-      Na La Pizza, preparamos pizzas deliciosas para qualquer ocasião: almoço em família, encontro com amigos ou aquela noite especial.  
-      Ingredientes frescos, massa artesanal e combinações únicas que vão conquistar todos os paladares!
+      Na <span>La Pizza</span> , preparamos pizzas deliciosas para qualquer ocasião: almoço em família, encontro com amigos ou aquela noite especial.  
+      <span>Ingredientes frescos, massa artesanal</span> e <span> combinações únicas</span> que vão conquistar todos os paladares!
     </p>
     <div className={styles.contentBtn}>
       <Link to="/Cardapio/">VEJA NOSSO CARDÁPIO</Link>
@@ -155,7 +155,7 @@ function Home() {
  </div>
   <div className={styles.contentVideo}>
   <iframe
-        src="https://www.youtube.com/embed/STa_UtZP3tg"
+        src="https://www.youtube.com/embed/STa_UtZP3tg?autoplay=1&mute=1"
         title="Vídeo La Pizza"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen

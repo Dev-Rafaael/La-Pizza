@@ -2,6 +2,7 @@ import { useState } from "react";
 import contatoHook from "../hooks/contatoHook";
 import type { Contact } from "../types";
 import styles from "../styles/Contato.module.css";
+import { toast } from "react-toastify";
 function Contato() {
   const { criarContato } = contatoHook<Contact>("contatos", []);
   const [nome, setNome] = useState<string>("");
@@ -14,6 +15,7 @@ function Contato() {
     e.preventDefault();
 
     criarContato(nome, sobrenome, email, assunto, mensagem);
+     toast.success("🛎️ Mensagem Enviada com sucesso!");
   };
   return (
     <main className={styles.contatoMain}>
@@ -31,7 +33,7 @@ function Contato() {
             <div className={styles.nomeGroup}>
               <label>
                 {" "}
-                <p>Nome:</p>
+                <p>Nome</p>
                 <input
                   type="text"
                   name="nome"
@@ -44,7 +46,7 @@ function Contato() {
               </label>
               <label>
                 {" "}
-                <p>Sobre Nome:</p>
+                <p>Sobre Nome</p>
                 <input
                   type="text"
                   name="sobreNome"
@@ -59,7 +61,7 @@ function Contato() {
             <div className={styles.nomeGroup}>
               <label>
               
-                <p>E-Mail:</p>
+                <p>E-Mail</p>
                 <input
                   type="email"
                   name="email"
@@ -72,7 +74,7 @@ function Contato() {
               </label>
                <label>
               
-                <p>Assunto:</p>
+                <p>Assunto</p>
               <input
                 type="text"
                 name="assunto"
@@ -85,7 +87,7 @@ function Contato() {
                 </label>
             </div>  
             <div className={styles.inline}>
-              <label htmlFor=""><p>Mensagem:</p>
+              <label ><p>Mensagem</p>
               <textarea
                 name="mensagem"
                 placeholder="Escreva sua mensagem..."

@@ -19,7 +19,7 @@
 .navTermos{
   width: 100%;
  height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/pizza.jpg);
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/orcamentoLaPizza.jpg);
   background-position:center;
   background-size: cover;
   display: flex;

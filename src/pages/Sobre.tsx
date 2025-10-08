@@ -40,7 +40,7 @@ function Sobre() {
     {/* Vídeo */}
     <div className={styles.video}>
       <iframe
-        src="https://www.youtube.com/embed/STa_UtZP3tg"
+        src="https://www.youtube.com/embed/STa_UtZP3tg?autoplay=1&mute=1"
         title="Vídeo La Pizza"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen

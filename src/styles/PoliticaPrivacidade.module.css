@@ -1,7 +1,22 @@
 .PoliticaSection{
-      background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814)), url(../assets/IMG/PoliticaLaPizza.png);
-      background-position: center;
+        background: linear-gradient(rgba(17, 17, 17, 0.814),rgb(20, 20, 20));
+}
+.navPoliticaPrivacidade{
+  width: 100%;
+ height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)), url(../assets/IMG/orcamentoLaPizza.jpg);;
+  background-position:center;
   background-size: cover;
-  background-repeat: no-repeat;
-   backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.navPoliticaPrivacidade h1{
+  margin-bottom: 1rem;
+ font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: -2px;
+   font-style:italic;
+  color: rgb(146, 117, 60);
 }
