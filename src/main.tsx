@@ -59,7 +59,7 @@ const router=createBrowserRouter([
           element:<Carrinho/>
         },
         {
-          path:"Minha Conta/",
+          path:"Perfil/",
           element:<Account/>
         },
          {

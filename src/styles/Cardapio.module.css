@@ -3,7 +3,6 @@
 
 .cardapio{
   width: 100%;
-
   background-color: black;
   display: flex;
   justify-content: center;
@@ -11,9 +10,7 @@
   align-items: center;
   color: white;
 background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+ 
 }
 .navCardapio{
   width: 100%;

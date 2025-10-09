@@ -16,9 +16,13 @@ function Identificacao() {
   const [cpf, setCPF] = useState<string>("");
   const [sexo, setSexo] = useState<string>("");
   const [nascimento, setNascimento] = useState<string>("");
+  const [telefone, setTelefone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [cep, setCEP] = useState<string>("");
+   const [estado, setEstado] = useState<string>("");
+  const [cidade, setCidade] = useState<string>("");
   const [numero, setNumero] = useState<string>("");
+  const [complemento, setComplemento] = useState<string>("");
   const { cartId } = useParams();
   const dataOrcamento = orcamento.find(
     (value) => value.cartId === Number(cartId)
@@ -32,14 +36,18 @@ function Identificacao() {
     e.preventDefault();
 
     const newIdentifier = criarIdentifier(
-      nome,
+        nome,
       sobrenome,
       cpf,
       sexo,
       nascimento,
       email,
+      telefone,
       cep,
+      estado,
+      cidade,
       numero,
+      complemento,
       dataOrcamento?.sabor,
       dataOrcamento?.descricao,
       dataOrcamento?.preco,
@@ -138,8 +146,8 @@ function Identificacao() {
                   name="telefone"
                   id="telefone"
                   placeholder="(11) 91092-8922"
-                  value={numero}
-                  onChange={(e) => setNumero(e.target.value)}
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
                   required
                 />
 
@@ -160,6 +168,46 @@ function Identificacao() {
                   id="CEP"
                   value={cep}
                   onChange={(e) => setCEP(e.target.value)}
+                  required
+                />
+                 <label htmlFor="Estado">Estado</label>
+              <select
+                  name="Estado"
+                  id="Estado"
+                  value={estado}
+                  onChange={(e) => setEstado(e.target.value)}
+                  required
+                >
+                  <option value="SaoPaulo" disabled selected>
+                   São Paulo
+                  </option>
+                  
+                </select>
+                   <label htmlFor="Cidade">Cidade</label>
+                <input
+                  type="text"
+                  name="Cidade"
+                  id="Cidade"
+                  value={cidade}
+                  onChange={(e) => setCidade(e.target.value)}
+                  required
+                />
+                   <label htmlFor="Numero">N</label>
+                <input
+                  type="text"
+                  name="Numero"
+                  id="Numero"
+                  value={numero}
+                  onChange={(e) => setNumero(e.target.value)}
+                  required
+                />
+                     <label htmlFor="Complemento">Complemento</label>
+                <input
+                  type="text"
+                  name="Complemento"
+                  id="Complemento"
+                  value={complemento}
+                  onChange={(e) => setComplemento(e.target.value)}
                   required
                 />
               </form>

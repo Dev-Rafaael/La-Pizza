@@ -15,8 +15,8 @@ function contatoHook<T extends {id:number}>(key:string, initialValue: T[]= []) {
         setContatos((prev)=> [...prev,item])
      }
 
-     const criarContato = (nome:string,sobrenome:string,email:string,assunto:string,mensagem:string)=>{
-        const newContato: T = {nome,sobrenome,email,assunto,mensagem,id: Date.now()} as T
+     const criarContato = (nome:string,sobreNome:string,email:string,assunto:string,mensagem:string)=>{
+        const newContato: T = {nome,sobreNome,email,assunto,mensagem,id: Date.now()} as T
         addContatos(newContato)
      }
 
@@ -27,7 +27,7 @@ function contatoHook<T extends {id:number}>(key:string, initialValue: T[]= []) {
 
      const deletarContato = (index:number)=>{
         setContatos((prev)=>
-        prev.filter((item,i)=> i !== index))
+        prev.filter((item)=> item.id !== index))
      }
   return {contatos,addContatos,criarContato,atualizarContato,deletarContato} as const
 }

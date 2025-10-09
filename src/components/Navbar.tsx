@@ -34,6 +34,11 @@ function Navbar() {
               <FontAwesomeIcon icon={faCartShopping} />
               </Link>
             </li>
+              <li>
+              <Link to="/Perfil">
+              <FontAwesomeIcon icon={faCartShopping} />
+              </Link>
+            </li>
           </ul>
         </nav>
       </div>
