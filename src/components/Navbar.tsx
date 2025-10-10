@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PizzaIcon from "../assets/IMG/faviconPizza.png";
 import styles from "../styles/NavBar.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping,faUser } from '@fortawesome/free-solid-svg-icons'
 function Navbar() {
   return (
     <section className={styles.navBar}>
@@ -36,7 +36,7 @@ function Navbar() {
             </li>
               <li>
               <Link to="/Perfil">
-              <FontAwesomeIcon icon={faCartShopping} />
+              <FontAwesomeIcon icon={faUser} />
               </Link>
             </li>
           </ul>

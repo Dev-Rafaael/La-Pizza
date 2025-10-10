@@ -34,6 +34,16 @@
   width: 100%;
 
 }
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem; /* espaço entre os campos */
+}
+
+.grid2 div {
+  display: flex;
+  flex-direction: column;
+}
 .cadastroIdentificacao{
   width: 100%;
 margin:  0 auto;
@@ -68,13 +78,11 @@ justify-content: space-between;
   color: black;
 }
 .ContentIdentificacao label{
- margin: 0.9rem 0;
- 
+ font-weight: 600;
+ font-size: 1.1rem;
+ margin: 0;
 }
-.ContentIdentificacao input{
-  margin: 0.5rem 0;
-  color: black;
-}
+
 .ContentIdentificacao input::placeholder {
   color: #d8d2d2; /* Cor do placeholder */
   opacity: 1;

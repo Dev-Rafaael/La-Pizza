@@ -4,7 +4,7 @@ import styles from "../styles/Account.module.css";
 import type { Account } from "../types";
 import { toast } from "react-toastify";
 function Account() {
-  const { account, criarAccount } = accountHook<Account>("account", []);
+  const { account, criarAccount,deletarAccount } = accountHook<Account>("account", []);
   const [nome, setNome] = useState<string>("");
   const [sobreNome, setSobreNome] = useState<string>("");
   const [cpf, setCPF] = useState<string>("");
@@ -47,173 +47,219 @@ function Account() {
     }
   };
   return (
-    <section className={styles.accountContent}>
-      <main className={styles.mainAccount}>
-        <div className={styles.navAccount}>
-          <h1>MINHA CONTA</h1>
+  <section className={styles.accountContent}>
+  <main className={styles.mainAccount}>
+    <header className={styles.navAccount}>
+      <h1>{account.length > 0 ? 'MINHA CONTA' : 'CADASTRE-SE'}</h1>
+    </header>
+
+    <section className={styles.accountSection}>
+      {account.length === 0 ? (
+        <form onSubmit={handleAccount} className={styles.formIdentificacao}>
+    <fieldset>
+      <legend>Informações Pessoais</legend>
+
+      <div className={styles.grid2}>
+        <div>
+          <label htmlFor="cpf">CPF</label>
+          <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            placeholder="Digite Seu CPF"
+            value={cpf}
+            onChange={(e) => setCPF(e.target.value)}
+            required
+          />
         </div>
 
-        {/* {AccountItems.map((item, index) => ( */}
-        <section className={styles.accountSection}>
-          {account.length == 0 ? (
-            <form onSubmit={handleAccount} className={styles.formIdentificacao}>
-              <label htmlFor="cpf">CPF</label>
-              <input
-                type="text"
-                name="cpf"
-                id="cpf"
-                placeholder="Digite Seu CPF"
-                value={cpf}
-                onChange={(e) => setCPF(e.target.value)}
-                required
-              />
+        <div>
+          <label htmlFor="nome">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Digite Seu Nome Completo"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
+        </div>
 
-              <label htmlFor="nome">Nome </label>
-              <input
-                type="text"
-                name="nome"
-                id="nome"
-                placeholder="Digite Seu Nome Completo"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                required
-              />
-              <label htmlFor="SobreNome">SobreNome</label>
-              <input
-                type="text"
-                name="SobreNome"
-                id="SobreNome"
-                placeholder="Digite Seu Nome Completo"
-                value={sobreNome}
-                onChange={(e) => setSobreNome(e.target.value)}
-                required
-              />
-              <label htmlFor="email">E-Mail</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Digite Seu E-Mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
+        <div>
+          <label htmlFor="SobreNome">Sobrenome</label>
+          <input
+            type="text"
+            id="SobreNome"
+            name="SobreNome"
+            placeholder="Digite Seu Sobrenome"
+            value={sobreNome}
+            onChange={(e) => setSobreNome(e.target.value)}
+            required
+          />
+        </div>
 
-              <label htmlFor="sexo">Sexo</label>
-              <select
-                name="sexo"
-                id="sexo"
-                value={sexo}
-                onChange={(e) => setSexo(e.target.value)}
-                required
-              >
-                <option value="" disabled>
-                  Selecione uma Opção
-                </option>
-                <option value="masculino">Masculino</option>
-                <option value="feminino">Feminino</option>
-              </select>
+        <div>
+          <label htmlFor="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Digite Seu E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
 
-              <label htmlFor="telefone">DDD + Celular</label>
-              <input
-                type="text"
-                name="telefone"
-                id="telefone"
-                placeholder="(11) 91092-8922"
-                value={telefone}
-                onChange={(e) => setTelefone(e.target.value)}
-                required
-              />
+        <div>
+          <label htmlFor="sexo">Sexo</label>
+          <select
+            id="sexo"
+            name="sexo"
+            value={sexo}
+            onChange={(e) => setSexo(e.target.value)}
+            required
+          >
+            <option value="" disabled>
+              Selecione uma Opção
+            </option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+          </select>
+        </div>
 
-              <label htmlFor="data">Data de Nascimento</label>
-              <input
-                type="date"
-                name="data"
-                id="data"
-                value={nascimento}
-                onChange={(e) => setNascimento(e.target.value)}
-                required
-              />
+        <div>
+          <label htmlFor="telefone">DDD + Celular</label>
+          <input
+            type="text"
+            id="telefone"
+            name="telefone"
+            placeholder="(11) 91092-8922"
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+            required
+          />
+        </div>
 
-              <label htmlFor="CEP">CEP</label>
-              <input
-                type="text"
-                name="CEP"
-                id="CEP"
-                value={cep}
-                onChange={(e) => setCEP(e.target.value)}
-                required
-              />
-              <label htmlFor="Estado">Estado</label>
-              <select
-                name="Estado"
-                id="Estado"
-                value={estado}
-                onChange={(e) => setEstado(e.target.value)}
-                required
-              >
-                <option value="SaoPaulo" disabled selected>
-                  São Paulo
-                </option>
-              </select>
-              <label htmlFor="Cidade">Cidade</label>
-              <input
-                type="text"
-                name="Cidade"
-                id="Cidade"
-                value={cidade}
-                onChange={(e) => setCidade(e.target.value)}
-                required
-              />
-              <label htmlFor="Numero">N</label>
-              <input
-                type="text"
-                name="Numero"
-                id="Numero"
-                value={numero}
-                onChange={(e) => setNumero(e.target.value)}
-                required
-              />
-              <label htmlFor="Complemento">Complemento</label>
-              <input
-                type="text"
-                name="Complemento"
-                id="Complemento"
-                value={complemento}
-                onChange={(e) => setComplemento(e.target.value)}
-                required
-              />
+        <div>
+          <label htmlFor="data">Data de Nascimento</label>
+          <input
+            type="date"
+            id="data"
+            name="data"
+            value={nascimento}
+            onChange={(e) => setNascimento(e.target.value)}
+            required
+          />
+        </div>
+      </div>
+    </fieldset>
 
-                <div className={styles.btn}>
-                <button type="submit">COMPRAR</button>
-              </div>
-            </form>
-          ) : (
-            <>
-            {account.map((u)=>(
-              <div className="">
+    <fieldset>
+      <legend>Endereço</legend>
+      <div className={styles.grid2}>
+         <div>
+          <label htmlFor="CEP">CEP</label>
+          <input
+            type="text"
+            id="CEP"
+            name="CEP"
+                 placeholder="Digite Seu CEP"
+            value={cep}
+            onChange={(e) => setCEP(e.target.value)}
+            required
+          />
+        </div>
+            </div>
+<div className={styles.grid2}>
+        <div>
+          <label htmlFor="Estado">Estado</label>
+          <select
+            id="Estado"
+            name="Estado"
+            value={estado}
+           
+            onChange={(e) => setEstado(e.target.value)}
+            required
+          >
+            <option value="SaoPaulo" selected>
+              São Paulo
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="Cidade">Cidade</label>
+          <input
+            type="text"
+            id="Cidade"
+            name="Cidade"
+                placeholder="Digite Sua Cidade"
+            value={cidade}
+            onChange={(e) => setCidade(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="Numero">Número</label>
+          <input
+            type="text"
+            id="Numero"
+            name="Numero"
+                   placeholder="Digite Seu Numero"
+            value={numero}
+            onChange={(e) => setNumero(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="Complemento">Complemento</label>
+          <input
+            type="text"
+            id="Complemento"
+            name="Complemento"
+                   placeholder="Digite O Complemeto"
+            value={complemento}
+            onChange={(e) => setComplemento(e.target.value)}
+          />
+        </div>
+      </div>  
+    </fieldset>
+
+    <div className={styles.btn}>
+      <button type="submit">CADASTRAR-SE</button>
+    </div>
+  </form>
+      ) : (
+        <>
+          {account.map((u, index) => (
+            <article key={index} className={styles.userCard}>
               <aside className={styles.accountAside}>
                 <figure>
                   <img
                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                    alt="avatar"
+                    alt={`Avatar de ${u.nome}`}
                   />
                   <figcaption>
-                    <h1>Olá {u.nome}</h1>
+                    <h2>Olá {u.nome}</h2>
                     <p>Bay Area, San Francisco, CA</p>
-                    {/* <Link to={"#"}>Excluir</Link>
-          <Link to={"#"}>Editar</Link> */}
                   </figcaption>
+                  <button onClick={()=>deletarAccount(u.id)}>Logout</button>
                 </figure>
               </aside>
 
               <section className={styles.infoSection}>
                 <article className={styles.infoArticle}>
-                  <h2>INFORMAÇOES PESSOAIS</h2>
+                  <h3>Informações Pessoais</h3>
                   <dl>
                     <div className={styles.flexRow}>
                       <dt>Nome Completo</dt>
-                      <dd>{u.nome} {u.sobreNome}</dd>
+                      <dd>
+                        {u.nome} {u.sobreNome}
+                      </dd>
                     </div>
 
                     <div className={styles.flexRow}>
@@ -232,25 +278,27 @@ function Account() {
                     </div>
 
                     <div className={styles.flexRow}>
-                      <dt>Data De Nascimento</dt>
+                      <dt>Data de Nascimento</dt>
                       <dd>{u.nascimento}</dd>
                     </div>
 
                     <div className={styles.flexRow}>
                       <dt>Endereço</dt>
-                      <dd>{u.estado}-{u.cidade}-{u.numero}-{u.complemento}-{u.cep}</dd>
+                      <dd>
+                        {u.estado} - {u.cidade}, {u.numero} - {u.complemento} - {u.cep}
+                      </dd>
                     </div>
                   </dl>
                 </article>
               </section>
-             </div> ))}
-            </>
-          )}
-        </section>
-
-        {/* ))} */}
-      </main>
+            </article>
+          ))}
+        </>
+      )}
     </section>
+  </main>
+</section>
+
   );
 }
 
