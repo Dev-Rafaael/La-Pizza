@@ -29,7 +29,12 @@ function Contato() {
      
       <section className={styles.contatoSection}>
         <article className={styles.formContainer}>
+              <div className={styles.formText}>
+          <h2>Fale Conosco</h2>
+          <p>Envie-nos uma Mensagem.</p>         
+          </div>
           <form onSubmit={handleSubmit} className={styles.form}>
+          
             <div className={styles.nomeGroup}>
               <label>
                 {" "}

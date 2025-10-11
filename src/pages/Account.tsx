@@ -3,6 +3,8 @@ import accountHook from "../hooks/accountHook";
 import styles from "../styles/Account.module.css";
 import type { Account } from "../types";
 import { toast } from "react-toastify";
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Account() {
   const { account, criarAccount,deletarAccount } = accountHook<Account>("account", []);
   const [nome, setNome] = useState<string>("");
@@ -12,11 +14,11 @@ function Account() {
   const [nascimento, setNascimento] = useState<string>("");
   const [telefone, setTelefone] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [cep, setCEP] = useState<string>("");
-  const [estado, setEstado] = useState<string>("");
-  const [cidade, setCidade] = useState<string>("");
-  const [numero, setNumero] = useState<string>("");
-  const [complemento, setComplemento] = useState<string>("");
+  // const [cep, setCEP] = useState<string>("");
+  // const [estado, setEstado] = useState<string>("");
+  // const [cidade, setCidade] = useState<string>("");
+  // const [numero, setNumero] = useState<string>("");
+  // const [complemento, setComplemento] = useState<string>("");
   const handleAccount = (e: FormEvent) => {
     e.preventDefault();
 
@@ -28,11 +30,11 @@ function Account() {
       nascimento,
       email,
       telefone,
-      cep,
-      estado,
-      cidade,
-      numero,
-      complemento
+      // cep,
+      // estado,
+      // cidade,
+      // numero,
+      // complemento
     );
 
     if (newAccount) {
@@ -155,7 +157,7 @@ function Account() {
         </div>
       </div>
     </fieldset>
-
+{/* 
     <fieldset>
       <legend>Endereço</legend>
       <div className={styles.grid2}>
@@ -227,7 +229,7 @@ function Account() {
           />
         </div>
       </div>  
-    </fieldset>
+    </fieldset> */}
 
     <div className={styles.btn}>
       <button type="submit">CADASTRAR-SE</button>
@@ -247,7 +249,12 @@ function Account() {
                     <h2>Olá {u.nome}</h2>
                     <p>Bay Area, San Francisco, CA</p>
                   </figcaption>
-                  <button onClick={()=>deletarAccount(u.id)}>Logout</button>
+                  
+              <div className={styles.userActions}>
+                <button onClick={() => deletarAccount(u.id)}>Logout</button>
+                <FontAwesomeIcon icon={faPenToSquare} className={styles.editIcon} />
+              </div>
+
                 </figure>
               </aside>
 
@@ -282,12 +289,12 @@ function Account() {
                       <dd>{u.nascimento}</dd>
                     </div>
 
-                    <div className={styles.flexRow}>
+                    {/* <div className={styles.flexRow}>
                       <dt>Endereço</dt>
                       <dd>
                         {u.estado} - {u.cidade}, {u.numero} - {u.complemento} - {u.cep}
                       </dd>
-                    </div>
+                    </div> */}
                   </dl>
                 </article>
               </section>

@@ -5,6 +5,8 @@ function Sobre() {
 
  <div className={styles.navSobre}>
           <h1>SOBRE NÓS</h1>
+          <p>A cada passo que damos em direção à mudança, descobrimos 
+        novas oportunidades para crescer e evoluir.</p>
         </div>
   <div className={styles.content}>
     <div className={styles.text}>

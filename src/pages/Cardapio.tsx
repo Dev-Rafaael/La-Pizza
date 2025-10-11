@@ -7,9 +7,10 @@
       <section className={styles.cardapio}>
        <div className={styles.navCardapio}>
           <h1>CARDAPIO</h1>
-         
         </div>
         <div className={styles.cardapioItens}>
+            <h2>ENCONTRE AQUI A <span>PIZZA</span> IDEAL PARA <span>VOCÊ</span></h2>
+          <div className={styles.cardapioContainer}>
           {pizzas.map((pizza) => (
               <div key={pizza.id}  className={styles.pizzaItem}>
                 <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
@@ -27,6 +28,7 @@
               </div>
             )
           )}
+          </div>
         </div>
       </section>
     );

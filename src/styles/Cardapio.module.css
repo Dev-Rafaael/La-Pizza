@@ -24,7 +24,6 @@ background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
   justify-content: center;
 }
 .navCardapio h1{
-  margin-bottom: 1rem;
   font-size: 3rem;
   font-weight: bold;
   letter-spacing: -2px;
@@ -32,13 +31,31 @@ background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
   color: rgb(146, 117, 60);
 }
 .cardapioItens{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0;
+  gap: 1rem;
+}
+.cardapioItens span{
+  color:rgb(183, 143, 63) ;
+ font-size: 2rem;
+}
+.cardapioItens h2{
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: rgb(169, 176, 165);
+}
+.cardapioContainer{
   display: grid;
   grid-template-columns:repeat(3,1fr ) ; 
-  gap: 50px;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
   width:70%;
-  margin-top: 3rem;
+  
+ 
 }
 .pizzaItem{
   background-color: #d7d5d5;

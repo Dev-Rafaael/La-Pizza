@@ -4,6 +4,7 @@ function Termos() {
 <section className={styles.termosSection}>
   <div className={styles.navTermos}>
           <h1>TERMOS</h1>
+         <p>A cada compra, reforçamos nosso compromisso com a segurança, a transparência e a satisfação do cliente.</p>
         </div>
   <article className={styles.termosContent}> 
   <header className={styles.termosHeader}>

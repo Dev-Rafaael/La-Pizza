@@ -5,6 +5,7 @@ function PoliticaPrivacidade() {
     <section className={styles.PoliticaSection}>
         <div className={styles.navPoliticaPrivacidade}>
              <h1>POLÍTICA DE PRIVACIDADE</h1>
+              <p>Na La Pizza, sua privacidade é nossa prioridade. Aqui, explicamos como cuidamos das suas informações pessoais para garantir sua segurança e confiança.</p> 
            </div>
 <section className="flex flex-col items-center bg-black-900 pt-20 pb-20">
   <div className="flex flex-col gap-8 w-5/5 max-w-6xl ">

@@ -1,36 +1,36 @@
-.mainAccount{
-background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
-} 
-.navAccount{
- width: 100%;
+.mainAccount {
+  background: linear-gradient(rgba(22, 22, 22, 0.831), rgba(8, 5, 5, 0.814));
+}
+.navAccount {
+  width: 100%;
   height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/orcamentoLaPizza.jpg);
-  background-position:center;
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)),
+    url(../assets/IMG/orcamentoLaPizza.jpg);
+  background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.navAccount h1{
+.navAccount h1 {
   margin-bottom: 1rem;
   font-size: 3rem;
   font-weight: bold;
   letter-spacing: -2px;
-   font-style:italic;
+  font-style: italic;
   color: rgb(146, 117, 60);
 }
 
-.userCard{
+.userCard {
   display: flex;
-  width: 100%; 
- justify-content: center;
- align-items: center;
- padding: 2rem 0 3rem;
- gap: 1rem;
-
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 3rem;
+  gap: 1rem;
 }
-.accountAside{
+.accountAside {
   background-color: rgb(35, 34, 34);
   width: 25%;
   display: flex;
@@ -40,25 +40,25 @@ background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
   border-radius: 0.6rem;
   padding: 1rem 0;
 }
-.accountAside img{
+.accountAside img {
   height: 11rem;
   width: 12rem;
   border-radius: 50%;
-  margin: 1rem 0 ;
+  margin: 1rem 0;
   background-color: white;
 }
-.accountAside h2{
+.accountAside h2 {
   color: rgb(146, 117, 60);
   font-size: 1.3rem;
   font-weight: bold;
 }
-.accountAside p{
+.accountAside p {
   color: rgb(178, 178, 180);
   font-weight: 600;
 }
 
-.accountAside button{
-  background-color: rgb(146, 117, 60) ;
+.accountAside button {
+  background-color: rgb(146, 117, 60);
   color: white;
   font-weight: bold;
   padding: 0.5rem 2rem;
@@ -67,34 +67,32 @@ background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
   cursor: pointer;
 }
 
-
-.infoSection{
+.infoSection {
   background-color: rgb(35, 34, 34);
   width: 40%;
   border-radius: 0.7rem;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
 }
-.infoArticle{
+.infoArticle {
   width: 80%;
   height: 100%;
   margin: 0 auto;
   padding-bottom: 1rem;
 }
-.infoArticle h2{
-  font-size: 1.2rem;
+.infoArticle h2 {
+  font-size: 1.3rem;
   text-align: center;
   padding: 1rem;
   color: rgb(146, 117, 60);
   font-style: italic;
-    font-weight: bold;
+  font-weight: bold;
 }
-.infoArticle h3{
-   font-size: 1.2rem;
+.infoArticle h3 {
+  font-size: 1.4rem;
   text-align: center;
   padding: 1rem;
   color: rgb(146, 117, 60);
-  font-style: italic;
-    font-weight: bold;
+  font-weight: bold;
 }
 .flexRow {
   display: flex;
@@ -107,26 +105,59 @@ background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
   border: none;
 }
 
-dd{
+dd {
   padding: 0.3rem 0;
   color: rgb(146, 117, 60);
-  font-weight: 700;   
+  font-weight: 700;
 }
-dt{
+dt {
   color: rgb(177, 169, 169);
   font-weight: 700;
 }
+.userActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top:0.8rem;
+}
 
+.userActions button {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.userActions button:hover {
+  background-color: #c0392b;
+}
+
+.editIcon {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #f6f4f4;
+  transition: color 0.2s;
+  margin-top: 1rem;
+  background-color: #007bff;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+}
+
+.editIcon:hover {
+  background-color: #0a93fc;
+}
 /* FORMULARIO  */
 /*  */
 
-
-.accountSection{
-  width: 50%;
+.accountSection {
+  width: 100%;
   margin: 0 auto;
   padding-bottom: 3rem;
 }
-.accountSection form{
+.accountSection form {
   margin: 0;
   color: black;
 }
@@ -140,25 +171,25 @@ dt{
   display: flex;
   flex-direction: column;
 }
-.formIdentificacao{
+.formIdentificacao {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-.accountSection legend{
- font-size: 1.72rem;
-  color:  rgb(146, 117, 60);
+.accountSection legend {
+  font-size: 1.72rem;
+  color: rgb(146, 117, 60);
   font-weight: 800;
- font-family: "Bebas Neue", sans-serif;
- text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
   padding: 1rem 0;
 }
-.accountSection label{
- color:  rgb(146, 117, 60);
- font-size: 1.1rem;
- font-weight: bold;
+.accountSection label {
+  color: rgb(146, 117, 60);
+  font-size: 1.1rem;
+  font-weight: bold;
 }
-.accountSection input{
+.accountSection input {
   margin: 0.5rem 0;
   color: black;
 }
@@ -166,10 +197,10 @@ dt{
   color: #d8d2d2; /* Cor do placeholder */
   opacity: 1;
 }
-.accountSection input[type=date]{
+.accountSection input[type="date"] {
   color: #d8d2d2;
 }
-.accountSection select{
+.accountSection select {
   width: 100%;
   margin: 0.5rem 0;
   background-color: transparent;
@@ -181,40 +212,38 @@ select option {
   color: #0d0d0d; /* Cor do texto das opções */
 }
 
-
- .accountSection input{
- height: 3.5rem;
- width: 100%;
- font-size: 1rem;
- font-weight: bold;
- padding: 1rem  2rem  ;
- color: wheat;
- background-color: transparent;
- border: 2px solid rgb(180, 176, 176);
- border-radius: 0.3rem;
- margin: 0.2rem 0;
- }
-.InfoCadastro p{
+.accountSection input {
+  height: 3.5rem;
   width: 100%;
   font-size: 1rem;
-  text-align:justify;
-  margin: 0.2rem 0 ;
-  
+  font-weight: bold;
+  padding: 1rem 2rem;
+  color: wheat;
+  background-color: transparent;
+  border: 2px solid rgb(180, 176, 176);
+  border-radius: 0.3rem;
+  margin: 0.2rem 0;
 }
-.btn button{
+.InfoCadastro p {
   width: 100%;
+  font-size: 1rem;
+  text-align: justify;
+  margin: 0.2rem 0;
+}
+.btn button {
+  width: 30%;
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid transparent;
   margin-top: 0.6rem;
   font-size: 1rem;
   font-weight: bold;
- background-color: #e6b800;
+  background-color: #e6b800;
   color: white;
   transition: 0.1s;
   opacity: 0.8;
   cursor: pointer;
 }
-button:hover{
- opacity: 1;
+button:hover {
+  opacity: 1;
 }

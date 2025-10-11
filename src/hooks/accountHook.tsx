@@ -25,11 +25,11 @@ function accountHook<T extends { id: number }>(
     nascimento: string,
     email: string,
     telefone: string,
-    cep: string,
-    estado: string,
-    cidade: string,
-    numero: string,
-    complemento: string
+    // cep: string,
+    // estado: string,
+    // cidade: string,
+    // numero: string,
+    // complemento: string
   ) => {
     const newAccount: T = {
       nome,
@@ -39,11 +39,11 @@ function accountHook<T extends { id: number }>(
       nascimento,
       email,
       telefone,
-      cep,
-      estado,
-      cidade,
-      numero,
-      complemento,
+      // cep,
+      // estado,
+      // cidade,
+      // numero,
+      // complemento,
       id: Date.now()
     } as T;
     addAccount(newAccount);
