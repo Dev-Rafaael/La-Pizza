@@ -19,7 +19,7 @@
                  
                     <p>{pizza.descricao}</p>
                      <h4>
-                  {pizza.preco.toFixed(2)}
+                  R${pizza.preco.toFixed(2)}
                   </h4>
                   <article className={styles.cardapioOption}>
                   <Link to={`/Orçamento/${pizza.sabor}`} className={styles.btn}>Comprar</Link>

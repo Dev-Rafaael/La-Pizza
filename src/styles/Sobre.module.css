@@ -1,3 +1,6 @@
+/* ==========================
+   SEÇÃO SOBRE - DESKTOP
+========================== */
 .sobreSection {
   width: 100%;
   background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81));
@@ -7,32 +10,38 @@
   padding-bottom: 3rem;
 }
 
-.navSobre{
+.navSobre {
   width: 100%;
- height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)),url(../assets/IMG/orcamentoLaPizza.jpg);
-  background-position:center;
+  height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)),
+    url(../assets/IMG/orcamentoLaPizza.jpg);
+  background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 }
-.navSobre h1{
- font-size: 3rem;
+
+.navSobre h1 {
+  font-size: 3rem;
   font-weight: bold;
   letter-spacing: -2px;
-   font-style:italic;
+  font-style: italic;
   color: rgb(146, 117, 60);
+  text-align: center;
 }
-.navSobre p{
+
+.navSobre p {
   width: 59%;
   text-align: center;
   font-size: 1.2rem;
   font-weight: 500;
-color: rgb(210, 205, 205);;
- 
+  color: rgb(210, 205, 205);
+  margin-top: 1rem;
 }
+
 .content {
   display: flex;
   width: 85%;
@@ -101,4 +110,123 @@ color: rgb(210, 205, 205);;
   width: 100%;
   height: 100%;
   border-radius: 1rem;
+}
+
+/* ==========================
+   RESPONSIVIDADE
+========================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .navSobre h1 {
+    font-size: 2.5rem;
+  }
+
+  .navSobre p {
+    width: 80%;
+    font-size: 1.1rem;
+  }
+
+  .content {
+    gap: 2rem;
+    width: 90%;
+  }
+
+  .text p {
+    font-size: 1.1rem;
+  }
+
+  .infoBlocks h2 {
+    font-size: 1.3rem;
+  }
+
+  .infoBlocks li {
+    font-size: 0.95rem;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .navSobre {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .navSobre h1 {
+    font-size: 2rem;
+  }
+
+  .navSobre p {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .content {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    gap: 2rem;
+  }
+
+  .text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .text p {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .infoBlocks {
+    align-items: center;
+  }
+
+  .infoBlocks h2 {
+    font-size: 1.2rem;
+  }
+
+  .infoBlocks ul {
+    padding: 0;
+  }
+
+  .infoBlocks li {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+  }
+
+  .video {
+    width: 100%;
+  }
+
+  .video iframe {
+    height: 250px;
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 480px) {
+  .navSobre h1 {
+    font-size: 1.7rem;
+  }
+
+  .navSobre p {
+    font-size: 0.9rem;
+  }
+
+  .text p {
+    font-size: 0.9rem;
+  }
+
+  .infoBlocks h2 {
+    font-size: 1rem;
+  }
+
+  .infoBlocks li {
+    font-size: 0.85rem;
+  }
+
+  .video iframe {
+    height: 200px;
+  }
 }

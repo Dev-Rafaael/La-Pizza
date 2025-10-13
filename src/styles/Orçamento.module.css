@@ -1,125 +1,220 @@
 .orcamento {
-  background: linear-gradient(rgba(17, 17, 17, 0.814),rgb(20, 20, 20));
-
+  background: linear-gradient(rgba(17, 17, 17, 0.814), rgb(20, 20, 20));
 }
-.navOrcamento{
+
+/* ======= NAV ORÇAMENTO ======= */
+.navOrcamento {
   width: 100%;
- height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)), url(../assets/IMG/orcamentoLaPizza.jpg);;
-  background-position:center;
+  height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.navOrcamento h1{
+
+.navOrcamento h1 {
   margin-bottom: 1rem;
- font-size: 3rem;
+  font-size: 3rem;
   font-weight: bold;
   letter-spacing: -2px;
-   font-style:italic;
+  font-style: italic;
   color: rgb(146, 117, 60);
+  text-align: center;
 }
+
+/* ======= SECTION ======= */
 .orcamentoSection {
   width: 80%;
-  height: 100%;
   margin: 0 auto;
   padding: 4rem 0;
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
 }
 
 .productImage {
   width: 60%;
-  height: 100%;
 }
+
 .productImage img {
   width: 90%;
   height: 100%;
+  object-fit: cover;
   border-radius: 1rem;
 }
+
 .orcamentoContent {
   width: 35%;
- 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .orcamentoContent h1 {
   width: 100%;
   color: rgb(183, 143, 63);
   font-weight: bold;
-  padding:0 0 0.6rem;
-  
   text-align: center;
   font-size: 1.7rem;
+  padding-bottom: 0.6rem;
 }
+
 .orcamentoContent h2 {
-  width: 96%;
-  color:  rgb(183, 143, 63);
+  width: 100%;
+  color: rgb(183, 143, 63);
   font-weight: bold;
-  padding-bottom: 0;
   text-align: end;
   font-size: 1.1rem;
 }
+
 .orcamentoContent p {
   color: rgb(188, 184, 183);
   font-size: 0.9rem;
   font-weight: 600;
-  width: 100%;
+  text-align: center;
 }
+
+/* ======= FORM ======= */
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
 .form form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0;
-}
-.form {
-  display: flex;
-  flex-direction: column;
 }
 
-.inputForm{
+.inputForm {
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 }
+
 .inputForm label {
   font-size: 1.2rem;
   color: rgb(183, 143, 63);
-  font-weight: 500; 
-  margin: 1rem 0 0.2rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
 }
-.inputForm select{
-  background-color: rgb(255, 255, 255);
+
+.inputForm select {
+  background-color: #fff;
   padding: 0.5rem;
   border-radius: 0.8rem;
 }
-.valor  {
+
+.valor {
   width: 100%;
   color: rgb(183, 143, 63);
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-top: 1rem ;
+  margin-top: 1rem;
 }
-
 
 .form button {
   width: 100%;
   padding: 1rem;
   margin-top: 1rem;
   text-align: center;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #000;
   border-radius: 0.6rem;
- background-color: #e6b800;
-  color: rgb(255, 252, 252);
+  background-color: #e6b800;
+  color: #fff;
   transition: 0.6s;
   opacity: 0.8;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
 }
-.form button:hover {
- opacity: 1;
 
+.form button:hover {
+  opacity: 1;
+}
+
+.clearBtn {
+  display: block;
+  margin: 0 auto 3rem;
+  background: transparent;
+  color: #e6b800;
+  border: 1px solid #e6b800;
+  padding: 0.8rem 2rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.clearBtn:hover {
+  background: #e6b800;
+  color: #000;
+}
+
+/* =======================
+   RESPONSIVIDADE
+======================= */
+
+@media (max-width: 1024px) {
+  .navOrcamento h1 {
+ font-size: 2rem;
+}
+  .orcamentoSection {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  .productImage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .productImage img {
+    width: 100%;
+  }
+
+  .orcamentoContent {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .orcamentoContent h1 {
+    font-size: 1.5rem;
+  }
+
+  .orcamentoContent h2 {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .valor {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .navOrcamento h1 {
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+  }
+
+  .orcamentoContent h1 {
+    font-size: 1.3rem;
+  }
+
+  .inputForm label {
+    font-size: 1rem;
+  }
+
+  .form button {
+    font-size: 0.9rem;
+  }
 }

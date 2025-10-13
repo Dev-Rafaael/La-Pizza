@@ -8,28 +8,32 @@
   background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81));
 }
 
-.navCart{
+.navCart {
   width: 100%;
- height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412),rgba(20,20,20,1)), url(../assets/IMG/orcamentoLaPizza.jpg);;
-  background-position:center;
+  height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20,20,20,1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.navCart h1{
+
+.navCart h1 {
   margin-bottom: 1rem;
- font-size: 3rem;
+  font-size: 3rem;
   font-weight: bold;
   letter-spacing: -2px;
-   font-style:italic;
+  font-style: italic;
   color: rgb(146, 117, 60);
 }
-.cartContent{
-display: flex;
-justify-content: space-around;
+
+.cartContent {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .itensList {
@@ -37,16 +41,17 @@ justify-content: space-around;
   flex-direction: column;
   gap: 1.5rem;
   width: 70%;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
 }
 
 .item {
-   background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   display: flex;
   gap: 1rem;
   border-radius: 1rem;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .item img {
@@ -55,41 +60,33 @@ justify-content: space-around;
   object-fit: cover;
   border-radius: 1rem;
 }
-.detailsList{
+
+.detailsList {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1;
 }
-.infoItem{
-  width: 100%;
+
+.infoItem, .infoAdicionais {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
-.infoAdicionais{
+
+.infoItem h2, .infoAdicionais h2 {
   display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;  
-}
-.infoItem h2{
-  display: flex;
-flex-direction: column;
-  font-size: 1rem;
-  color: #fff;
-text-align: center;
-  gap: 0.5rem;
-}
-.infoAdicionais h2 {
-  display: flex;
-flex-direction: column;
+  flex-direction: column;
   font-size: 1rem;
   color: #fff;
 }
+
 .infoItem span, .infoAdicionais span {
   font-weight: bold;
   color: goldenrod;
-  
 }
+
 .quantityForm {
   display: flex;
   flex-direction: column;
@@ -131,11 +128,11 @@ flex-direction: column;
 
 .animate {
   transform: scale(1.2);
-  color:#e6b800; 
+  color: #e6b800;
 }
 
 .saveButton {
-  background-color:#e6b800; 
+  background-color: #e6b800;
   color: #fff;
   font-weight: bold;
   border: none;
@@ -147,7 +144,6 @@ flex-direction: column;
 }
 
 .saveButton:hover {
-  background-color: #e6b800;
   transform: scale(1.05);
 }
 
@@ -157,20 +153,14 @@ flex-direction: column;
 
 .actions {
   width: 15%;
-  height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
- 
 }
-.actionBtn{
-  display: flex;
-  gap: 1rem;
-}
+
 .actionBtn button {
   flex: 1;
-  text-align: center;
   width: 2rem;
   height: 2rem;
   border: none;
@@ -180,43 +170,32 @@ flex-direction: column;
   cursor: pointer;
   transition: opacity 0.3s;
 }
-.actionPay{
-  display: flex;
-  align-items: end;
-  justify-content: end;
+
+.actions button:hover {
+  opacity: 0.8;
 }
-.actionPay a{
+
+.actions .editBtn {
+  background-color: #0099e6;
+}
+
+.actions a {
   text-align: center;
-  padding: 0.7rem 2.5rem ;
-  border: none;
+  padding: 0.7rem 2.5rem;
   border-radius: 1.1rem;
   font-weight: bold;
   text-transform: uppercase;
   color: #fff;
   cursor: pointer;
   transition: opacity 0.3s;
-   background-color: #d18b08;
-    font-weight: bold;
-}
-
-.actions button {
-  background-color: rgb(210, 6, 33);
-}
-.actions .editBtn{
-    background-color:  #0099e6;
-}
-
-.actions a:hover,
-.actions button:hover {
-  opacity: 0.8;
+  background-color: #d18b08;
 }
 
 .valoresContent {
   width: 25%;
-  height: 100%;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.1);
-  padding: 2rem 1.5rem ;
+  padding: 2rem 1.5rem;
   border-radius: 1rem;
   text-align: right;
   color: #fff;
@@ -225,37 +204,37 @@ flex-direction: column;
   flex-direction: column;
   gap: 1rem;
 }
-.valoresContent h2{
-    display: flex;
-    justify-content: space-between;
-}
-.payment{
-    display: flex;
-    justify-content: space-between;
-}
-.bandeiras{
+
+.valoresContent h2 {
   display: flex;
+  justify-content: space-between;
 }
+
+.payment {
+  display: flex;
+  justify-content: space-between;
+}
+
 .bandeiras img {
   width: 2.4rem;
   margin-right: 0.5rem;
   cursor: pointer;
 }
-.valoresContent button{
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 1rem;
-    text-align: center;
-    background-color: #d18b08;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 0.7rem;
-}
-/* NAO ENCONTRADO  */
 
-.notFoundItem{
+.valoresContent button {
   width: 100%;
-  height: 100%;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  background-color: #d18b08;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 0.7rem;
+}
+
+/* Carrinho vazio */
+.notFoundItem {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -263,21 +242,60 @@ flex-direction: column;
   gap: 1rem;
   margin-top: 3rem;
 }
-.notFoundItem h1{
-  text-align: center;
+
+.notFoundItem h1 {
   color: #fff;
   font-size: 2rem;
 }
 
 .notFoundItem a {
   padding: 1rem;
-  border: none;
   border-radius: 1rem;
   background-color: orange;
-  color:  white;
+  color: white;
   opacity: 0.9;
   font-weight: bold;
+  text-decoration: none;
 }
-.notFoundItem a:hover{
+
+.notFoundItem a:hover {
   opacity: 1;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .cartContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .itensList, .valoresContent {
+    width: 90%;
+  }
+
+  .actions {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .item {
+    flex-direction: column;
+  }
+
+  .item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .infoItem, .infoAdicionais {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .valoresContent h2 {
+    font-size: 1rem;
+  }
 }
