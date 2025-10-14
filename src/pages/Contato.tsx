@@ -110,7 +110,7 @@ function Contato() {
           </form>
         </article>
 
-        <article>
+        <article className={styles.contatosContent}>
           <div className={styles.contatos}>
             <div
               className={styles.container}

@@ -156,6 +156,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: end;
   gap: 1rem;
 }
 
@@ -175,9 +176,6 @@
   opacity: 0.8;
 }
 
-.actions .editBtn {
-  background-color: #0099e6;
-}
 
 .actions a {
   text-align: center;
@@ -193,6 +191,7 @@
 
 .valoresContent {
   width: 25%;
+  height: 100%;
   margin: 0 auto;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 2rem 1.5rem;
@@ -208,15 +207,21 @@
 .valoresContent h2 {
   display: flex;
   justify-content: space-between;
+  
+}
+.valoresContent strong{
+color: #d18b08;
 }
 
 .payment {
   display: flex;
   justify-content: space-between;
 }
-
+.bandeiras{
+  display: flex;
+}
 .bandeiras img {
-  width: 2.4rem;
+  width: 2rem;
   margin-right: 0.5rem;
   cursor: pointer;
 }
@@ -264,6 +269,9 @@
 
 /* Responsividade */
 @media (max-width: 1024px) {
+   .navCart h1{
+    font-size: 2.5rem;
+  }
   .cartContent {
     flex-direction: column;
     align-items: center;
@@ -278,9 +286,15 @@
     flex-direction: row;
     justify-content: space-between;
   }
+    .valoresContent{
+    margin-bottom: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
+  .navCart h1{
+    font-size: 1.9rem;
+  }
   .item {
     flex-direction: column;
   }
@@ -294,8 +308,15 @@
     flex-direction: column;
     gap: 0.5rem;
   }
-
+  .valoresContent{
+    margin-bottom: 1rem;
+  }
   .valoresContent h2 {
     font-size: 1rem;
+  }
+
+  .payment{
+    width: 100%;
+    
   }
 }

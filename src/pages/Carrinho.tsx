@@ -21,6 +21,7 @@ function Carrinho() {
     const confirm = window.confirm("Tem Certeza que deseja Deletar?");
     if (confirm) {
       deletarItem(index);
+        toast.error("🍕 Pedido Deletado com sucesso!");
     }
   };
   const edit = (item: Cart) => {
@@ -75,7 +76,7 @@ function Carrinho() {
                   <span>Sabor</span> {pizza.sabor}
                 </h2>
                 <h2>
-                  <span>Preço Unitario</span> {pizza.preco.toFixed(2)}
+                  <span>Preço Unitario</span> R${pizza.preco.toFixed(2)}
                 </h2>
                 <h2>
                   <span>Quantidade</span>
@@ -132,9 +133,9 @@ function Carrinho() {
                     className={`${styles.totalPrice} ${
                       animatePrices[pizza.cartId] ? styles.animate : ""
                     }`}
-                  >
+                  >R$
                     {editId === pizza.cartId
-                      ? (pizza.preco * newQuantidade).toFixed(2)
+                      ?  (pizza.preco * newQuantidade).toFixed(2)
                       : pizza.precoTotal.toFixed(2)}
                   </p>
                 </h2>
@@ -173,7 +174,7 @@ function Carrinho() {
           </h2>
 
           <div className={styles.payment}>
-            <h2>Formas Pagamentos</h2>
+            <h2>Formas Pagamentos:</h2>
             <div className={styles.bandeiras}>
               <img src={visa} alt="Visa" />
               <img src={mastercard} alt="Mastercard" />

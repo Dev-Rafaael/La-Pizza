@@ -83,7 +83,7 @@ function PoliticaPrivacidade() {
 
         <article>
           <h2 className={styles.title}>Alterações desta Política</h2>
-          <p className={styles.text}>
+          <p className={styles.list}>
             A La Pizza pode atualizar esta Política periodicamente. Sempre que houver alterações, a nova versão estará disponível no site.
           </p>
         </article>

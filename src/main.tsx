@@ -13,7 +13,9 @@ import Carrinho from './pages/Carrinho.tsx';
 import Account from './pages/Account.tsx';
 import Termos from './pages/Termos.tsx';
 import './index.css'
-
+import LayoutZap from './components/LayoutZap.jsx'
+import Cadastrar from './pages/Cadastrar.tsx';
+import Login from './pages/Login.tsx';
 const router=createBrowserRouter([
   {
     path:"/",
@@ -65,6 +67,13 @@ const router=createBrowserRouter([
          {
           path:"/Termos-De-Uso",
           element:<Termos/>
+        },{
+          path:"/Cadastro",
+          element:<Cadastrar/>
+        },
+        {
+          path:"/Login",
+          element:<Login/>
         },
       //    {
       //     path:"Search/",
@@ -75,6 +84,8 @@ const router=createBrowserRouter([
 ])
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+      <LayoutZap>
    <RouterProvider router={router} />
+   </LayoutZap>
   </StrictMode>,
 )

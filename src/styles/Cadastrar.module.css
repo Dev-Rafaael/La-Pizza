@@ -1,0 +1,211 @@
+.mainCadastro{
+    background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
+}
+.navCadastro {
+  width: 100%;
+  height: 15rem;
+  background: linear-gradient(rgba(17,17,17,0.412), rgba(20,20,20,1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navCadastro h1 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: -2px;
+  font-style: italic;
+  color: rgb(146,117,60);
+}
+/* Formulário */
+/* =======================
+   SEÇÃO PRINCIPAL
+======================= */
+.cadastroSection {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.cadastroSection h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: rgb(146, 117, 60);
+}
+
+/* =======================
+   FORMULÁRIO
+======================= */
+.formIdentificacao {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+fieldset {
+  border: 1px solid rgba(180, 176, 176, 0.5);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: rgb(146, 117, 60);
+}
+
+/* GRID 2 COLUNAS */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.grid2 div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels e Inputs */
+.cadastroSection label {
+  color: rgb(146, 117, 60);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.cadastroSection input,
+.cadastroSection select {
+  height: 3.5rem;
+  padding: 0 1rem;
+  color: wheat;
+  background-color: transparent;
+  border: 2px solid rgb(180, 176, 176);
+  border-radius: 0.3rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.cadastroSection input:focus,
+.cadastroSection select:focus {
+  outline: none;
+  border-color: rgb(146, 117, 60);
+}
+
+.accountSection select {
+  padding-left: 1rem;
+}
+
+/* BOTÃO */
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.btn button {
+  width: 30%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #e6b800;
+  color: white;
+  opacity: 0.85;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn button:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* =======================
+   RESPONSIVIDADE
+======================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .navCadastro h1 {
+
+  font-size: 2rem;
+ text-align: center;
+}
+  .grid2 {
+    grid-template-columns: 1fr;
+  }
+
+  legend {
+    font-size: 1.2rem;
+  }
+
+  .cadastroSection label {
+    font-size: 1rem;
+  }
+
+  .cadastroSection input,
+  .cadastroSection select {
+    height: 3rem;
+    font-size: 0.95rem;
+  }
+
+  .btn button {
+    width: 50%;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+        .navCadastro h1 {
+
+  font-size: 1.7rem;
+ text-align: center;
+}
+  .cadastroSection {
+    padding: 1rem;
+  }
+
+  .cadastroSection h1 {
+    font-size: 1.5rem;
+  }
+
+  legend {
+    font-size: 1.1rem;
+  }
+
+  .grid2 {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .cadastroSection label {
+    font-size: 0.95rem;
+  }
+
+  .cadastroSection input,
+  .cadastroSection select {
+    height: 2.8rem;
+    font-size: 0.9rem;
+    padding: 0 0.8rem;
+  }
+
+  .btn button {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}
