@@ -244,13 +244,25 @@
     text-align: center;
     font-size: 1rem;
   }
+.customCheckbox {
+    width: 18px;
+    height: 18px;
+  }
 
+  .customCheckbox::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .checkboxContainer {
+    gap: 8px;
+  }
   .valor {
     justify-content: center;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .navOrcamento h1 {
     font-size: 1.5rem;
     letter-spacing: -1px;
@@ -263,7 +275,20 @@
   .inputForm label {
     font-size: 1rem;
   }
+ .customCheckbox {
+    width: 16px;
+    height: 16px;
+  }
 
+  .customCheckbox::after {
+    width: 7px;
+    height: 7px;
+  }
+
+  .checkboxContainer {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
   .form button {
     font-size: 0.9rem;
   }
