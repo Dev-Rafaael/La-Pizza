@@ -25,7 +25,7 @@ function orcamentoHook<T extends { id: number }>(
     imagem: string,
     precoTotal: number,
     unidades: number,
-    adicionais: string
+    adicionais: string[]
   ) => {
     const newOrcamento: T = {
       id,

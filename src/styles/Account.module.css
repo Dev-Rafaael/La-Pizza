@@ -1,11 +1,12 @@
 .mainAccount {
-  background: linear-gradient(rgba(22,22,22,0.83), rgba(8,5,5,0.81));
+  background: linear-gradient(rgba(22, 22, 22, 0.83), rgba(8, 5, 5, 0.81));
 }
 
 .navAccount {
   width: 100%;
   height: 15rem;
-  background: linear-gradient(rgba(17,17,17,0.412), rgba(20,20,20,1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)),
+    url("../assets/IMG/orcamentoLaPizza.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -20,11 +21,12 @@
   font-weight: bold;
   letter-spacing: -2px;
   font-style: italic;
-  color: rgb(146,117,60);
+  color: rgb(146, 117, 60);
 }
-.accountVoid{
+.accountVoid {
   height: 70vh;
-  background: linear-gradient(rgba(17,17,17,0.412), rgba(20,20,20,1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)),
+    url("../assets/IMG/orcamentoLaPizza.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -33,10 +35,10 @@
   justify-content: center;
   padding: 3rem;
 }
-.accountVoid h2{
+.accountVoid h2 {
   font-size: 1.8rem;
   font-weight: bold;
-   font-style:italic;
+  font-style: italic;
   color: rgb(146, 117, 60);
 }
 .buttonContainer {
@@ -47,33 +49,30 @@
   width: 20%;
   gap: 0.5rem;
   margin: 2rem auto 0;
- 
 }
-.btnCadastrar{
+.btnCadastrar {
   width: 100%;
   background-color: #858181;
   padding: 1rem;
   text-align: center;
   font-weight: 700;
   border-radius: 0.7rem;
- opacity: 0.9;
+  opacity: 0.9;
 }
-.btnCadastrar:hover{
-
- opacity: 1;
+.btnCadastrar:hover {
+  opacity: 1;
 }
-.btnLogar{
+.btnLogar {
   width: 100%;
-  background-color:rgb(146, 117, 60);
+  background-color: rgb(146, 117, 60);
   padding: 1rem;
   text-align: center;
   font-weight: 700;
   border-radius: 0.7rem;
- opacity: 0.9;
+  opacity: 0.9;
 }
-.btnLogar:hover{
-
- opacity: 1;
+.btnLogar:hover {
+  opacity: 1;
 }
 
 .userCard {
@@ -87,7 +86,7 @@
 }
 
 .accountAside {
-  background-color: rgb(35,34,34);
+  background-color: rgb(35, 34, 34);
   width: 25%;
   display: flex;
   justify-content: center;
@@ -106,13 +105,13 @@
 }
 
 .accountAside h2 {
-  color: rgb(146,117,60);
+  color: rgb(146, 117, 60);
   font-size: 1.3rem;
   font-weight: bold;
 }
 
 .accountAside p {
-  color: rgb(178,178,180);
+  color: rgb(178, 178, 180);
   font-weight: 600;
 }
 
@@ -152,7 +151,7 @@
 }
 
 .infoSection {
-  background-color: rgb(35,34,34);
+  background-color: rgb(35, 34, 34);
   width: 40%;
   border-radius: 0.7rem;
   padding: 2rem 0;
@@ -167,7 +166,7 @@
   font-size: 1.4rem;
   text-align: center;
   padding: 1rem;
-  color: rgb(146,117,60);
+  color: rgb(146, 117, 60);
   font-weight: bold;
 }
 
@@ -176,7 +175,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 8px;
-  border-bottom: 1px solid rgb(117,117,114);
+  border-bottom: 1px solid rgb(117, 117, 114);
 }
 
 .flexRow:last-child {
@@ -185,36 +184,32 @@
 
 dd {
   padding: 0.3rem 0;
-  color: rgb(146,117,60);
+  color: rgb(146, 117, 60);
   font-weight: 700;
 }
 
 dt {
-  color: rgb(177,169,169);
+  color: rgb(177, 169, 169);
   font-weight: 700;
 }
 
-
 /* Responsividade */
 @media (max-width: 1024px) {
-    .navAccount h1 {
-  font-size: 2rem;
-  
-}
+  .navAccount h1 {
+    font-size: 2rem;
+  }
   .accountVoid h2 {
     font-size: 1.9rem;
   }
 
   .buttonContainer {
-
-  width: 50%;
-  
- 
-}
+    width: 50%;
+  }
   .userCard {
     flex-direction: column;
   }
-  .accountAside, .infoSection {
+  .accountAside,
+  .infoSection {
     width: 90%;
   }
   .grid2 {
@@ -223,20 +218,15 @@ dt {
 }
 
 @media (max-width: 768px) {
-    .accountVoid h2 {
+  .accountVoid h2 {
     font-size: 1.5rem;
     text-align: center;
   }
 
   .buttonContainer {
-
-  width: 50%;
-  
- 
-}
+    width: 50%;
+  }
   .navAccount h1 {
-  font-size: 1.7rem;
-  
-}
-
+    font-size: 1.7rem;
+  }
 }

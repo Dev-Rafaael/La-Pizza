@@ -36,7 +36,7 @@ function checkoutHook<T extends { id: number }>(
     imagem: string | undefined,
     precoTotal: number,
     unidades: number,
-    adicionais: string,
+    adicionais: string[],
     cartId: number
   ) => {
     const newIdentifier: T = {

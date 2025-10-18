@@ -27,6 +27,7 @@ const pizzas = [
     preco: 42.90,
     imagem: Pizza3
   },
+  
   {
     id: 4,
     sabor: "Frango com Catupiry",
@@ -48,6 +49,7 @@ const pizzas = [
     preco: 47.90,
     imagem: Pizza6
   }
+  
 ];
 
 export default pizzas;

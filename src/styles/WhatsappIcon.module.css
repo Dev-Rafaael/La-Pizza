@@ -11,8 +11,7 @@
   text-align: center;
   color: white;
 }
-.whatsappIcon 
-.playIcon {
+.whatsappIcon .playIcon {
   animation: pulse 1.5s infinite;
   cursor: pointer;
   z-index: 1; /* O ícone ficará sobre a bola */
@@ -25,7 +24,7 @@
   bottom: 1.7rem;
   right: 2.18rem;
   width: 3.5rem; /* Ajuste o tamanho conforme necessário */
-  height:3.5rem; /* Ajuste o tamanho conforme necessário */
+  height: 3.5rem; /* Ajuste o tamanho conforme necessário */
   border-radius: 50%;
   background-color: rgb(16, 168, 34); /* Cor e opacidade da bola */
   z-index: 0; /* Bola ficará abaixo do ícone */
@@ -58,33 +57,33 @@
     opacity: 0.5;
   }
 }
-@media (min-width: 320px) and (max-width: 480px){
+@media (min-width: 320px) and (max-width: 480px) {
   .whatsappIcon {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
     z-index: 1000;
   }
-.whatsappIcon {
-  height: 1.8rem;
-  width: 1.8rem;
-  font-size: 1.7rem;
-  text-align: center;
-  color: white;
-}
+  .whatsappIcon {
+    height: 1.8rem;
+    width: 1.8rem;
+    font-size: 1.7rem;
+    text-align: center;
+    color: white;
+  }
   .playIcon {
     animation: pulse 1.5s infinite;
     cursor: pointer;
     z-index: 1; /* O ícone ficará sobre a bola */
     transition: transform 0.3s ease-in-out;
   }
-  
+
   .bolaZap {
     position: fixed;
     bottom: 1.7rem;
     right: 1.7rem;
     width: 2.6rem; /* Ajuste o tamanho conforme necessário */
-    height:2.6rem; /* Ajuste o tamanho conforme necessário */
+    height: 2.6rem; /* Ajuste o tamanho conforme necessário */
     border-radius: 50%;
     background-color: rgb(16, 168, 34); /* Cor e opacidade da bola */
     z-index: 0; /* Bola ficará abaixo do ícone */
@@ -101,7 +100,7 @@
       transform: scale(1);
     }
   }
-  
+
   @keyframes pulseBall {
     0% {
       transform: scale(1);

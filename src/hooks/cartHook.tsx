@@ -21,7 +21,7 @@ function cartHook<T extends {cartId:number}>(key:string,initialValue: T[]=[]) {
     preco:number,
     precoTotal:number,
     unidades:number,
-    adicionais:string,
+    adicionais:string[],
     cartId:number,
    imagem?:string,) =>{
         const newItem: T = {

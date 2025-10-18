@@ -146,7 +146,7 @@ function Carrinho() {
                   <span>Descrição</span> {pizza.descricao}
                 </h2>
                  <h2>
-                  <span>Adicionais</span> {pizza.adicionais}
+                  <span>Adicionais</span> {pizza.adicionais.join(",")}
                 </h2>
                 </div>
                 </article>

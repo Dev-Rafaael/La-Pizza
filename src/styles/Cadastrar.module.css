@@ -1,10 +1,11 @@
-.mainCadastro{
-    background: linear-gradient(rgba(22, 22, 22, 0.831),rgba(8, 5, 5, 0.814));
+.mainCadastro {
+  background: linear-gradient(rgba(22, 22, 22, 0.831), rgba(8, 5, 5, 0.814));
 }
 .navCadastro {
   width: 100%;
   height: 15rem;
-  background: linear-gradient(rgba(17,17,17,0.412), rgba(20,20,20,1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)),
+    url("../assets/IMG/orcamentoLaPizza.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -19,7 +20,7 @@
   font-weight: bold;
   letter-spacing: -2px;
   font-style: italic;
-  color: rgb(146,117,60);
+  color: rgb(146, 117, 60);
 }
 /* Formulário */
 /* =======================
@@ -139,11 +140,10 @@ legend {
 
 /* Tablet */
 @media (max-width: 992px) {
-    .navCadastro h1 {
-
-  font-size: 2rem;
- text-align: center;
-}
+  .navCadastro h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
   .grid2 {
     grid-template-columns: 1fr;
   }
@@ -170,11 +170,10 @@ legend {
 
 /* Mobile */
 @media (max-width: 576px) {
-        .navCadastro h1 {
-
-  font-size: 1.7rem;
- text-align: center;
-}
+  .navCadastro h1 {
+    font-size: 1.7rem;
+    text-align: center;
+  }
   .cadastroSection {
     padding: 1rem;
   }

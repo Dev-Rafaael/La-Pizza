@@ -286,7 +286,7 @@ function Identificacao() {
                   </div>
                   <div className={styles.info}>
                          <p>Adicionais:</p>
-                    <p>{dataOrcamento.adicionais}</p>
+                  <p>{dataOrcamento.adicionais.join(",")}</p>
                   </div>
                 </div>
               </section>

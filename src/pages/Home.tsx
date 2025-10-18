@@ -22,7 +22,7 @@ const CustomPrevArrow: React.FC<CustomArrowProps> =(props) => {
   return (
     <div
       className={`${className} ${styles.customArrow}`}
-      style={{ ...style, display: "block", left: "10px", zIndex: '999',opacity:'0.3' }}
+      style={{ ...style, display: "block", left: "10px", zIndex: '997',opacity:'0.3' }}
       onClick={onClick}
     />
   );
@@ -33,7 +33,7 @@ const CustomNextArrow: React.FC<CustomArrowProps> =(props) => {
   return (
     <div
       className={`${className} ${styles.customArrow}`}
-      style={{ ...style, display: "block", right: "10px", zIndex: '999',opacity:'0.3'}}
+      style={{ ...style, display: "block", right: "10px", zIndex: '997',opacity:'0.3'}}
       onClick={onClick}
     />
   );

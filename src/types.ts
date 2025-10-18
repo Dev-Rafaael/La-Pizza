@@ -31,7 +31,7 @@ export interface Orcamento {
   imagem?: string;
   precoTotal: number;
   unidades: number;
-  adicionais: string;
+  adicionais: string[];
   cartId: number;
 }
 
@@ -56,7 +56,7 @@ export interface Cart {
   preco: number;
   precoTotal: number;
   unidades: number;
-  adicionais: string;
+  adicionais: string[];
   cartId: number;
   imagem?: string;
 }
