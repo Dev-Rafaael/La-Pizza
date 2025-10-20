@@ -6,7 +6,8 @@
 .navOrcamento {
   width: 100%;
   height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)),
+    url("../assets/IMG/orcamentoLaPizza.jpg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -141,12 +142,12 @@
 
 /* Hover da caixa */
 .checkboxContainer:hover .customCheckbox {
-  border-color:rgb(183, 143, 63);;
+  border-color: rgb(183, 143, 63);
 }
 
 /* Marca de check */
 .customCheckbox::after {
-  content: '';
+  content: "";
   width: 10px;
   height: 10px;
   border-radius: 3px;
@@ -213,8 +214,8 @@
 
 @media (max-width: 1024px) {
   .navOrcamento h1 {
- font-size: 2rem;
-}
+    font-size: 2rem;
+  }
   .orcamentoSection {
     flex-direction: column;
     align-items: center;
@@ -244,7 +245,7 @@
     text-align: center;
     font-size: 1rem;
   }
-.customCheckbox {
+  .customCheckbox {
     width: 18px;
     height: 18px;
   }
@@ -275,7 +276,7 @@
   .inputForm label {
     font-size: 1rem;
   }
- .customCheckbox {
+  .customCheckbox {
     width: 16px;
     height: 16px;
   }

@@ -8,8 +8,8 @@ import cartHook from "../hooks/cartHook";
 
 function Orçamento() {
   const { criarItem } = cartHook<Cart>("cart", []);
-  
-  const { criarOrcamento, clearOrcamento } = orcamentoHook<Orcamento>(
+
+  const { criarOrcamento} = orcamentoHook<Orcamento>(
     "orcamento",
     []
   );
@@ -26,7 +26,7 @@ function Orçamento() {
     const qtd = Number(unidades) || 0;
     const precoTotalPizza = (dataOrcamento.preco * qtd).toFixed(2);
     setPrecoTotal(Number(precoTotalPizza));
-  }, [unidades, precoTotal,dataOrcamento.preco]);
+  }, [unidades, precoTotal, dataOrcamento.preco]);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -50,21 +50,20 @@ function Orçamento() {
       newOrcamento.cartId,
       String(dataOrcamento.imagem)
     );
-  
+
     navigate(`/Identificação/${newOrcamento.cartId}`);
   };
   const opcoes = ["Salame", "Cheddar", "Catupiry", "Bacon"];
-const toggleOpcao = (opcao: string) => {
-  setAdicionais(prev =>
-    prev.includes(opcao) ? prev.filter(a => a !== opcao) : [...prev, opcao]
-  );
-};
+  const toggleOpcao = (opcao: string) => {
+    setAdicionais((prev) =>
+      prev.includes(opcao) ? prev.filter((a) => a !== opcao) : [...prev, opcao]
+    );
+  };
   return (
     <main className={styles.orcamento}>
-  <div className={styles.navOrcamento}>
-          <h1>ORÇAMENTO Pizza {dataOrcamento.sabor}</h1>
-         
-        </div>
+      <div className={styles.navOrcamento}>
+        <h1>ORÇAMENTO Pizza {dataOrcamento.sabor}</h1>
+      </div>
       <section className={styles.orcamentoSection}>
         <article className={styles.productImage}>
           <img src={dataOrcamento.imagem} alt="Imagem Pizza" />
@@ -75,50 +74,55 @@ const toggleOpcao = (opcao: string) => {
           <h2>Preço: {dataOrcamento.preco.toFixed(2)}</h2>
           <div className={styles.form}>
             <form onSubmit={handleSubmit}>
-                 <div className={styles.inputForm}>
-            <label htmlFor="Unidades">Unidades:</label>
-           <select
-                name="Unidades"
-                value={unidades}
-                onChange={(e) => setUnidades(Number(e.target.value))}
-                required
-              >
-               <option value=""  defaultChecked>Selecione</option>
-              <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-          </div>
-     <div className={styles.inputForm}>
-  <label htmlFor="Adicionais">Adicionais:</label>
-  {opcoes.map(opcao => (
-    <label key={opcao} className={styles.checkboxContainer}>
-      <input
-        type="checkbox"
-        value={opcao}
-        checked={adicionais.includes(opcao)}
-        onChange={() => toggleOpcao(opcao)}
-      />
-      <span className={styles.customCheckbox}></span>
-      {opcao}
-    </label>
-  ))}
-</div>
+              <div className={styles.inputForm}>
+                <label htmlFor="Unidades">Unidades:</label>
+                <select
+                  name="Unidades"
+                  value={unidades}
+                  onChange={(e) => setUnidades(Number(e.target.value))}
+                  required
+                >
+                  <option value="" defaultChecked>
+                    Selecione
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div className={styles.inputForm}>
+                <label htmlFor="Adicionais">Adicionais:</label>
+                {opcoes.map((opcao) => (
+                  <label key={opcao} className={styles.checkboxContainer}>
+                    <input
+                      type="checkbox"
+                      value={opcao}
+                      checked={adicionais.includes(opcao)}
+                      onChange={() => toggleOpcao(opcao)}
+                    />
+                    <span className={styles.customCheckbox}></span>
+                    {opcao}
+                  </label>
+                ))}
+              </div>
 
-        
-             { <h3 className={styles.valor}> Total a Pagar: R${ precoTotal ? precoTotal.toFixed(2) : dataOrcamento.preco.toFixed(2)}</h3> }
-              {/* <Link to={"/Identificação/${}"} type="submit">
-          Prosseguir
-        </Link> */}
+              {
+                <h3 className={styles.valor}>
+                  {" "}
+                  Total a Pagar: R$
+                  {precoTotal
+                    ? precoTotal.toFixed(2)
+                    : dataOrcamento.preco.toFixed(2)}
+                </h3>
+              }
 
               <button type="submit">Prosseguir</button>
             </form>
           </div>
         </article>
       </section>
-      <button onClick={() => clearOrcamento()}>Limpar Tudo</button>
     </main>
   );
 }

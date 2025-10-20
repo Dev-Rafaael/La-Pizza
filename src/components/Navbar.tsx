@@ -29,8 +29,8 @@ function Navbar() {
   };
 
   const closeModal = () => {
-  setIsModalOpen(false);
-};
+    setIsModalOpen(false);
+  };
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
@@ -50,7 +50,6 @@ function Navbar() {
       item.sabor.toLowerCase().includes(term)
     );
     setSearchResults(searchResult);
-   
   }, [searchTerm, itens]);
 
   useEffect(() => {
@@ -59,8 +58,7 @@ function Navbar() {
       if (
         isMenuOpen &&
         !target.closest(`.${styles.navItens}`) &&
-        !target.closest(`.${styles.hamburgerMenu}`) 
-
+        !target.closest(`.${styles.hamburgerMenu}`)
       ) {
         setIsMenuOpen(false);
       }
@@ -88,7 +86,6 @@ function Navbar() {
             <ul>
               <li>
                 <button onClick={toggleModal}>
-                  
                   <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
               </li>
@@ -156,8 +153,13 @@ function Navbar() {
                           <p>R${item.preco.toFixed(2)}</p>
                         </div>
                         <div className={styles.actionPay}>
-                     <Link to={`/Orçamento/${item.sabor}`} onClick={closeModal}>Selecionar</Link>
-                </div>
+                          <Link
+                            to={`/Orçamento/${item.sabor}`}
+                            onClick={closeModal}
+                          >
+                            Selecionar
+                          </Link>
+                        </div>
                       </div>
                     ))}
                   </ul>
