@@ -7,17 +7,13 @@ export interface Account {
   nascimento: string;
   email: string;
   telefone: string;
-  // cep: string;
-  // estado: string;
-  // cidade: string;
-  // numero: string;
-  // complemento: string;
+
 }
 
 export interface Contact {
   id: number;
   nome: string;
-  sobreNome: string;
+  sobrenome: string;
   email: string;
   assunto: string;
   mensagem: string;

@@ -1,22 +1,35 @@
 import { useState } from "react";
-import contatoHook from "../hooks/contatoHook";
-import type { Contact } from "../types";
 import styles from "../styles/Contato.module.css";
 import { toast } from "react-toastify";
+import { api } from "../api/api";
 function Contato() {
-  const { criarContato } = contatoHook<Contact>("contatos", []);
   const [nome, setNome] = useState<string>("");
   const [sobrenome, setSobreNome] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [assunto, setAssunto] = useState<string>("");
   const [mensagem, setMensagem] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const dataContatos = {
+    nome,
+    sobrenome,
+    email,
+    assunto,
+    mensagem
+  }
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    criarContato(nome, sobrenome, email, assunto, mensagem);
-    toast.success("🛎️ Mensagem Enviada com sucesso!");
-  };
+         try { 
+        const response = await api.post('/contatos/criar', dataContatos)
+          console.log(response.data);
+          toast.success("🛎️ Mensagem Enviada com sucesso!");
+        } catch (error) {
+      console.log(error);
+       toast.warning("🛎️ Mensagem Não foi Enviada!");
+    }
+    }
+
+    
   return (
     <main className={styles.contatoMain}>
       <div className={styles.navContato}>
