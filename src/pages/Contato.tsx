@@ -2,34 +2,56 @@ import { useState } from "react";
 import styles from "../styles/Contato.module.css";
 import { toast } from "react-toastify";
 import { api } from "../api/api";
-function Contato() {
-  const [nome, setNome] = useState<string>("");
-  const [sobrenome, setSobreNome] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [assunto, setAssunto] = useState<string>("");
-  const [mensagem, setMensagem] = useState<string>("");
+import { schemaContato } from "../schemas/contatosSchema";
 
-  const dataContatos = {
-    nome,
-    sobrenome,
-    email,
-    assunto,
-    mensagem
-  }
+function Contato() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    sobreNome: "",
+    email: "",
+    assunto: "",
+    mensagem: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+const [loading, setLoading] = useState<boolean>(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    const parseResult = schemaContato.safeParse(formData);
 
-         try { 
-        const response = await api.post('/contatos/criar', dataContatos)
-          console.log(response.data);
-          toast.success("🛎️ Mensagem Enviada com sucesso!");
-        } catch (error) {
+    if (!parseResult.success) {
+      parseResult.error.issues.forEach((err) => {
+        toast.warning(`🛎️ ${err.message}`);
+      });
+
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await api.post("/contatos/criar", formData);
+      toast.success("🛎️ Mensagem Enviada com sucesso!");
+      setFormData({
+        nome: "",
+        sobreNome: "",
+        email: "",
+        assunto: "",
+        mensagem: "",
+      });
+    } catch (error) {
       console.log(error);
-       toast.warning("🛎️ Mensagem Não foi Enviada!");
-    }
-    }
+      toast.warning("🛎️ Mensagem Não foi Enviada!");
+    } finally {
+    setLoading(false);
+  }
+  };
 
-    
   return (
     <main className={styles.contatoMain}>
       <div className={styles.navContato}>
@@ -56,8 +78,8 @@ function Contato() {
                   type="text"
                   name="nome"
                   placeholder="Nome"
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
+                  value={formData.nome}
+                  onChange={handleChange}
                   required
                   className={styles.input}
                 />
@@ -68,9 +90,8 @@ function Contato() {
                 <input
                   type="text"
                   name="sobreNome"
-                  placeholder="Sobrenome"
-                  value={sobrenome}
-                  onChange={(e) => setSobreNome(e.target.value)}
+                  value={formData.sobreNome}
+                  onChange={handleChange}
                   required
                   className={styles.input}
                 />
@@ -83,8 +104,8 @@ function Contato() {
                   type="email"
                   name="email"
                   placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className={styles.input}
                 />
@@ -95,8 +116,8 @@ function Contato() {
                   type="text"
                   name="assunto"
                   placeholder="Assunto"
-                  value={assunto}
-                  onChange={(e) => setAssunto(e.target.value)}
+                  value={formData.assunto}
+                  onChange={handleChange}
                   required
                   className={styles.input}
                 />
@@ -108,8 +129,8 @@ function Contato() {
                 <textarea
                   name="mensagem"
                   placeholder="Escreva sua mensagem..."
-                  value={mensagem}
-                  onChange={(e) => setMensagem(e.target.value)}
+                  value={formData.mensagem}
+                  onChange={handleChange}
                   required
                   rows={5}
                   className={styles.textarea}
@@ -117,7 +138,7 @@ function Contato() {
               </label>
             </div>
             <button type="submit" className={styles.submitButton}>
-              Enviar Mensagem
+             {loading ? "Enviando..." : "Enviar Mensagem"}
             </button>
           </form>
         </article>
