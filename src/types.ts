@@ -56,3 +56,10 @@ export interface Cart {
   cartId: number;
   imagem?: string;
 }
+export interface Pizzas {
+id: number;
+  sabor: string;
+  descricao:string;
+  preco:number;
+  imagem: string;
+}

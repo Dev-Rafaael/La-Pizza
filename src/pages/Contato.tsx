@@ -19,7 +19,7 @@ function Contato() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -35,7 +35,7 @@ const [loading, setLoading] = useState<boolean>(false);
     }
 
     try {
-      const response = await api.post("/contatos/criar", formData);
+      await api.post("/contatos/criar", formData);
       toast.success("🛎️ Mensagem Enviada com sucesso!");
       setFormData({
         nome: "",
@@ -48,8 +48,8 @@ const [loading, setLoading] = useState<boolean>(false);
       console.log(error);
       toast.warning("🛎️ Mensagem Não foi Enviada!");
     } finally {
-    setLoading(false);
-  }
+      setLoading(false);
+    }
   };
 
   return (
@@ -138,7 +138,7 @@ const [loading, setLoading] = useState<boolean>(false);
               </label>
             </div>
             <button type="submit" className={styles.submitButton}>
-             {loading ? "Enviando..." : "Enviar Mensagem"}
+              {loading ? "Enviando..." : "Enviar Mensagem"}
             </button>
           </form>
         </article>
