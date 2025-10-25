@@ -9,10 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import cartHook from "../hooks/cartHook";
 import type { Cart } from "../types";
 function Navbar() {
-  const { itens } = cartHook<Cart>("cart", []);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,17 +39,7 @@ function Navbar() {
     setSearchResults([]);
   };
 
-  useEffect(() => {
-    if (searchTerm.trim() === "") {
-      setSearchResults([]);
-      return;
-    }
-    const term = searchTerm.trim().toLowerCase();
-    const searchResult = itens.filter((item) =>
-      item.sabor.toLowerCase().includes(term)
-    );
-    setSearchResults(searchResult);
-  }, [searchTerm, itens]);
+
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {

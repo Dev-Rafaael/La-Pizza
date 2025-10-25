@@ -1,62 +1,87 @@
 import styles from "../styles/Carrinho.module.css";
-import cartHook from "../hooks/cartHook";
 import type { Cart } from "../types";
 import { Link } from "react-router-dom";
 import visa from "../assets/IMG/visa.png";
 import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
+import { api } from "../api/api";
+import { id } from "zod/locales";
 function Carrinho() {
   const [newQuantidade, setNewQuantidade] = useState<number>(0);
-  const { itens, deletarItem, atualizarItem } = cartHook<Cart>("cart", []);
   const [editId, setEditId] = useState<number | null>(null);
+  const [itens,setItens]= useState<Cart[]>([])
   const [animatePrices, setAnimatePrices] = useState<{
     [key: number]: boolean;
   }>({});
 
-  // console.log(itens);
-
-  const deletar = (index: number) => {
-    const confirm = window.confirm("Tem Certeza que deseja Deletar?");
-    if (confirm) {
-      deletarItem(index);
-      toast.error("🍕 Pedido Deletado com sucesso!");
+  useEffect(()=>{
+    const fetchItens = async()=>{
+    try {
+      const response = (await api.get('/cart/')).data
+      setItens(response)
+    } catch (error) {
+      console.log(error);     
     }
-  };
+  }
+  fetchItens()
+  },[])
+
+  const deletarItem = async (id:number)=>{
+     if(!id) return
+    try {  
+        await api.delete(`/cart/${id}`)
+       toast.error("🍕 Pedido Deletado com sucesso!"); 
+       setItens((prev)=>
+      prev.filter((item) => item.id !== id ))
+    } catch (error) {
+      console.log(error);
+       toast.error("🍕 Pedido Não Foi deletado!");
+    }
+  }
   const edit = (item: Cart) => {
-    setEditId(item.cartId);
+    setEditId(item.id);
     setNewQuantidade(item.unidades);
   };
+  const editItem = async (e:FormEvent,id:number)=>{
+    e.preventDefault()
 
-  const editar = (e: FormEvent) => {
-    e.preventDefault();
-
-    if (editId != null) {
-      const itemOriginal = itens.find((item) => item.cartId === editId);
-      if (!itemOriginal) return;
-      const novoItem = {
-        ...itemOriginal,
-        unidades: newQuantidade,
+    if(!id) return
+  
+    const itemOriginal = itens.find((item)=> item.id === id)
+    if(!itemOriginal) return
+    
+    const dataNew = { 
+    ...itemOriginal,
+        unidades:newQuantidade,
         precoTotal: itemOriginal.preco * newQuantidade,
-      };
-
-      atualizarItem(novoItem);
-      toast.success("🍕 Pedido Atualizado com sucesso!");
-      setEditId(null);
-      setNewQuantidade(0);
-    } else {
-      return itens;
     }
-  };
+    try {
+      const updatedItem =  (await api.put(`/cart/${id}`,dataNew)).data
+       toast.success("🍕 Pedido Atualizado com sucesso!");
+
+       setItens((prev)=>
+      prev.filter((item)=> item.id === id ? updatedItem : item ))
+
+      setEditId(null);
+    } catch (error) {
+      console.log(error);
+      toast.success("🍕 Não Foi possivel atualizar!");
+
+    }
+  
+}
+
   const valorTotal = itens.reduce((acc, cur) => cur.precoTotal + acc, 0);
-  const triggerAnimation = (cartId: number) => {
-    setAnimatePrices((prev) => ({ ...prev, [cartId]: true }));
+  const triggerAnimation = (id: number) => {
+    setAnimatePrices((prev) => ({ ...prev, [id]: true }));
 
     setTimeout(() => {
-      setAnimatePrices((prev) => ({ ...prev, [cartId]: false }));
+      setAnimatePrices((prev) => ({ ...prev, [id]: false }));
     }, 400);
   };
+console.log(itens);
 
   return (
     <section className={styles.cartSection}>
@@ -67,7 +92,7 @@ function Carrinho() {
         <article className={styles.cartContent}>
           <div className={styles.itensList}>
             {itens.map((pizza) => (
-              <article key={pizza.cartId} className={styles.item}>
+              <article key={pizza.id} className={styles.item}>
                 <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
                 <article className={styles.detailsList}>
                   <div className={styles.infoItem}>
@@ -79,15 +104,15 @@ function Carrinho() {
                     </h2>
                     <h2>
                       <span>Quantidade</span>
-                      {editId === pizza.cartId ? (
-                        <form onSubmit={editar} className={styles.quantityForm}>
+                      {editId === pizza.id ? (
+                        <form onSubmit={(e)=>editItem(e,pizza.id)} className={styles.quantityForm}>
                           <div className="">
                             <button
                               type="button"
                               className={styles.qtyBtn}
                               onClick={() => {
                                 setNewQuantidade((q) => q - 1);
-                                triggerAnimation(pizza.cartId);
+                                triggerAnimation(pizza.id);
                               }}
                             >
                               −
@@ -99,7 +124,7 @@ function Carrinho() {
                               value={newQuantidade}
                               onChange={(e) => {
                                 setNewQuantidade(Number(e.target.value));
-                                triggerAnimation(pizza.cartId);
+                                triggerAnimation(pizza.id);
                               }}
                               className={styles.qtyInput}
                             />
@@ -109,7 +134,7 @@ function Carrinho() {
                               className={styles.qtyBtn}
                               onClick={() => {
                                 setNewQuantidade((q) => q + 1);
-                                triggerAnimation(pizza.cartId);
+                                triggerAnimation(pizza.id);
                               }}
                             >
                               +
@@ -130,11 +155,11 @@ function Carrinho() {
                       <span>Preço Total</span>
                       <p
                         className={`${styles.totalPrice} ${
-                          animatePrices[pizza.cartId] ? styles.animate : ""
+                          animatePrices[pizza.id] ? styles.animate : ""
                         }`}
                       >
                         R$
-                        {editId === pizza.cartId
+                        {editId === pizza.id
                           ? (pizza.preco * newQuantidade).toFixed(2)
                           : pizza.precoTotal.toFixed(2)}
                       </p>
@@ -151,7 +176,7 @@ function Carrinho() {
                 </article>
                 <div className={styles.actions}>
                   <div className={styles.actionBtn}>
-                    <button onClick={() => deletar(pizza.cartId)}>🗑️</button>
+                    <button onClick={() => deletarItem(pizza.id)}>🗑️</button>
                     <button
                       className={styles.editBtn}
                       onClick={() => edit(pizza)}

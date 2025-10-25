@@ -1,8 +1,8 @@
   import { useParams } from "react-router-dom";
   import styles from "../styles/Orçamento.module.css";
-  import React, { useEffect, useState } from "react";
+  import React, { useEffect, useState, type FormEvent } from "react";
   import { api } from "../api/api";
-  import type { Pizzas } from "../types";
+  import type { Orcamento, Pizzas } from "../types";
 
   function Orçamento() {
     const [precoTotal, setPrecoTotal] = useState<number>(0.0);
@@ -11,6 +11,8 @@
     // const navigate = useNavigate();
     const { sabor } = useParams();
     const [pizzas, setPizzas] = useState<Pizzas[]>([]);
+    const [orcamento, setOrcamento] = useState<Orcamento[]>([]);
+    const [editId,setEditId]=useState<number | null>(null)
     useEffect(() => {
       const fetchPizza = async () => {
         try {
@@ -41,15 +43,48 @@
       return
       }
       try {
-        const newPizza = {cardId:1,...pizzaSelecionada,unidades,adicionais,precoTotal}
+        const newPizza = {...pizzaSelecionada,unidades,adicionais,precoTotal}
+        const pizzaCart = await api.post('cart/',newPizza)
         const pizzaDB = await api.post('/orcamento/criar',newPizza)
         console.log(pizzaDB.data);
-
+        console.log(pizzaCart.data);
+        
       } catch (error) {
         console.log(error);
         
       }
     };
+    const edit = (item:Orcamento)=>{
+      setEditId(item.id)
+    }
+    const handleEdit = async(e:FormEvent,id:number)=>{
+      e.preventDefault()
+      const dadosOriginais = orcamento.find((prev)=> prev.id === id )
+      const dados = {
+        ...dadosOriginais,
+        precoTotal,
+        unidades,
+        adicionais
+      }
+      try {
+        const updateOrcamento = await api.put('/orcamento/',dados)
+        setOrcamento((prev)=>
+        prev.filter((item)=> item.id === id ? updateOrcamento : item))
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+    const handleDelete = async (e:FormEvent,id:number)=>{
+      try {
+        if(id){
+          await api.delete(`/orcamento/${id}`)
+        }
+      } catch (error) {
+        
+      }
+    }
+
     const opcoes = ["Salame", "Cheddar", "Catupiry", "Bacon"];
     const toggleOpcao = (opcao: string) => {
       setAdicionais((prev) =>
