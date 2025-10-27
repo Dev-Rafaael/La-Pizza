@@ -1,4 +1,4 @@
-import checkoutHook from "../hooks/checkoutHook";
+import checkoutHook from "../hooks/useCheckout";
 import type { Checkout } from "../types";
 
 describe("Irei verificar Checkout", () => {

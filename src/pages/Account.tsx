@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import accountHook from "../hooks/accountHook";
+import accountHook from "../hooks/useAccount";
 import styles from "../styles/Account.module.css";
 import type { Account } from "../types";
 

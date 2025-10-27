@@ -1,4 +1,4 @@
-import orcamentoHook from "../hooks/orcamentoHook";
+import orcamentoHook from "../hooks/useOrcamento";
 import type { Orcamento } from "../types";
 
 describe('Orcamento Hook', () => {

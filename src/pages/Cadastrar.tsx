@@ -1,55 +1,27 @@
-import { useState, type FormEvent } from "react";
+import useCadastrar from "../hooks/useCadastrar";
 import styles from "../styles/Cadastrar.module.css";
-import type { Account } from "../types";
-import accountHook from "../hooks/accountHook";
-import { toast } from "react-toastify";
+
 function Cadastrar() {
-  const { criarAccount } = accountHook<Account>("account", []);
-  const [nome, setNome] = useState<string>("");
-  const [sobreNome, setSobreNome] = useState<string>("");
-  const [cpf, setCPF] = useState<string>("");
-  const [sexo, setSexo] = useState<string>("");
-  const [nascimento, setNascimento] = useState<string>("");
-  const [telefone, setTelefone] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [loading, setLoading] = useState(false);
-  // const [cep, setCEP] = useState<string>("");
-  // const [estado, setEstado] = useState<string>("");
-  // const [cidade, setCidade] = useState<string>("");
-  // const [numero, setNumero] = useState<string>("");
-  // const [complemento, setComplemento] = useState<string>("");
+  const {
+    nome,
+    setNome,
+    sobreNome,
+    setSobreNome,
+    cpf,
+    setCPF,
+    sexo,
+    setSexo,
+    nascimento,
+    setNascimento,
+    telefone,
+    setTelefone,
+    email,
+    setEmail,
+    loading,
+    setLoading,
+    handleAccount,
+  } = useCadastrar();
 
-  const handleAccount = (e: FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    const newAccount = criarAccount(
-      nome,
-      sobreNome,
-      cpf,
-      sexo,
-      nascimento,
-      email,
-      telefone
-      // cep,
-      // estado,
-      // cidade,
-      // numero,
-      // complemento
-    );
-
-    if (newAccount) {
-      toast.success("🍕 Pedido realizado com sucesso!");
-      console.log(newAccount);
-      setLoading(false);
-    } else {
-      toast.error(
-        "Não foi possivel fazer a compra! Tente Novamente Mais tarde!"
-      );
-      setLoading(false);
-
-      return;
-    }
-  };
   return (
     <main className={styles.mainCadastro}>
       <div className={styles.navCadastro}>

@@ -1,4 +1,4 @@
-import accountHook from "../hooks/accountHook";
+import accountHook from "../hooks/useAccount";
 import type { Account } from "../types";
 
 describe('Name of the group', () => {

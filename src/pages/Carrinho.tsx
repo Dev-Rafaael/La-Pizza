@@ -1,87 +1,23 @@
 import styles from "../styles/Carrinho.module.css";
-import type { Cart } from "../types";
 import { Link } from "react-router-dom";
 import visa from "../assets/IMG/visa.png";
 import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
-import { useEffect, useState, type FormEvent } from "react";
-import { toast } from "react-toastify";
-import { api } from "../api/api";
-import { id } from "zod/locales";
+import useCart from "../hooks/useCart";
+
 function Carrinho() {
-  const [newQuantidade, setNewQuantidade] = useState<number>(0);
-  const [editId, setEditId] = useState<number | null>(null);
-  const [itens,setItens]= useState<Cart[]>([])
-  const [animatePrices, setAnimatePrices] = useState<{
-    [key: number]: boolean;
-  }>({});
-
-  useEffect(()=>{
-    const fetchItens = async()=>{
-    try {
-      const response = (await api.get('/cart/')).data
-      setItens(response)
-    } catch (error) {
-      console.log(error);     
-    }
-  }
-  fetchItens()
-  },[])
-
-  const deletarItem = async (id:number)=>{
-     if(!id) return
-    try {  
-        await api.delete(`/cart/${id}`)
-       toast.error("🍕 Pedido Deletado com sucesso!"); 
-       setItens((prev)=>
-      prev.filter((item) => item.id !== id ))
-    } catch (error) {
-      console.log(error);
-       toast.error("🍕 Pedido Não Foi deletado!");
-    }
-  }
-  const edit = (item: Cart) => {
-    setEditId(item.id);
-    setNewQuantidade(item.unidades);
-  };
-  const editItem = async (e:FormEvent,id:number)=>{
-    e.preventDefault()
-
-    if(!id) return
-  
-    const itemOriginal = itens.find((item)=> item.id === id)
-    if(!itemOriginal) return
-    
-    const dataNew = { 
-    ...itemOriginal,
-        unidades:newQuantidade,
-        precoTotal: itemOriginal.preco * newQuantidade,
-    }
-    try {
-      const updatedItem =  (await api.put(`/cart/${id}`,dataNew)).data
-       toast.success("🍕 Pedido Atualizado com sucesso!");
-
-       setItens((prev)=>
-      prev.filter((item)=> item.id === id ? updatedItem : item ))
-
-      setEditId(null);
-    } catch (error) {
-      console.log(error);
-      toast.success("🍕 Não Foi possivel atualizar!");
-
-    }
-  
-}
-
-  const valorTotal = itens.reduce((acc, cur) => cur.precoTotal + acc, 0);
-  const triggerAnimation = (id: number) => {
-    setAnimatePrices((prev) => ({ ...prev, [id]: true }));
-
-    setTimeout(() => {
-      setAnimatePrices((prev) => ({ ...prev, [id]: false }));
-    }, 400);
-  };
-console.log(itens);
+  const {
+    itens,
+    newQuantidade,
+    setNewQuantidade,
+    editId,
+    animatePrices,
+    deletarItem,
+    edit,
+    editItem,
+    valorTotal,
+    triggerAnimation,
+  } = useCart();
 
   return (
     <section className={styles.cartSection}>
@@ -105,7 +41,10 @@ console.log(itens);
                     <h2>
                       <span>Quantidade</span>
                       {editId === pizza.id ? (
-                        <form onSubmit={(e)=>editItem(e,pizza.id)} className={styles.quantityForm}>
+                        <form
+                          onSubmit={(e) => editItem(e, pizza.id)}
+                          className={styles.quantityForm}
+                        >
                           <div className="">
                             <button
                               type="button"
@@ -185,7 +124,7 @@ console.log(itens);
                     </button>
                   </div>{" "}
                   <div className={styles.actionPay}>
-                    <Link to={`/Identificação/${pizza.cartId}`}>Pagar</Link>
+                    <Link to={`/Identificação/${pizza.id}`}>Pagar</Link>
                   </div>
                 </div>
               </article>

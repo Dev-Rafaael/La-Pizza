@@ -1,4 +1,4 @@
-import cartHook from "../hooks/cartHook";
+import cartHook from "../hooks/useCart";
 import type { Cart } from "../types";
 
 describe('Test the cart Features', () => {

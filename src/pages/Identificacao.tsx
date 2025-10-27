@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Identificacao.module.css";
-import checkoutHook from "../hooks/checkoutHook";
+import checkoutHook from "../hooks/useCheckout";
 import type { Checkout, Orcamento } from "../types";
-import orcamentoHook from "../hooks/orcamentoHook";
+import orcamentoHook from "../hooks/useOrcamento";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
 function Identificacao() {

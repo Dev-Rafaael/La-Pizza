@@ -2,16 +2,17 @@ import styles from "../styles/Cardapio.module.css";
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import type { Pizzas } from "../types";
+import type { Pizza } from "../types";
 import { api } from "../api/api";
 function Cardapio() {
-  const [pizzas, setPizzas] = useState<Pizzas[]>([]);
+  const [pizzas, setPizzas] = useState<Pizza[]>([]);
 
   useEffect(() => {
     const handlePizzas = async () => {
       try {
         const responsePizza = await api.get("/pizzas/show");
         setPizzas(responsePizza.data);
+        
       } catch (error) {
         console.log(error);
       }

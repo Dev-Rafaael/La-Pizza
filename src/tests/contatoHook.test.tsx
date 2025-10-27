@@ -1,4 +1,4 @@
-import contatoHook from "../hooks/contatoHook";
+import contatoHook from "../hooks/useContato";
 import type { Contact } from "../types";
 
 describe('Name of the group', () => {
