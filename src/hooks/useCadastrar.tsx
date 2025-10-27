@@ -6,10 +6,12 @@ function useCadastrar() {
       const [nome, setNome] = useState<string>("");
       const [sobreNome, setSobreNome] = useState<string>("");
       const [cpf, setCPF] = useState<string>("");
+      const [email, setEmail] = useState<string>("");
+      const [senha, setSenha] = useState<string>("");
       const [sexo, setSexo] = useState<string>("");
       const [nascimento, setNascimento] = useState<string>();
       const [telefone, setTelefone] = useState<string>("");
-      const [email, setEmail] = useState<string>("");
+    
       const [loading, setLoading] = useState(false);
     
     
@@ -21,9 +23,10 @@ function useCadastrar() {
       nome,
       sobreNome,
       cpf,
+      email,
+      senha,
       sexo,
       nascimento,
-      email,
       telefone
     }
     console.log(dataAccount);
@@ -42,7 +45,7 @@ function useCadastrar() {
       return;
     }
   };
-  return {nome, setNome,sobreNome, setSobreNome,cpf, setCPF,sexo, setSexo,nascimento, setNascimento,telefone, setTelefone,email, setEmail,loading, setLoading,handleAccount} as const
+  return {nome, setNome,sobreNome, setSobreNome,cpf,email, setEmail,senha, setSenha, setCPF,sexo, setSexo,nascimento, setNascimento,telefone, setTelefone,loading, setLoading,handleAccount} as const
 }
 
 export default useCadastrar

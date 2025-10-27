@@ -1,11 +1,10 @@
-import  { useState } from 'react'
+
 import styles from '../styles/Login.module.css'
+import useLogin from '../hooks/useLogin'
 function Login() {
-    const [email, setEmail] = useState( ''); 
-  const [senha, setSenha] = useState('');
-     const [loading, setLoading] = useState(false);
+const {email, setEmail,senha, setSenha,loading,handleSubmit} = useLogin()
   return (
-    <form  className={styles.loginForm}>
+    <form  className={styles.loginForm} onSubmit={handleSubmit}>
       <div className={styles.loginContent}>
         <h2>ENTRAR</h2>
         

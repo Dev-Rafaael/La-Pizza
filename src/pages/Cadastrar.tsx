@@ -17,8 +17,9 @@ function Cadastrar() {
     setTelefone,
     email,
     setEmail,
+    senha,
+    setSenha,
     loading,
-    setLoading,
     handleAccount,
   } = useCadastrar();
 
@@ -84,7 +85,18 @@ function Cadastrar() {
                   required
                 />
               </div>
-
+ <div>
+                <label htmlFor="senha">Senha</label>
+                <input
+                  type="password"
+                  id="senha"
+                  name="senha"
+                  placeholder="Crie uma senha"
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  required
+                />
+              </div>
               <div>
                 <label htmlFor="sexo">Sexo</label>
                 <select
@@ -128,80 +140,6 @@ function Cadastrar() {
               </div>
             </div>
           </fieldset>
-          {/* 
-    <fieldset>
-      <legend>Endereço</legend>
-      <div className={styles.grid2}>
-         <div>
-          <label htmlFor="CEP">CEP</label>
-          <input
-            type="text"
-            id="CEP"
-            name="CEP"
-                 placeholder="Digite Seu CEP"
-            value={cep}
-            onChange={(e) => setCEP(e.target.value)}
-            required
-          />
-        </div>
-            </div>
-<div className={styles.grid2}>
-        <div>
-          <label htmlFor="Estado">Estado</label>
-          <select
-            id="Estado"
-            name="Estado"
-            value={estado}
-           
-            onChange={(e) => setEstado(e.target.value)}
-            required
-          >
-            <option value="SaoPaulo" selected>
-              São Paulo
-            </option>
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="Cidade">Cidade</label>
-          <input
-            type="text"
-            id="Cidade"
-            name="Cidade"
-                placeholder="Digite Sua Cidade"
-            value={cidade}
-            onChange={(e) => setCidade(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="Numero">Número</label>
-          <input
-            type="text"
-            id="Numero"
-            name="Numero"
-                   placeholder="Digite Seu Numero"
-            value={numero}
-            onChange={(e) => setNumero(e.target.value)}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="Complemento">Complemento</label>
-          <input
-            type="text"
-            id="Complemento"
-            name="Complemento"
-                   placeholder="Digite O Complemeto"
-            value={complemento}
-            onChange={(e) => setComplemento(e.target.value)}
-          />
-        </div>
-      </div>  
-    </fieldset> */}
-
           <div className={styles.btn}>
             <button
               type="submit"
