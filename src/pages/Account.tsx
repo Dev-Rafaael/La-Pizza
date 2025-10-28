@@ -1,12 +1,34 @@
-import { Link } from "react-router-dom";
-import accountHook from "../hooks/useAccount";
+import { Link, useNavigate } from "react-router-dom";
+
 import styles from "../styles/Account.module.css";
 import type { Account } from "../types";
-
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 function Account() {
-  const { account, deletarAccount } = accountHook<Account>("account", []);
+  const [account, setAccount] = useState<Account[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+
+    if (user) {
+      try {
+        setAccount([JSON.parse(user)]);
+      } catch (error) {
+        console.error("Erro ao converter JSON do usuário:", error);
+        navigate("/login");
+      }
+    } else {
+      navigate("/perfil");
+    }
+  }, [navigate]);
+  
+  const deletarAccount = () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    setAccount([])
+  };
 
   return (
     <section className={styles.accountContent}>
@@ -47,9 +69,7 @@ function Account() {
                       </figcaption>
 
                       <div className={styles.userActions}>
-                        <button onClick={() => deletarAccount(u.id)}>
-                          Logout
-                        </button>
+                        <button onClick={() => deletarAccount()}>Logout</button>
                         <FontAwesomeIcon
                           icon={faPenToSquare}
                           className={styles.editIcon}
@@ -88,13 +108,6 @@ function Account() {
                           <dt>Data de Nascimento</dt>
                           <dd>{u.nascimento}</dd>
                         </div>
-
-                        {/* <div className={styles.flexRow}>
-                      <dt>Endereço</dt>
-                      <dd>
-                        {u.estado} - {u.cidade}, {u.numero} - {u.complemento} - {u.cep}
-                      </dd>
-                    </div> */}
                       </dl>
                     </article>
                   </section>

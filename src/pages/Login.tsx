@@ -1,8 +1,10 @@
 
 import styles from '../styles/Login.module.css'
 import useLogin from '../hooks/useLogin'
+import { useNavigate } from 'react-router-dom';
 function Login() {
 const {email, setEmail,senha, setSenha,loading,handleSubmit} = useLogin()
+const navigate = useNavigate(); 
   return (
     <form  className={styles.loginForm} onSubmit={handleSubmit}>
       <div className={styles.loginContent}>
@@ -26,7 +28,7 @@ const {email, setEmail,senha, setSenha,loading,handleSubmit} = useLogin()
           <button type="submit" className={styles.btnEntrar} disabled={loading}>
             {loading ? 'Entrando...' : 'Entrar'}
           </button>
-          <button type="button"  className={styles.btnFechar}>Cancelar</button>
+          <button type="button"  className={styles.btnFechar} onClick={() => navigate(-1)}>Cancelar</button>
         </div>
       </div>
     </form>
