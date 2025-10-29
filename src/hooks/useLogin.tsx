@@ -2,24 +2,33 @@ import { useState, type FormEvent } from "react";
 import { api } from "../api/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useUserStore } from "../store/useUserStore";
+import { loginSchema } from "../schemas/loginSchema";
 
 function useLogin() {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
+   const login = useUserStore((s)=> s.login)
 const handleSubmit = async (e: FormEvent) => {
+ 
   e.preventDefault();
   setLoading(true);
 
   try {
-    if (!senha || !email) throw new Error("Credenciais não especificadas");
+    const parseResult = loginSchema.safeParse({email,senha})
+    if (parseResult.error){
+      parseResult.error.issues.forEach(err => {
+      toast.error(err.message);
+    });
+    return;
+    }
 
     const { data } = await api.post("/account/login", { email, senha });
 
     if (data?.token && data?.user) {
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      login(data.user,data.token)
       toast.success("Login feito com sucesso 🍕");
       navigate("/perfil");
     } else {

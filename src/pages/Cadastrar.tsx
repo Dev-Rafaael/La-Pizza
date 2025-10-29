@@ -85,7 +85,7 @@ function Cadastrar() {
                   required
                 />
               </div>
- <div>
+              <div>
                 <label htmlFor="senha">Senha</label>
                 <input
                   type="password"

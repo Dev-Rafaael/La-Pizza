@@ -2,10 +2,11 @@ export interface Account {
   id: number;
   nome: string;
   sobreNome: string;
+  email: string;
+  senha:string;
   cpf: string;
   sexo: string;
   nascimento: string;
-  email: string;
   telefone: string;
 
 }

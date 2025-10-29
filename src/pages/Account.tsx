@@ -4,17 +4,19 @@ import styles from "../styles/Account.module.css";
 import type { Account } from "../types";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
+import { useUserStore } from "../store/useUserStore";
 function Account() {
   const [account, setAccount] = useState<Account[]>([]);
   const navigate = useNavigate();
+  const user = useUserStore((s)=> s.user)
+  const logout = useUserStore((s)=> s.logout)
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
 
     if (user) {
       try {
-        setAccount([JSON.parse(user)]);
+        setAccount([user]);
       } catch (error) {
         console.error("Erro ao converter JSON do usuário:", error);
         navigate("/login");
@@ -22,14 +24,15 @@ function Account() {
     } else {
       navigate("/perfil");
     }
-  }, [navigate]);
+  }, [user,navigate]);
   
   const deletarAccount = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    logout()
     setAccount([])
   };
+  // const editar = ()=>{
 
+  // }
   return (
     <section className={styles.accountContent}>
       {account.length === 0 ? (
