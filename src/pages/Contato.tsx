@@ -1,56 +1,8 @@
-import { useState } from "react";
 import styles from "../styles/Contato.module.css";
-import { toast } from "react-toastify";
-import { api } from "../api/api";
-import { schemaContato } from "../schemas/contatosSchema";
+import UseContato from "../hooks/useContato";
 
 function Contato() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    sobreNome: "",
-    email: "",
-    assunto: "",
-    mensagem: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-  const [loading, setLoading] = useState<boolean>(false);
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    const parseResult = schemaContato.safeParse(formData);
-
-    if (!parseResult.success) {
-      parseResult.error.issues.forEach((err) => {
-        toast.warning(`🛎️ ${err.message}`);
-      });
-
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api.post("/contatos/criar", formData);
-      toast.success("🛎️ Mensagem Enviada com sucesso!");
-      setFormData({
-        nome: "",
-        sobreNome: "",
-        email: "",
-        assunto: "",
-        mensagem: "",
-      });
-    } catch (error) {
-      console.log(error);
-      toast.warning("🛎️ Mensagem Não foi Enviada!");
-    } finally {
-      setLoading(false);
-    }
-  };
+ const {formData,handleChange,loading,handleSubmit} = UseContato()
 
   return (
     <main className={styles.contatoMain}>

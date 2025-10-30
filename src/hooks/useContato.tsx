@@ -1,35 +1,56 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { toast } from 'react-toastify';
+import { api } from '../api/api';
+import { schemaContato } from '../schemas/contatosSchema';
 
-function contatoHook<T extends {id:number}>(key:string, initialValue: T[]= []) {
-    const [contatos,setContatos]= useState<T[]>(()=>{
-    const contatoStorage = localStorage.getItem(key)
-    return contatoStorage ? JSON.parse(contatoStorage) : initialValue
-    })
+function UseContato() {
+   const [loading, setLoading] = useState<boolean>(false);
+    const [formData, setFormData] = useState({
+    nome: "",
+    sobreNome: "",
+    email: "",
+    assunto: "",
+    mensagem: "",
+  });
 
-    useEffect(()=>{
-        localStorage.setItem(key,JSON.stringify(contatos))
-    },[contatos,key])
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+   const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    const parseResult = schemaContato.safeParse(formData);
 
+    if (!parseResult.success) {
+      parseResult.error.issues.forEach((err) => {
+        toast.warning(`🛎️ ${err.message}`);
+      });
 
-     const addContatos = (item: T)=>{
-        setContatos((prev)=> [...prev,item])
-     }
+      setLoading(false);
+      return;
+    }
 
-     const criarContato = (nome:string,sobreNome:string,email:string,assunto:string,mensagem:string)=>{
-        const newContato: T = {nome,sobreNome,email,assunto,mensagem,id: Date.now()} as T
-        addContatos(newContato)
-     }
-
-     const atualizarContato = (item: T)=>{
-        setContatos((prev)=>
-        prev.map((u)=> u.id === item.id ? item : u))
-     }
-
-     const deletarContato = (index:number)=>{
-        setContatos((prev)=>
-        prev.filter((item)=> item.id !== index))
-     }
-  return {contatos,addContatos,criarContato,atualizarContato,deletarContato} as const
+    try {
+      await api.post("/contatos/criar", formData);
+      toast.success("🛎️ Mensagem Enviada com sucesso!");
+      setFormData({
+        nome: "",
+        sobreNome: "",
+        email: "",
+        assunto: "",
+        mensagem: "",
+      });
+    } catch (error) {
+      console.log(error);
+      toast.warning("🛎️ Mensagem Não foi Enviada!");
+    } finally {
+      setLoading(false);
+    }
+  };
+  return {formData,setFormData,handleChange,loading,setLoading,handleSubmit} as const
 }
 
-export default contatoHook
+export default UseContato

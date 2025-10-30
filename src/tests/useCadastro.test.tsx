@@ -3,7 +3,18 @@ import { api } from "../api/api";
 import useCadastrar from "../hooks/useCadastrar"
 import { render, screen, fireEvent } from "@testing-library/react";
 
+  jest.mock("../api/api", () => ({
+  api: {
+    post: jest.fn(() => Promise.resolve({ data: { id: 1 } })), 
+  },
+}));
 
+jest.mock("react-toastify", () => ({
+  toast: {
+    success: jest.fn(),
+    error: jest.fn(),
+  },
+}));
 const MockUseCadastro = ()=>{
     const  {
     nome,
@@ -25,18 +36,7 @@ const MockUseCadastro = ()=>{
     loading,
     handleAccount,
   } = useCadastrar()
-  jest.mock("../api/api", () => ({
-  api: {
-    post: jest.fn(() => Promise.resolve({ data: { id: 1 } })), 
-  },
-}));
 
-jest.mock("react-toastify", () => ({
-  toast: {
-    success: jest.fn(),
-    error: jest.fn(),
-  },
-}));
  return(
   <form onSubmit={handleAccount} >
           <fieldset>
