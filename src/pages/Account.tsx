@@ -1,38 +1,28 @@
-import { Link, useNavigate } from "react-router-dom";
-
+import { Link} from "react-router-dom";
 import styles from "../styles/Account.module.css";
 import type { Account } from "../types";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {  useEffect, useState } from "react";
-import { useUserStore } from "../store/useUserStore";
+import { IMaskInput } from "react-imask";
+
+import UseAccount from "../hooks/useAccount";
 function Account() {
-  const [account, setAccount] = useState<Account[]>([]);
-  const navigate = useNavigate();
-  const user = useUserStore((s)=> s.user)
-  const logout = useUserStore((s)=> s.logout)
-
-  useEffect(() => {
-
-    if (user) {
-      try {
-        setAccount([user]);
-      } catch (error) {
-        console.error("Erro ao converter JSON do usuário:", error);
-        navigate("/login");
-      }
-    } else {
-      navigate("/perfil");
-    }
-  }, [user,navigate]);
-  
-  const deletarAccount = () => {
-    logout()
-    setAccount([])
-  };
-  // const editar = ()=>{
-
-  // }
+const { account,
+    nome,
+    setNome,
+    sobreNome,
+    setSobreNome,
+    nascimento,
+    setNascimento,
+    sexo,
+    setSexo,
+    telefone,
+    setTelefone,
+    deletarAccount,
+    edit,
+    handleCloseModal,
+    isModalOpen,
+    handleEdit} = UseAccount()
   return (
     <section className={styles.accountContent}>
       {account.length === 0 ? (
@@ -48,10 +38,11 @@ function Account() {
           </div>
         </main>
       ) : (
-        <header className={styles.navAccount}>
-          <main className={styles.mainAccount}>
+        <>
+          <header className={styles.navAccount}>
             <h1>MINHA CONTA</h1>
-
+          </header>
+          <main className={styles.mainAccount}>
             <section className={styles.accountSection}>
               {account.map((u, index) => (
                 <article key={index} className={styles.userCard}>
@@ -76,6 +67,7 @@ function Account() {
                         <FontAwesomeIcon
                           icon={faPenToSquare}
                           className={styles.editIcon}
+                          onClick={() => edit()}
                         />
                       </div>
                     </figure>
@@ -118,7 +110,93 @@ function Account() {
               ))}
             </section>
           </main>
-        </header>
+        </>
+      )}
+      {isModalOpen && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h2>Editar Conta</h2>
+
+            <form onSubmit={handleEdit} className={styles.formGrid}>
+              <div className={styles.formGroup}>
+                <label htmlFor="nome">Nome:</label>
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="sobreNome">Sobrenome:</label>
+                <input
+                  type="text"
+                  id="sobreNome"
+                  name="sobreNome"
+                  value={sobreNome}
+                  onChange={(e) => setSobreNome(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="sexo">Sexo:</label>
+                <select
+                  id="sexo"
+                  name="sexo"
+                  value={sexo}
+                  onChange={(e) => setSexo(e.target.value)}
+                  required
+                >
+                  <option value="" disabled>
+                    Selecione uma opção
+                  </option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                </select>
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="data">Data de Nascimento:</label>
+                <input
+                  type="date"
+                  id="data"
+                  name="data"
+                  value={nascimento}
+                  onChange={(e) => setNascimento(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroupFull}>
+                <label htmlFor="telefone">DDD + Celular:</label>
+                <IMaskInput
+                  mask="(00) 00000-0000"
+                  value={telefone}
+                  onAccept={(value: string) => setTelefone(value)}
+                  placeholder="(11) 91092-8922"
+                  required
+                />
+              </div>
+
+              <div className={styles.modalButtons}>
+                <button
+                  type="button"
+                  onClick={handleCloseModal}
+                  className={styles.closeButton}
+                >
+                  Voltar
+                </button>
+                <button type="submit" className={styles.saveButton}>
+                  Salvar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </section>
   );
