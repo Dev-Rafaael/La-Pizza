@@ -11,7 +11,6 @@ interface User {
   cpf: string;
   sexo: string;
   nascimento: string;
-
   telefone: string;
 }
 
