@@ -131,7 +131,7 @@ describe('Name of the group', () => {
       fireEvent.click(await screen.getByText('Enviar Mensagem'))
 
 
-      expect(api.post).toHaveBeenCalledWith('account/',{
+      expect(api.post).toHaveBeenCalledWith('/contatos/criar',{
         nome:'Rafael',
         sobreNome:'Moraes'
       })

@@ -1,82 +1,19 @@
-import React, { useEffect, useState } from "react";
 import styles from "../styles/Identificacao.module.css";
-import checkoutHook from "../hooks/useCheckout";
-import type { Checkout, Orcamento } from "../types";
-import orcamentoHook from "../hooks/useOrcamento";
-import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import UseCheckout from "../hooks/useCheckout";
+
 function Identificacao() {
-  const { orcamento } = orcamentoHook<Orcamento>("orcamento", []);
-  const { identifier, criarIdentifier } = checkoutHook<Checkout>(
-    "checkout",
-    []
-  );
-  const [nome, setNome] = useState<string>("");
-  const [sobreNome, setSobreNome] = useState<string>("");
-  const [cpf, setCPF] = useState<string>("");
-  const [sexo, setSexo] = useState<string>("");
-  const [nascimento, setNascimento] = useState<string>("");
-  const [telefone, setTelefone] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [cep, setCEP] = useState<string>("");
-   const [estado, setEstado] = useState<string>("");
-  const [cidade, setCidade] = useState<string>("");
-  const [numero, setNumero] = useState<string>("");
-  const [complemento, setComplemento] = useState<string>("");
-  const { cartId } = useParams();
-  const dataOrcamento = orcamento.find(
-    (value) => value.cartId === Number(cartId)
-  );
-  // console.log(dataOrcamento);
-
-  if (!dataOrcamento) {
-    return <p>Pizza Não Encontrada</p>;
-  }
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const newIdentifier = criarIdentifier(
-        nome,
-      sobreNome,
-      cpf,
-      sexo,
-      nascimento,
-      email,
-      telefone,
-      cep,
-      estado,
-      cidade,
-      numero,
-      complemento,
-      dataOrcamento?.sabor,
-      dataOrcamento?.descricao,
-      dataOrcamento?.preco,
-      dataOrcamento?.imagem,
-      dataOrcamento?.precoTotal,
-      dataOrcamento?.unidades,
-      dataOrcamento?.adicionais,
-      dataOrcamento?.cartId
-    );
-
-    if (newIdentifier) {
-    toast.success("🍕 Pedido realizado com sucesso!");
-      console.log(newIdentifier);
-    } else {
-       toast.error("Não foi possivel fazer a compra! Tente Novamente Mais tarde!");
-
-      return;
-    }
-  };
-  useEffect(() => {
-    setNome("");
-    setSobreNome("");
-    setCPF("");
-    setSexo("");
-    setNascimento("");
-    setEmail("");
-    setCEP("");
-    setNumero("");
-  }, [identifier]);
+ const {
+    nome, setNome,
+    sobreNome, setSobreNome,cpf, setCPF,sexo, setSexo,
+    nascimento, setNascimento,telefone, setTelefone,
+    email, setEmail,
+    cep, setCEP,
+    estado, setEstado,
+  cidade, setCidade,
+  numero, setNumero,
+  complemento, setComplemento,
+  handleSubmit,
+  } = UseCheckout()
   return (
     <>
       <section className={styles.Identificacao}>
@@ -269,7 +206,7 @@ function Identificacao() {
            
             </div>
 
-            {dataOrcamento ? (
+            {/* {dataOrcamento ? (
               <section className={styles.InfoPacote}>
                 <div className={styles.imgPacote}>
                   <img src={dataOrcamento.imagem} alt="Imagem Pizza" />
@@ -292,7 +229,7 @@ function Identificacao() {
               </section>
             ) : (
               ""
-            )}
+            )} */}
           </article>
         </article>
       </section>
