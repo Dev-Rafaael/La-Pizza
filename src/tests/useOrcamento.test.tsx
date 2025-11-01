@@ -1,65 +1,107 @@
-import orcamentoHook from "../hooks/useOrcamento";
-import type { Orcamento } from "../types";
+import { fireEvent, render, screen } from "@testing-library/react";
+import useOrcamento from "../hooks/useOrcamento";
+import { api } from "../api/api";
+import { toast } from "react-toastify";
 
+
+jest.mock('../api/api',()=>({
+    api:{
+        get: jest.fn(),
+        post:jest.fn(),
+        put:jest.fn(),
+        delete:jest.fn(),
+    }
+}))
+
+jest.mock('react-toastify',()=>({
+    toast:{
+        success:jest.fn(),
+        error:jest.fn()
+    }
+}))
+const MockUseOrcamento = ()=>{
+ const {
+    unidades,
+    setUnidades,
+    adicionais,
+    toggleOpcao,
+    handleSubmit,
+    precoTotal,
+    opcoes
+  } = useOrcamento();
+    return(
+        <form onSubmit={handleSubmit}>
+              <div >
+                <label htmlFor="Unidades">Unidades:</label>
+                <select
+                  name="Unidades"
+                  value={unidades}
+                  onChange={(e) => setUnidades(Number(e.target.value))}
+                  required
+                >
+                  <option value="" defaultChecked>
+                    Selecione
+                  </option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div >
+                <label htmlFor="Adicionais">Adicionais:</label>
+                {opcoes.map((opcao) => (
+                  <label key={opcao} >
+                    <input
+                      type="checkbox"
+                      value={opcao}
+                      checked={adicionais.includes(opcao)}
+                      onChange={() => toggleOpcao(opcao)}
+                    />
+                     {opcao}
+                  </label>
+                ))}
+              </div>
+
+              {
+                <h3 >
+                  {" "}
+                  Total a Pagar: R$
+                  {precoTotal
+                    }
+                </h3>
+              }
+
+              <button type="submit">Prosseguir</button>
+            </form>
+    )
+}
 describe('Orcamento Hook', () => {
     
-    test('should add Orcamento', () => {
-        const {orcamento,criarOrcamento} = orcamentoHook<Orcamento>('orcamento',[]);
-
-        criarOrcamento('1','mussarela','boa toda',29.99,'foto',29.99,1,'mussarela')
-
-        expect(orcamento).toHaveLength(1)
-        expect(orcamento[0].sabor).toBe('mussarela')
-    });
-
-    test('should delete Orcamento', () => {
-        const {orcamento,criarOrcamento,deletarOrcamento} = orcamentoHook<Orcamento>('orcamento',[]);
-
-        criarOrcamento('1','mussarela','boa toda',29.99,'foto',29.99,1,'mussarela')
-        criarOrcamento('2','calabresa','boa toda',39.99,'foto',39.99,1,'mussarela')
-
-        const oldPizza = orcamento[0]
-        deletarOrcamento(oldPizza.id)
-
-        expect(orcamento).toHaveLength(1)
-        expect(orcamento[0].sabor).toBe('calabresa')
-        expect(orcamento).not.toContainEqual(oldPizza)
-    });
-
-    test('should update Orcamento', () => {
-        const {orcamento,criarOrcamento,atualizarOrcamento} = orcamentoHook<Orcamento>('orcamento',[]);
-        criarOrcamento('1','mussarela','boa toda',29.99,'foto',29.99,1,'mussarela')
-        criarOrcamento('2','calabresa','boa toda',39.99,'foto',39.99,1,'mussarela')
-
-        const newPizza = orcamento[0]
-        atualizarOrcamento({...newPizza,preco:40.00})
-        expect(orcamento).toHaveLength(2)
-        expect(orcamento[0].preco).toBe(40.00)
-        expect(orcamento[0]).toMatchObject({
-            sabor:'mussarela',
-            preco: '40.00'
+    test('should add Orcamento',async () => {
+        
+        (api.post as jest.Mock).mockResolvedValue({
+          data: {unidades: 2}
         })
-    
-    });
 
-     // TESTE PARA VERIFICAR OS OUTROS ITENS 
+        render(<MockUseOrcamento/>)
 
-     test('should update a Pedidos and check the others', () => {
-          const {orcamento,criarOrcamento,atualizarOrcamento} = orcamentoHook<Orcamento>('orcamento',[]);
+        fireEvent.change(screen.getByLabelText('Unidades'), {target: {value:'1'}})
 
-          criarOrcamento('1','mussarela','boa toda',29.99,'foto',29.99,1,'mussarela')
-        criarOrcamento('2','calabresa','boa toda',39.99,'foto',39.99,1,'mussarela')
+        const checkbox = screen.getByText('Adicionais')
+        fireEvent.click(checkbox)
+        fireEvent.click(screen.getByText('Prosseguir'))
 
-        const newPizza = orcamento[0]
-        atualizarOrcamento({...newPizza, descricao:'Muito saborosa'})
+        expect(api.post).toHaveBeenCalledTimes(1)
+        expect(api.post).toHaveBeenCalledWith(
+            expect.stringContaining('orcamento'),
+            expect.any(Object)
+        )
+        expect(api.delete).not.toHaveBeenCalled()
+        expect(api.put).toHaveBeenCalledWith(expect.stringContaining('Parmesao'))
 
-        expect(orcamento[0]).toMatchObject({
-            id:'1',
-            sabor:'mussarela',
-            descricao: 'Muito saborosa'
-        })
-        expect(orcamento).toHaveLength(2)
-        expect(orcamento[1].descricao).toBe('boa toda')
+        expect(toast.success).toHaveBeenCalledWith('Enviado ao Carrinho')
     });
 });
 

@@ -1,14 +1,18 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
 import { api } from "../api/api";
-import type { Cart, CreateCartInput } from "../types";
+import type { Cart } from "../types";
+import { cartSchema } from "../schemas/cartSchema";
+import { useUserCart } from "../store/useCartStore";
 function useCart() { 
-  const [itens, setItens] = useState<CreateCartInput[]>([]);
+  const [itens, setItens] = useState<Cart[]>([]);
   const [newQuantidade, setNewQuantidade] = useState<number>(0);
   const [editId, setEditId] = useState<number | null>(null);
   const [animatePrices, setAnimatePrices] = useState<{
     [key: number]: boolean;
   }>({});
+  const itemUpdate = useUserCart((s)=> s.updateItem)
+  const deleteItem = useUserCart((s)=> s.deleteItem)
   useEffect(() => {
      (async () => {
       try {
@@ -27,6 +31,7 @@ function useCart() {
       await api.delete(`/cart/${id}`);
       toast.error("🍕 Pedido Deletado com sucesso!");
       setItens((prev) => prev.filter((item) => item.id !== id));
+      deleteItem(id)
     } catch (error) {
       console.log(error);
       toast.error("🍕 Pedido Não Foi deletado!");
@@ -44,20 +49,30 @@ function useCart() {
     const itemOriginal = itens.find((item) => item.id === id);
     if (!itemOriginal) return;
 
-    const dataNew = {
+    
+    try {
+      const dataNew = {
       ...itemOriginal,
       unidades: newQuantidade,
       precoTotal: itemOriginal.preco * newQuantidade,
     };
-    try {
+    const parseResult = cartSchema.safeParse(dataNew)
+
+    if(!parseResult.error){
       const updatedItem = (await api.put(`/cart/${id}`, dataNew)).data;
       toast.success("🍕 Pedido Atualizado com sucesso!");
-
+      itemUpdate(id,updatedItem)
       setItens((prev) =>
         prev.map((item) => (item.id === id ? updatedItem : item))
       );
 
       setEditId(null);
+    }else{
+      parseResult.error.issues.forEach((err)=>{
+        toast.error(err.message)
+      })
+    }
+      
     } catch (error) {
       console.log(error);
       toast.success("🍕 Não Foi possivel atualizar!");

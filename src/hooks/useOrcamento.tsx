@@ -2,6 +2,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useEffect, useState, type FormEvent } from "react";
 import { api } from "../api/api";
 import type { Orcamento,Pizzas} from "../types";
+import { schemaOrcamento } from "../schemas/orcamentoSchema";
+import { toast } from "react-toastify";
+import { useUserCart } from "../store/useCartStore";
 
 function useOrcamento() {
   const [precoTotal, setPrecoTotal] = useState<number>(0.0);
@@ -13,6 +16,7 @@ function useOrcamento() {
   const [orcamento, setOrcamento] = useState<Orcamento[]>([]);
   // const [carrinhos, setCarrinhos] = useState<Cart[]>([]);
   const [editId, setEditId] = useState<number | null>(null);
+  const addItem = useUserCart((s)=>s.addItem)
   useEffect(() => {
     (async () => {
       try {
@@ -46,13 +50,23 @@ function useOrcamento() {
           adicionais,
   
   
-    };
-console.log(newOrcamento);
+    };  
+    const parseResult = schemaOrcamento.safeParse(newOrcamento)
 
-      const pizzaDB = await api.post("/orcamentos/criar", newOrcamento);
+    if(!parseResult.error){
+       const pizzaDB = (await api.post("/orcamentos/criar", newOrcamento)).data;
         // navigate(`Identificação/${newOrcamento.userId}`)
-      console.log(pizzaDB.data);
+      console.log(pizzaDB);
       // console.log(pizzaCart);
+      addItem(pizzaDB)
+      toast.success('Enviado ao Carrinho')
+    }else{
+      parseResult.error.issues.forEach((err)=>{
+        toast.error(err.message)
+      })
+    }
+
+     
     } catch (error) {
       console.log(error);
     }
