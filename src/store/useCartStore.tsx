@@ -4,7 +4,6 @@ import { persist } from "zustand/middleware";
 
 interface Cart {
   id: number;
-  cartId: string;
   sabor: string;
   descricao: string;
   preco: number;

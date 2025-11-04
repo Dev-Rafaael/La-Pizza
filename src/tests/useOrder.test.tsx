@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import UseCheckout from "../hooks/useCheckout";
+import UseCheckout from "../hooks/useOrder";
 import { api } from "../api/api";
 import { toast } from "react-toastify";
 

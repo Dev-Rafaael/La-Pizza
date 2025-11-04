@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface Orcamento {
+interface OrderItem{
   id: number;
   sabor: string;
   descricao: string;
@@ -13,12 +13,12 @@ interface Orcamento {
   cartId: number;
 }
 
-interface UseOrcamento {
-  item: Orcamento | null;
-  addItem: (item: Orcamento) => void;
+interface UseOrderItem {
+  item: OrderItem | null;
+  addItem: (item: OrderItem) => void;
 }
 
-export const UseOrcamentoStore = create<UseOrcamento>()(
+export const UseOrcamentoStore = create<UseOrderItem>()(
   persist(
     (set) => ({
       item: null,

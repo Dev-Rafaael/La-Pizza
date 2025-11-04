@@ -1,26 +1,35 @@
-import useOrcamento from "../hooks/useOrcamento";
-import styles from "../styles/Orçamento.module.css";
+import { useNavigate } from "react-router-dom";
+import Modal from "../components/modal";
+import useOrderItem from "../hooks/useOrderItem";
+import { usePizzaStore } from "../store/usePizzaStore";
+import styles from "../styles/OrderItem.module.css";
+import { useUserCart } from "../store/useCartStore";
+import { toast } from "react-toastify";
 
 
- function Orçamento() {
+ function OrderItem() {
+   const navigate = useNavigate();
+     const addItem = useUserCart((s)=>s.addItem)
   const {
-    pizzaSelecionada,
     unidades,
     setUnidades,
     adicionais,
     toggleOpcao,
     handleSubmit,
     precoTotal,
-    opcoes
-  } = useOrcamento();
-
+    opcoes,
+    modal,
+    setModal
+  } = useOrderItem();
+  const {pizzaSelecionada} = usePizzaStore()
   if (!pizzaSelecionada) return <p>Carregando...</p>;
-
+  
   return (
     <main className={styles.orcamento}>
       <div className={styles.navOrcamento}>
         <h1>ORÇAMENTO Pizza {pizzaSelecionada.sabor}</h1>
       </div>
+      
       <section className={styles.orcamentoSection}>
         <article className={styles.productImage}>
           <img src={pizzaSelecionada.imagem} alt="Imagem Pizza" />
@@ -80,8 +89,45 @@ import styles from "../styles/Orçamento.module.css";
           </div>
         </article>
       </section>
+{modal && (
+  <Modal
+    title="Tem certeza?"
+    sabor={pizzaSelecionada.sabor}
+    imagem={pizzaSelecionada.imagem} 
+    precoTotal={precoTotal}
+    onContinue=
+      {() => {
+      addItem({
+        
+        ...pizzaSelecionada,
+        unidades,
+        adicionais,
+        precoTotal,
+      });
+      toast.success("Enviado ao Carrinho!");
+      setModal(false);
+      navigate("/Cardapio"); 
+    }
+    } 
+    onConfirm={() => {
+      addItem({
+        
+        ...pizzaSelecionada,
+        unidades,
+        adicionais,
+        precoTotal,
+      });
+      toast.success("Enviado ao Carrinho!");
+      setModal(false);
+      navigate("/Carrinho"); 
+    }}
+  >
+    <p>Deseja adicionar essa pizza ao carrinho?</p>
+  </Modal>
+)}
+
     </main>
   );
 }
 
-export default Orçamento;
+export default OrderItem;

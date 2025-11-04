@@ -1,6 +1,6 @@
 import z from "zod";
 
-export const checkoutSchema = z.object({
+export const orderSchema = z.object({
   sabor: z.string().min(5, "Sabor deve ter mais de 5 Caracteres"),
   descricao: z.string().min(10, "Descrição deve ter mais de 10 Caracteres").max(50,'Descrição deve ter no maximo 50 letras'),
   preco: z.number().min(1).max(100),

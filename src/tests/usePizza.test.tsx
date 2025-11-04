@@ -1,4 +1,4 @@
-import useCardapio from '../hooks/useCardapio'
+import useCardapio from '../hooks/usePizza'
 import { Link } from 'react-router-dom'
 import { api } from '../api/api'
  import { render, screen, fireEvent } from "@testing-library/react";

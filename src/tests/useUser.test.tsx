@@ -1,4 +1,4 @@
-import UseAccount from "../hooks/useAccount";
+import UseAccount from "../hooks/useUser";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { api } from "../api/api";
 import toast from 'react-toastify'

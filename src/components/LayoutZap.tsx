@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import WhatsappIcon from "./whatsappIcon.tsx";
+import WhatsappIcon from "./WhatsappIcon";
 type LayoutZapProps = {
   children: ReactNode;
 };

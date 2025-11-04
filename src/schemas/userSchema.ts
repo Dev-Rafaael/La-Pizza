@@ -1,8 +1,9 @@
+
 import z from "zod";
 
 
 
-export const accountSchema = z.object({
+export const userSchema = z.object({
   nome: z.string().min(2,'deve ter Mais de 2 caracteres'),
   sobreNome: z.string().min(3,'sobreNome deve ter Mais de 3 caracteres'), 
   email: z.string().min(10,'Email deve ter Mais de 2 caracteres'),

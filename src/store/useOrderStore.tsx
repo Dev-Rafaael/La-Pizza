@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 
 
-interface Checkout {
+interface Order {
 id: number;
   sabor: string;
   descricao: string;
@@ -27,13 +27,13 @@ id: number;
   complemento: string;
 }
 
-interface UseCheckout{
-  checkout: Checkout | null,
-  addCheckout: (check:Checkout)=> void,
+interface UseOrder{
+  checkout: Order | null,
+  addCheckout: (check:Order)=> void,
 }
 
 
-export const UseCheckoutStore = create<UseCheckout>()(
+export const UseCheckoutStore = create<UseOrder>()(
     persist(
         (set)=>({
         checkout:null,

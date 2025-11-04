@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { api } from "../api/api";
 import { useUserStore } from "../store/useUserStore";
 import { useNavigate } from "react-router-dom";
-import { accountSchema } from "../schemas/accountSchema";
+import { userSchema } from "../schemas/userSchema";
 
 function useCadastrar() {
   const [nome, setNome] = useState<string>("");
@@ -34,7 +34,7 @@ function useCadastrar() {
         senha,
       };
 
-      const schemaResult = accountSchema.safeParse(dataAccount)
+      const schemaResult = userSchema.safeParse(dataAccount)
       if(schemaResult.error){
         schemaResult.error.issues.forEach((error)=>{
           toast.error(error.message)

@@ -6,16 +6,16 @@ import Home from "./pages/Home.tsx";
 import Contato from "./pages/Contato.tsx";
 import Sobre from "./pages/Sobre.tsx";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade.tsx";
-import Cardapio from "./pages/Cardapio.tsx";
-import Orçamento from "./pages/Orçamento.tsx";
-import Identificacao from "./pages/Identificacao.tsx";
-import Carrinho from "./pages/Carrinho.tsx";
-import Account from "./pages/Account.tsx";
+import Cardapio from "./pages/pizza.tsx";
+import Carrinho from "./pages/cart.tsx";
+import Account from "./pages/User.tsx";
 import Termos from "./pages/Termos.tsx";
 import "./index.css";
 import LayoutZap from "./components/LayoutZap.jsx";
 import Cadastrar from "./pages/Cadastrar.tsx";
 import Login from "./pages/Login.tsx";
+import Order from "./pages/order.tsx";
+import OrderItem from "./pages/orderItem.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,17 +41,14 @@ const router = createBrowserRouter([
         path: "/Cardapio/",
         element: <Cardapio />,
       },
-      // {
-      //   path:"/images/",
-      //   element:<Images/>
-      // },
-      {
+    {
         path: "Orçamento/:sabor",
-        element: <Orçamento />,
+        element: <OrderItem />,
       },
+    
       {
-        path: "/Identificação/:cartId",
-        element: <Identificacao />,
+        path: "/Identificação/:id",
+        element: <Order />,
       },
       // {
       //   path:"/Checkout/",

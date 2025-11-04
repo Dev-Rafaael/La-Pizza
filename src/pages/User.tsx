@@ -1,12 +1,11 @@
 import { Link} from "react-router-dom";
-import styles from "../styles/Account.module.css";
-import type { Account } from "../types";
+import styles from "../styles/User.module.css";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IMaskInput } from "react-imask";
 
-import UseAccount from "../hooks/useAccount";
-function Account() {
+import UseAccount from "../hooks/useUser";
+function User() {
 const { account,
     nome,
     setNome,
@@ -202,4 +201,4 @@ const { account,
   );
 }
 
-export default Account;
+export default User;

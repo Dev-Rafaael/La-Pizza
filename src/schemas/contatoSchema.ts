@@ -2,7 +2,7 @@
 import {z} from 'zod'
 
 
-export const schemaContato = z.object({
+export const contatoSchema = z.object({
     nome: z.string().min(2,"Nome deve ter pelo menos 2 caracteres"),
     sobreNome: z.string().min(2,"Sobrenome deve ter pelo menos 2 caracteres"),
     email: z.string().min(2,"Email inválido"),

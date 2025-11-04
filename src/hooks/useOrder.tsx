@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
-import { checkoutSchema } from "../schemas/checkoutSchema";
+import { orderSchema } from "../schemas/orderSchema";
 function UseCheckout() {
     const [nome, setNome] = useState<string>("");
     const [sobreNome, setSobreNome] = useState<string>("");
@@ -50,7 +50,7 @@ function UseCheckout() {
         // dataOrcamento?.adicionais,
         // dataOrcamento?.cartId
       };
-      const parseResult = checkoutSchema.safeParse(newIdentifier)
+      const parseResult = orderSchema.safeParse(newIdentifier)
       if(parseResult.error){
        parseResult.error.issues.forEach((err)=>{
            toast.error(err.message)

@@ -48,8 +48,7 @@ export interface Checkout extends Orcamento {
 }
 
 export interface Cart {
-  id:number;
-  cartId: string;
+  id: number;
   sabor: string;
   descricao: string;
   preco: number;
@@ -58,6 +57,7 @@ export interface Cart {
   adicionais: string[];
   imagem?: string;
 }
+
 export interface Pizzas {
 id: number;
   sabor: string;

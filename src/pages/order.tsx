@@ -1,7 +1,7 @@
-import styles from "../styles/Identificacao.module.css";
-import UseCheckout from "../hooks/useCheckout";
+import styles from "../styles/Order.module.css";
+import UseCheckout from "../hooks/useOrder";
 
-function Identificacao() {
+function Order() {
  const {
     nome, setNome,
     sobreNome, setSobreNome,cpf, setCPF,sexo, setSexo,
@@ -237,4 +237,4 @@ function Identificacao() {
   );
 }
 
-export default Identificacao;
+export default Order;

@@ -1,12 +1,16 @@
-import useCardapio from "../hooks/useCardapio";
-import styles from "../styles/Cardapio.module.css";
-import { Link } from "react-router-dom";
 
-function Cardapio() {
-  const {pizzas} = useCardapio()
+import styles from "../styles/Pizza.module.css";
+import usePizza from "../hooks/usePizza";
 
+function Pizza() {
+  const {pizzas,selectedPizza} = usePizza()
+
+
+  if (!pizzas.length) return <p>Carregando pizzas...</p>;
+  console.log(pizzas);
+  
   return (
-    <section className={styles.cardapio}>
+ <section className={styles.cardapio}>
       <div className={styles.navCardapio}>
         <h1>CARDAPIO</h1>
       </div>
@@ -24,9 +28,9 @@ function Cardapio() {
                 <p>{pizza.descricao}</p>
                 <h4>R${pizza.preco.toFixed(2)}</h4>
                 <article className={styles.cardapioOption}>
-                  <Link to={`/Orçamento/${pizza.sabor}`} className={styles.btn}>
+                  <button  onClick={()=> selectedPizza(pizza)} className={styles.btn}>
                     Comprar
-                  </Link>
+                  </button>
                 </article>
               </div>
             </div>
@@ -37,4 +41,5 @@ function Cardapio() {
   );
 }
 
-export default Cardapio;
+export default Pizza;
+

@@ -5,9 +5,10 @@ import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
 import useCart from "../hooks/useCart";
 
-function Carrinho() {
+
+function Cart() {
   const {
-    itens,
+    items,
     newQuantidade,
     setNewQuantidade,
     editId,
@@ -17,17 +18,19 @@ function Carrinho() {
     editItem,
     valorTotal,
     triggerAnimation,
+  
   } = useCart();
 
+  
   return (
     <section className={styles.cartSection}>
       <div className={styles.navCart}>
         <h1>CARRINHO</h1>
       </div>
-      {itens.length != 0 ? (
+      {items.length > 0 ? (
         <article className={styles.cartContent}>
           <div className={styles.itensList}>
-            {itens.map((pizza) => (
+            {items.map((pizza) => (
               <article key={pizza.id} className={styles.item}>
                 <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
                 <article className={styles.detailsList}>
@@ -157,4 +160,4 @@ function Carrinho() {
   );
 }
 
-export default Carrinho;
+export default Cart;

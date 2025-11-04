@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify';
 import { api } from '../api/api';
-import { schemaContato } from '../schemas/contatosSchema';
+import { contatoSchema } from '../schemas/contatoSchema';
 
 function UseContato() {
    const [loading, setLoading] = useState<boolean>(false);
@@ -22,7 +22,7 @@ function UseContato() {
    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const parseResult = schemaContato.safeParse(formData);
+    const parseResult = contatoSchema.safeParse(formData);
 
     if (!parseResult.success) {
       parseResult.error.issues.forEach((err) => {
