@@ -2,12 +2,15 @@
 import styles from "../styles/Pizza.module.css";
 import usePizza from "../hooks/usePizza";
 
+
 function Pizza() {
   const {pizzas,selectedPizza} = usePizza()
-
-
+  
   if (!pizzas.length) return <p>Carregando pizzas...</p>;
-  console.log(pizzas);
+console.log(pizzas);
+
+  
+
   
   return (
  <section className={styles.cardapio}>

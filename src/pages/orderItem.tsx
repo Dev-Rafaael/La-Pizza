@@ -1,35 +1,35 @@
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/modal";
+import Modal from "../components/Modal";
 import useOrderItem from "../hooks/useOrderItem";
 import { usePizzaStore } from "../store/usePizzaStore";
 import styles from "../styles/OrderItem.module.css";
 import { useUserCart } from "../store/useCartStore";
 import { toast } from "react-toastify";
 
-
- function OrderItem() {
-   const navigate = useNavigate();
-     const addItem = useUserCart((s)=>s.addItem)
+function OrderItem() {
+  const navigate = useNavigate();
+  const addItem = useUserCart((s) => s.addItem);
   const {
     unidades,
     setUnidades,
-    adicionais,
-    toggleOpcao,
+    adicionaisSelecionados,
     handleSubmit,
     precoTotal,
-    opcoes,
+    toggleAdicional,
     modal,
-    setModal
+    setModal,
   } = useOrderItem();
-  const {pizzaSelecionada} = usePizzaStore()
+  const { pizzaSelecionada } = usePizzaStore();
   if (!pizzaSelecionada) return <p>Carregando...</p>;
-  
+
+  console.log(pizzaSelecionada.adicional);
+
   return (
     <main className={styles.orcamento}>
       <div className={styles.navOrcamento}>
         <h1>ORÇAMENTO Pizza {pizzaSelecionada.sabor}</h1>
       </div>
-      
+
       <section className={styles.orcamentoSection}>
         <article className={styles.productImage}>
           <img src={pizzaSelecionada.imagem} alt="Imagem Pizza" />
@@ -37,7 +37,7 @@ import { toast } from "react-toastify";
         <article className={styles.orcamentoContent}>
           <h1>{pizzaSelecionada.sabor}</h1>
           <p>Pacote {pizzaSelecionada.descricao}</p>
-          <h2>Preço: {pizzaSelecionada.preco.toFixed(2)}</h2>
+          <h2>Preço: R${pizzaSelecionada.preco.toFixed(2)}</h2>
           <div className={styles.form}>
             <form onSubmit={handleSubmit}>
               <div className={styles.inputForm}>
@@ -58,22 +58,22 @@ import { toast } from "react-toastify";
                   <option value="5">5</option>
                 </select>
               </div>
-              <div className={styles.inputForm}>
-                <label htmlFor="Adicionais">Adicionais:</label>
-                {opcoes.map((opcao) => (
-                  <label key={opcao} className={styles.checkboxContainer}>
+              <div className={styles.inputForm}> <label htmlFor="Adicionais">Adicionais:</label>
+              {pizzaSelecionada &&
+                pizzaSelecionada.adicional.map((pizza) => (
+                  <label key={pizza.id} className={styles.checkboxContainer}>
                     <input
                       type="checkbox"
-                      value={opcao}
-                      checked={adicionais.includes(opcao)}
-                      onChange={() => toggleOpcao(opcao)}
+                      checked={adicionaisSelecionados.some(
+                        (a) => a.id === pizza.id
+                      )}
+                      onChange={() => toggleAdicional(pizza)}
                     />
                     <span className={styles.customCheckbox}></span>
-                    {opcao}
+                     {pizza.nome} <p>(+R${pizza.preco.toFixed(2)})</p>
                   </label>
                 ))}
-              </div>
-
+          </div>
               {
                 <h3 className={styles.valor}>
                   {" "}
@@ -89,43 +89,40 @@ import { toast } from "react-toastify";
           </div>
         </article>
       </section>
-{modal && (
-  <Modal
-    title="Tem certeza?"
-    sabor={pizzaSelecionada.sabor}
-    imagem={pizzaSelecionada.imagem} 
-    precoTotal={precoTotal}
-    onContinue=
-      {() => {
-      addItem({
-        
-        ...pizzaSelecionada,
-        unidades,
-        adicionais,
-        precoTotal,
-      });
-      toast.success("Enviado ao Carrinho!");
-      setModal(false);
-      navigate("/Cardapio"); 
-    }
-    } 
-    onConfirm={() => {
-      addItem({
-        
-        ...pizzaSelecionada,
-        unidades,
-        adicionais,
-        precoTotal,
-      });
-      toast.success("Enviado ao Carrinho!");
-      setModal(false);
-      navigate("/Carrinho"); 
-    }}
-  >
-    <p>Deseja adicionar essa pizza ao carrinho?</p>
-  </Modal>
-)}
-
+      {modal && (
+        <Modal
+          title="Tem certeza?"
+          sabor={pizzaSelecionada.sabor}
+          imagem={pizzaSelecionada.imagem}
+          precoTotal={precoTotal}
+          onContinue={() => {
+            addItem({
+               cartId: Date.now(),
+              ...pizzaSelecionada,
+              unidades,
+              adicionais:adicionaisSelecionados,
+              precoTotal,
+            });
+            toast.success("Enviado ao Carrinho!");
+            setModal(false);
+            navigate("/Cardapio");
+          }}
+          onConfirm={() => {
+            addItem({
+               cartId: Date.now(),
+              ...pizzaSelecionada,
+              unidades,
+              adicionais:adicionaisSelecionados,
+              precoTotal,
+            });
+            toast.success("Enviado ao Carrinho!");
+            setModal(false);
+            navigate("/Carrinho");
+          }}
+        >
+          <p>Deseja adicionar essa pizza ao carrinho?</p>
+        </Modal>
+      )}
     </main>
   );
 }

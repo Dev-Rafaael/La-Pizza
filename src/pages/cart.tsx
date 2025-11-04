@@ -18,9 +18,10 @@ function Cart() {
     editItem,
     valorTotal,
     triggerAnimation,
-  
   } = useCart();
 
+
+  console.log(items);
   
   return (
     <section className={styles.cartSection}>
@@ -112,13 +113,14 @@ function Cart() {
                       <span>Descrição</span> {pizza.descricao}
                     </h2>
                     <h2>
-                      <span>Adicionais</span> {pizza.adicionais.join(",")}
+                     
+                      <span>Adicionais</span> {pizza.adicionais.map((i)=> i.nome).join(', ')}
                     </h2>
                   </div>
                 </article>
                 <div className={styles.actions}>
                   <div className={styles.actionBtn}>
-                    <button onClick={() => deletarItem(pizza.id)}>🗑️</button>
+                    <button onClick={() => deletarItem(pizza.cartId)}>🗑️</button>
                     <button
                       className={styles.editBtn}
                       onClick={() => edit(pizza)}

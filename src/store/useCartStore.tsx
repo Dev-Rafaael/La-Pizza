@@ -1,15 +1,18 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { Adicional } from "../types";
 
 
 interface Cart {
+ 
   id: number;
+   cartId: number;
   sabor: string;
   descricao: string;
   preco: number;
   precoTotal: number;
   unidades: number;
-  adicionais: string[];
+  adicionais: Adicional[];
   imagem?: string;
 }
 
@@ -25,14 +28,17 @@ export const useUserCart = create<UserCart>()(
   persist(
     (set)=>({
         items:[],
-        addItem: (item) => set((state)=>({
-            items: [...state.items,item]
+         addItem: (item) =>
+        set((state) => {
+         
+          const newItem = { ...item, cartId: Date.now() }; 
+          return { items: [...state.items, newItem] };
+        }),
+        updateItem: (cartId,newData)=> set((state)=>({
+            items: state.items.map((item)=> item.cartId === cartId ? {...item,...newData}: item)
         })),
-        updateItem: (id,newData)=> set((state)=>({
-            items: state.items.map((item)=> item.id === id ? {...item,...newData}: item)
-        })),
-        deleteItem: (id)=> set((state)=>({
-            items: state.items.filter((item)=> item.id !== id)
+        deleteItem: (cartId)=> set((state)=>({
+            items: state.items.filter((item)=> item.cartId !== cartId)
         })),
         clearCart: ()=> set({items: []})
     }),{
@@ -41,4 +47,3 @@ export const useUserCart = create<UserCart>()(
 ),
 
 )
-

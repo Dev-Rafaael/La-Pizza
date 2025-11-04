@@ -12,27 +12,27 @@ function useCart() {
   }>({});
   const itemUpdate = useUserCart((s) => s.updateItem);
   const deleteItem = useUserCart((s) => s.deleteItem);
-  const items = useUserCart((s) => s.items);;
-
-  const deletarItem = async (id: number) => {
-    if (!id) return;
+  const items = useUserCart((s) => s.items);
+  const deletarItem = async (cartId: number) => {
+    if (!cartId) return;
     try {
-      deleteItem(id);  toast.success("🍕 Pedido Deletado com sucesso!");
+      deleteItem(cartId);
+        toast.success("🍕 Pedido Deletado com sucesso!");
     } catch (error) {
       console.log(error);
       toast.error("🍕 Pedido Não Foi deletado!");
     }
   };
   const edit = (item: Cart) => {
-    setEditId(item.id);
+    setEditId(item.cartId);
     setNewQuantidade(item.unidades);
   };
-  const editItem = async (e: FormEvent, id: number) => {
+  const editItem = async (e: FormEvent,   cartId:number) => {
     e.preventDefault();
 
-    if (!id) return;
+    if (!cartId) return;
 
-    const itemOriginal = items.find((item) => item.id === id);
+    const itemOriginal = items.find((item) => item.cartId === cartId);
     if (!itemOriginal) return;
 
     try {
@@ -45,7 +45,7 @@ function useCart() {
 
       if (!parseResult.error) {
         toast.success("🍕 Pedido Atualizado com sucesso!");
-        itemUpdate(id, dataNew);
+        itemUpdate(cartId, dataNew);
         setEditId(null);
       } else {
         parseResult.error.issues.forEach((err) => {
@@ -59,11 +59,11 @@ function useCart() {
   };
 
   const valorTotal = items.reduce((acc, cur) => cur.precoTotal + acc, 0);
-  const triggerAnimation = (id: number) => {
-    setAnimatePrices((prev) => ({ ...prev, [id]: true }));
+  const triggerAnimation = (cartId: number) => {
+    setAnimatePrices((prev) => ({ ...prev, [cartId]: true }));
 
     setTimeout(() => {
-      setAnimatePrices((prev) => ({ ...prev, [id]: false }));
+      setAnimatePrices((prev) => ({ ...prev, [cartId]: false }));
     }, 400);
   };
 

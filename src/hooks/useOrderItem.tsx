@@ -1,22 +1,21 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
 import { api } from "../api/api";
-import type { Orcamento,Pizzas} from "../types";
+import type { Adicional, Orcamento, Pizzas } from "../types";
 import { toast } from "react-toastify";
 import { usePizzaStore } from "../store/usePizzaStore";
 import { cartSchema } from "../schemas/cartSchema";
 
 function useOrderItem() {
   const [precoTotal, setPrecoTotal] = useState<number>(0.0);
-  const [unidades, setUnidades] = useState<number>(0);
-  const [adicionais, setAdicionais] = useState<string[]>([]);
-
+  const [unidades, setUnidades] = useState<number>(1);
+  const [adicionaisSelecionados, setAdicionaisSelecionados] = useState<Adicional[]>([]);
+  const [modal, setModal] = useState<boolean>(false);
   const { sabor } = useParams();
   const [pizzas, setPizzas] = useState<Pizzas[]>([]);
   const [orcamento, setOrcamento] = useState<Orcamento[]>([]);
   const [editId, setEditId] = useState<number | null>(null);
-    const {pizzaSelecionada} = usePizzaStore()
-  const [modal,setModal] = useState<boolean>(false)
+  const { pizzaSelecionada } = usePizzaStore();
 
   useEffect(() => {
     (async () => {
@@ -29,100 +28,64 @@ function useOrderItem() {
     })();
   }, []);
 
+
   useEffect(() => {
-    const total = pizzaSelecionada?.preco * unidades
+    if (!pizzaSelecionada) return;
+    const adicionaisTotal = adicionaisSelecionados.reduce((acc, ad) => acc + ad.preco, 0);
+    const total = (pizzaSelecionada.preco + adicionaisTotal) * unidades;
     setPrecoTotal(total);
-  }, [pizzaSelecionada, unidades]);
+  }, [pizzaSelecionada, unidades,adicionaisSelecionados]);
 
- 
-const handleSubmit = (e: FormEvent) => {
-  e.preventDefault();
-
-  if (!pizzaSelecionada) return;
-
-  const newOrcamento = {
-    ...pizzaSelecionada,
-    unidades,
-    adicionais,
-    precoTotal,
-  };
-
-  const parseResult = cartSchema.safeParse(newOrcamento);
-
-  if (!parseResult.success) {
-    parseResult.error.issues.forEach((err) => toast.error(err.message));
-    return;
-  }
-
-
-  setModal(true);
-  };
-  const edit = (item: Orcamento) => {
-    setEditId(item.id);
-  };
-  const handleEdit = async (e: FormEvent, id: number) => {
-    e.preventDefault();
-    if (!id) return;
-    const dadosOriginais = orcamento.find((prev) => prev.id === id);
-    if (!dadosOriginais) return;
-    const dados = {
-      ...dadosOriginais,
-      precoTotal,
-      unidades,
-      adicionais,
-    };
-    try {
-      const updateOrcamento = await api.put("/orcamento/", dados);
-      setOrcamento((prev) =>
-        prev.map((item) => (item.id === id ? updateOrcamento.data : item))
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const handleDelete = async (e: FormEvent, id: number) => {
-    e.preventDefault();
-    if (!id) return;
-    try {
-      if (id) {
-        await api.delete(`/orcamento/${id}`);
-        await api.delete(`cart/${id}`);
-       
+  const toggleAdicional = (adicional: Adicional) => {
+    setAdicionaisSelecionados((prev) => {
+      const jaTem = prev.find((item) => item.id === adicional.id);
+      if (jaTem) {
+        return prev.filter((item) => item.id !== adicional.id);
+      } else {
+        return [...prev, adicional];
       }
-    } catch (error) {
-      console.log(error);
-    }
+    });
   };
 
-  const opcoes = ["Salame", "Cheddar", "Catupiry", "Bacon"];
-  const toggleOpcao = (opcao: string) => {
-    setAdicionais((prev) =>
-      prev.includes(opcao) ? prev.filter((a) => a !== opcao) : [...prev, opcao]
-    );
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!pizzaSelecionada) return;
+
+    const newOrcamento = {
+      ...pizzaSelecionada,
+      unidades,
+
+      precoTotal,
+    };
+
+    const parseResult = cartSchema.safeParse(newOrcamento);
+
+    if (!parseResult.success) {
+      
+      parseResult.error.issues.forEach((err) => toast.error(err.message));
+      return;
+    }
+
+    setModal(true);
   };
+
   return {
     precoTotal,
     setPrecoTotal,
     unidades,
     setUnidades,
-    adicionais,
-    setAdicionais,
+    adicionaisSelecionados,
+    toggleAdicional,
     sabor,
     pizzas,
-    setPizzas,
     orcamento,
     setOrcamento,
-    editId,
     setEditId,
+    editId,
     pizzaSelecionada,
     handleSubmit,
-    edit,
-    handleEdit,
-    handleDelete,
-    opcoes,
-    toggleOpcao,
     modal,
-    setModal
+    setModal,
   } as const;
 }
 

@@ -8,6 +8,6 @@ export const cartSchema = z.object({
   preco: z.number().min(1).max(100),
   precoTotal:z.number().min(10).max(1000),
   unidades: z.number().min(1).max(10),
-  adicionais: z.array(z.string()).min(1),
+  adicional: z.array(z.object()).min(1),
   imagem: z.string().optional(),
 })
