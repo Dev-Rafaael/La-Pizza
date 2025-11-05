@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { Adicional } from "../types";
 
 interface OrderItem{
   id: number;
@@ -9,23 +10,23 @@ interface OrderItem{
   imagem?: string;
   precoTotal: number;
   unidades: number;
-  adicionais: string[];
+  adicionais: Adicional[];
   cartId: number;
 }
 
 interface UseOrderItem {
-  item: OrderItem | null;
-  addItem: (item: OrderItem) => void;
+  OrderItem: OrderItem | null;
+  addOrderItem: (item: OrderItem) => void;
 }
 
-export const UseOrcamentoStore = create<UseOrderItem>()(
+export const UseOrderItemStore = create<UseOrderItem>()(
   persist(
     (set) => ({
-      item: null,
-      addItem: (newItem) => set({ item:newItem }),
+      OrderItem: null,
+      addOrderItem: (newOrderItem) => set({ OrderItem:newOrderItem }),
     }),
     {
-      name: "orcamento-storage",
+      name: "orderItem-storage",
     }
   )
 );

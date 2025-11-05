@@ -1,4 +1,4 @@
-import styles from "../styles/Carrinho.module.css";
+import styles from "../styles/Cart.module.css";
 import { Link } from "react-router-dom";
 import visa from "../assets/IMG/visa.png";
 import mastercard from "../assets/IMG/mastercard.png";
@@ -21,7 +21,6 @@ function Cart() {
   } = useCart();
 
 
-  console.log(items);
   
   return (
     <section className={styles.cartSection}>
@@ -128,10 +127,9 @@ function Cart() {
                       ✏️
                     </button>
                   </div>{" "}
-                  <div className={styles.actionPay}>
-                    <Link to={`/Identificação/${pizza.id}`}>Pagar</Link>
-                  </div>
+                  
                 </div>
+                     
               </article>
             ))}
           </div>
@@ -149,7 +147,9 @@ function Cart() {
                 <img src={pix} alt="Pix" />
               </div>
             </div>
-            <button>PAGAR</button>
+     <div className={styles.actionPay}>
+                    <Link to={`/Identificação/`}>Pagar</Link>
+                  </div>
           </div>
         </article>
       ) : (

@@ -1,18 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { OrderItem } from "../types";
 
 
 
 interface Order {
-id: number;
-  sabor: string;
-  descricao: string;
-  preco: number;
-  imagem?: string;
-  precoTotal: number;
-  unidades: number;
-  adicionais: string[];
-  cartId: number;
   nome: string;
   sobreNome: string;
   cpf: string;
@@ -25,21 +17,22 @@ id: number;
   cidade: string;
   numero: string;
   complemento: string;
+  items: OrderItem[], 
 }
 
-interface UseOrder{
-  checkout: Order | null,
-  addCheckout: (check:Order)=> void,
+interface UseOrderStore {
+  order: Order | null,
+  addOrder: (order:Order)=> void,
 }
 
 
-export const UseCheckoutStore = create<UseOrder>()(
+export const UseOrderStore = create<UseOrderStore >()(
     persist(
         (set)=>({
-        checkout:null,
-        addCheckout: (newCheck) => set({checkout:newCheck})
+        order:null,
+        addOrder: (order) => set({order})
         }),{
-            name:'checkout-storage'
+            name:'order-storage'
         }
         
     )

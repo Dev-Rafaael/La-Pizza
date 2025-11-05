@@ -20,7 +20,19 @@ export interface Contact {
   mensagem: string;
 }
 
-export interface Orcamento {
+export interface OrderItem {
+  id: number;
+  sabor: string;
+  descricao: string;
+  preco: number;
+  imagem?: string;
+  precoTotal: number;
+  unidades: number;
+  adicionais: Adicional[];
+  cartId: number;
+}
+
+export interface Order {
   id: number;
   sabor: string;
   descricao: string;
@@ -30,9 +42,6 @@ export interface Orcamento {
   unidades: number;
   adicionais: string[];
   cartId: number;
-}
-
-export interface Checkout extends Orcamento {
   nome: string;
   sobreNome: string;
   cpf: string;
@@ -45,6 +54,7 @@ export interface Checkout extends Orcamento {
   cidade: string;
   numero: string;
   complemento: string;
+  items: OrderItem[],
 }
 
 export interface Cart {

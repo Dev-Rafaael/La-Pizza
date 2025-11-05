@@ -226,7 +226,7 @@ color: #d18b08;
   cursor: pointer;
 }
 
-.valoresContent button {
+.actionPay  {
   width: 100%;
   padding: 0.5rem;
   border-radius: 1rem;

@@ -13,6 +13,7 @@ function useCart() {
   const itemUpdate = useUserCart((s) => s.updateItem);
   const deleteItem = useUserCart((s) => s.deleteItem);
   const items = useUserCart((s) => s.items);
+
   const deletarItem = async (cartId: number) => {
     if (!cartId) return;
     try {
