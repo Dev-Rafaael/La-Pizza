@@ -1,17 +1,16 @@
-export interface Account {
+export interface User {
   id: number;
   nome: string;
   sobreNome: string;
   email: string;
-  senha:string;
+  senha: string;
   cpf: string;
   sexo: string;
   nascimento: string;
   telefone: string;
-
 }
 
-export interface Contact {
+export interface Contato {
   id: number;
   nome: string;
   sobrenome: string;
@@ -54,12 +53,12 @@ export interface Order {
   cidade: string;
   numero: string;
   complemento: string;
-  items: OrderItem[],
+  items: OrderItem[];
 }
 
 export interface Cart {
   id: number;
-    cartId:number;
+  cartId: number;
   sabor: string;
   descricao: string;
   preco: number;
@@ -69,17 +68,28 @@ export interface Cart {
   imagem?: string;
 }
 export interface Adicional {
-  id:number;
-  nome:string;
-  preco:number;
-  pizzaid:number;
+  id: number;
+  nome: string;
+  preco: number;
+  pizzaid: number;
 }
 export interface Pizzas {
-id: number;
+  id: number;
   sabor: string;
-  descricao:string;
-  preco:number;
+  descricao: string;
+  preco: number;
   imagem: string;
-  adicional: Adicional[]
+  adicional: Adicional[];
 }
 
+export interface Address {
+  id: number;
+  userId: number;
+  cep: string;
+  estado: string;
+  cidade: string;
+  bairro: string;
+  rua: string;
+  numero: string;
+  complemento?: string;
+}

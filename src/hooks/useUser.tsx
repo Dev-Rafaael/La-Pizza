@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import type { Account } from "../types";
+import type { User } from "../types";
 import { useEffect, useState, type FormEvent } from "react";
 import { useUserStore } from "../store/useUserStore";
 import { toast } from "react-toastify";
 import { api } from "../api/api";
 
 function UseAccount() {
-  const [account, setAccount] = useState<Account[]>([]);
+  const [account, setAccount] = useState<User[]>([]);
   const navigate = useNavigate();
   const user = useUserStore((s) => s.user);
   const logout = useUserStore((s) => s.logout);

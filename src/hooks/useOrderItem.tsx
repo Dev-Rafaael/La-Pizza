@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
 import { api } from "../api/api";
-import type { Adicional, Orcamento, Pizzas } from "../types";
+import type { Adicional, OrderItem, Pizzas } from "../types";
 import { toast } from "react-toastify";
 import { usePizzaStore } from "../store/usePizzaStore";
 import { cartSchema } from "../schemas/cartSchema";
@@ -13,7 +13,7 @@ function useOrderItem() {
   const [modal, setModal] = useState<boolean>(false);
   const { sabor } = useParams();
   const [pizzas, setPizzas] = useState<Pizzas[]>([]);
-  const [orcamento, setOrcamento] = useState<Orcamento[]>([]);
+  const [orcamento, setOrcamento] = useState<OrderItem[]>([]);
   const [editId, setEditId] = useState<number | null>(null);
   const { pizzaSelecionada } = usePizzaStore();
 

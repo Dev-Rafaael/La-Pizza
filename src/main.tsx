@@ -16,6 +16,7 @@ import Cadastrar from "./pages/Cadastrar.tsx";
 import Login from "./pages/Login.tsx";
 import Order from "./pages/Order.tsx";
 import OrderItem from "./pages/OrderItem.tsx";
+import Address from "./pages/Address.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "Perfil/",
         element: <Account />,
+      },
+      {
+        path: "Enderecos/",
+        element: <Address />,
       },
       {
         path: "/Termos-De-Uso",
