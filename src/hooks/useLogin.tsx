@@ -25,7 +25,7 @@ const handleSubmit = async (e: FormEvent) => {
     return;
     }
 
-    const { data } = await api.post("/account/login", { email, senha });
+    const { data } = await api.post("/users/login", { email, senha });
 
     if (data?.token && data?.user) {
       login(data.user,data.token)

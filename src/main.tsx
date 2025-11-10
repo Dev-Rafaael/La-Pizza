@@ -12,11 +12,12 @@ import Account from "./pages/User.tsx";
 import Termos from "./pages/Termos.tsx";
 import "./index.css";
 import LayoutZap from "./components/LayoutZap.jsx";
-import Cadastrar from "./pages/Cadastrar.tsx";
+import Cadastrar from "./pages/Order/UserForm.tsx";
 import Login from "./pages/Login.tsx";
-import Order from "./pages/Order.tsx";
+import Order from "./pages/Order/Order.tsx";
 import OrderItem from "./pages/OrderItem.tsx";
-import Address from "./pages/Address.tsx";
+import ProtectedRoute from "./middlewares/ProtectedRoute.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,14 +49,6 @@ const router = createBrowserRouter([
       },
     
       {
-        path: "/Identificação/",
-        element: <Order />,
-      },
-      // {
-      //   path:"/Checkout/",
-      //   element:<Checkout/>
-      // },
-      {
         path: "/Carrinho/",
         element: <Carrinho />,
       },
@@ -63,10 +56,7 @@ const router = createBrowserRouter([
         path: "Perfil/",
         element: <Account />,
       },
-      {
-        path: "Enderecos/",
-        element: <Address />,
-      },
+     
       {
         path: "/Termos-De-Uso",
         element: <Termos />,
@@ -79,10 +69,12 @@ const router = createBrowserRouter([
         path: "/Login",
         element: <Login />,
       },
-      //    {
-      //     path:"Search/",
-      //     element:<PesquisaPacotes/>
-      //   }
+      {
+        element: <ProtectedRoute />,
+        children: [
+          { path: "/Identificação/", element: <Order /> },
+        ],
+      },
     ],
   },
 ]);

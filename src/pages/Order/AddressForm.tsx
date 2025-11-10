@@ -1,17 +1,31 @@
-import useAddress from "../hooks/useAddress";
-import styles from "../styles/Address.module.css";
+import useAddress from "../../hooks/useAddress";
+import styles from "../../styles/Address.module.css";
+import type { Cart } from "../../types";
 
-function Address() {
+interface Props {
+  userId?: number;
+  onContinue: (addressId: number) => void;
+  cartItems?: Cart[];
+  total?: number;
+}
+function AddressForm({ userId, onContinue }: Props) {
   const {
-    cep, setCEP,
-    estado, setEstado,
-    cidade, setCidade,
-    bairro, setBairro,
-    rua, setRua,
-    numero, setNumero,
-    complemento, setComplemento,
-    handleAddress
-  } = useAddress();
+    cep,
+    setCEP,
+    estado,
+    setEstado,
+    cidade,
+    setCidade,
+    bairro,
+    setBairro,
+    rua,
+    setRua,
+    numero,
+    setNumero,
+    complemento,
+    setComplemento,
+    handleAddress,
+  } = useAddress(onContinue, userId);
 
   return (
     <section className={styles.container}>
@@ -116,4 +130,4 @@ function Address() {
   );
 }
 
-export default Address;
+export default AddressForm;

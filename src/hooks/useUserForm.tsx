@@ -5,7 +5,7 @@ import { useUserStore } from "../store/useUserStore";
 import { useNavigate } from "react-router-dom";
 import { userSchema } from "../schemas/userSchema";
 
-function useCadastrar() {
+function useUserForm() {
   const [nome, setNome] = useState<string>("");
   const [sobreNome, setSobreNome] = useState<string>("");
   const [cpf, setCPF] = useState<string>("");
@@ -28,9 +28,9 @@ function useCadastrar() {
         sobreNome,
         email,
         cpf,
+         sexo,
         nascimento,
         telefone,
-        sexo,
         senha,
       };
 
@@ -41,7 +41,7 @@ function useCadastrar() {
         })
       }
       if (dataAccount) {
-        const newAccount = (await api.post("account/", dataAccount)).data;
+        const newAccount = (await api.post("/users/", dataAccount)).data;
         storeCreate(newAccount);
         toast.success("🍕 Pedido realizado com sucesso!");
         navigate('/Login')
@@ -54,6 +54,7 @@ function useCadastrar() {
         setNascimento("");
         setTelefone("");
       } else {
+        
         toast.error(
           "Não foi possivel fazer a compra! Tente Novamente Mais tarde!"
         );
@@ -90,4 +91,4 @@ function useCadastrar() {
   } as const;
 }
 
-export default useCadastrar;
+export default useUserForm;

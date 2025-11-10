@@ -1,11 +1,7 @@
-.Identificacao {
-  background: linear-gradient(rgba(17, 17, 17, 0.726), rgba(20,20,20,1));
-}
-
 .navIdentificacao {
   width: 100%;
   height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20,20,20,1)), url('../assets/IMG/orcamentoLaPizza.jpg');
+  background: linear-gradient(rgba(243, 242, 242, 0), rgba(241, 240, 240, 0.375)), url('../assets/IMG/orcamentoLaPizza.jpg');
   background-position:center;
   background-size: cover;
   display: flex;
@@ -23,255 +19,53 @@
   color: rgb(146, 117, 60);
   text-align: center;
 }
-
-.IdentificacaoContent {
+.checkout {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 3rem 2rem;
+ background: linear-gradient( rgba(241, 240, 240, 0.37), rgb(240, 239, 239));
+  min-height: 100vh;
 }
 
-.IdentificacaoContent h2 {
-  width: 84%;
-  margin: 0 auto;
-  font-size: 1.72rem;
-  color: rgb(146, 117, 60);
-  font-weight: 800;
-  font-family: "Bebas Neue", sans-serif;
+.formSection {
+  flex: 1;
+  max-width: 700px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.IdentificacaoContent p {
-  width: 84%;
-  margin: 0 auto;
-  color: rgb(177, 169, 169);
-  font-size: 1.5rem;
-  font-weight: 700;
-  font-family: "Bebas Neue", sans-serif;
-}
-
-.cadastroIdentificacao {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
-
-.ContentIdentificacao {
-  width: 44%;
-  padding-left: 7rem;
-}
-
-.ContentIdentificacao form {
-  margin: 0;
-}
-
-.ContentIdentificacao label {
-  font-weight: 600;
-  font-size: 1.1rem;
-  margin: 0.2rem 0;
-  color: rgb(183, 143, 63);
-}
-
-.ContentIdentificacao input,
-.ContentIdentificacao select {
-  width: 100%;
-  padding: 1rem 2rem;
-  margin: 0.2rem 0;
-  border-radius: 0.3rem;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: transparent;
-  color: wheat;
-  border: 2px solid rgb(180, 176, 176);
-}
-
-.ContentIdentificacao input::placeholder {
-  color: #d8d2d2;
-  opacity: 1;
-}
-
-.ContentIdentificacao input[type=date] {
-  color: #d8d2d2;
-}
-
-select option {
-  color: #0d0d0d;
-}
-
-.grid2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.grid2 div {
-  display: flex;
-  flex-direction: column;
-}
-
-.InfoCadastro p {
-  width: 100%;
-  font-size: 1rem;
-  text-align: justify;
-  margin: 0.2rem 0;
-}
-
-.btn button {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid transparent;
-  margin-top: 0.6rem;
-  font-size: 1rem;
-  font-weight: bold;
-  background-color: #e6b800;
-  color: white;
-  opacity: 0.8;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn button:hover {
-  opacity: 1;
-}
-
-/* INFO PACOTE */
-/* 🔹 Container geral da seção de resumo */
-.resumoPedido {
-  width: 35%; /* diminui a largura pra caber melhor ao lado do formulário */
-  background-color: #0d0d0d;
-  border-radius: 1rem;
-  padding: 1rem 1.2rem;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
-  position: sticky;
-  top: 1.5rem;
-  height: fit-content;
-  max-height: 90vh; /* evita ficar gigante */
-  overflow-y: auto; /* rola internamente se tiver várias pizzas */
-}
-.resumoPedido h2{
-  text-align: center;
+.formSection p {
   font-size: 1.4rem;
-  margin: 0.2rem 0;
-}
-
-/* 🔹 Card individual da pizza */
-.InfoPacote {
-  width: 100%;
-  background-color: #000;
-  border-radius: 0.8rem;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* 🔹 Imagem da pizza */
-.imgPacote img {
-  width: 100vh;
-  
-  height: 10rem;
-  border-radius: 0.6rem;
-  object-fit: cover;
-}
-
-/* 🔹 Texto dentro do card */
-.textContent {
-  width: 100%;
-  text-align: center;
-}
-
-.textContent h4 {
-  font-size: 1rem;
-  color: rgb(199, 157, 74);
-  margin: 0.5rem 0;
-}
-
-.textContent p {
-  font-size: 0.9rem;
-  margin-bottom: 0.4rem;
-  color: #ccc;
-}
-
-/* 🔹 Preço e adicionais */
-.itemPrice p {
   font-weight: 600;
-  font-size: 1rem;
-  color: rgb(199, 157, 74);
+
+    color: #f5b942;;
 }
 
-.adicionaisContainer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.4rem 0 0;
-}
-
-.adicionaisContainer li {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-  padding: 0.2rem 0;
-}
-
-.infoAdicionais .info {
-  display: flex;
-  justify-content: space-around;
-  width: 40%;
-  margin:  0 auto;
-}
-
-.info p:first-child {
-  color: rgb(177, 169, 169);
-}
-
-.info p:last-child {
-  color: rgb(146, 117, 60);
-}
-
-/* RESPONSIVIDADE */
 @media (max-width: 1024px) {
-  .cadastroIdentificacao {
+  .checkout {
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    padding: 2rem 1rem;
   }
 
-  .ContentIdentificacao {
+  .formSection {
     width: 100%;
-    padding-left: 0;
-  }
-
-  .InfoPacote {
-    width: 90%;
-    margin-top: 2rem;
-    height: auto;
+    max-width: 600px;
+    padding: 2rem;
   }
 }
 
-@media (max-width: 640px) {
-  .navIdentificacao h1 {
-    font-size: 2rem;
+@media (max-width: 768px) {
+  .checkout {
+    padding: 1.5rem 1rem;
   }
 
-  .IdentificacaoContent h2 {
-    font-size: 1.3rem;
-  }
-
-  .IdentificacaoContent p {
-    font-size: 1.2rem;
-  }
-
-  .grid2 {
-    grid-template-columns: 1fr;
-  }
-
-  .btn button {
-    font-size: 0.9rem;
+  .formSection {
+    padding: 1.5rem;
+    border-radius: 12px;
   }
 }

@@ -3,13 +3,15 @@ export interface User {
   nome: string;
   sobreNome: string;
   email: string;
-  senha: string;
+  senha:string
   cpf: string;
   sexo: string;
   nascimento: string;
   telefone: string;
 }
-
+export interface UserRegister extends User {
+  senha: string;
+}
 export interface Contato {
   id: number;
   nome: string;
@@ -33,26 +35,9 @@ export interface OrderItem {
 
 export interface Order {
   id: number;
-  sabor: string;
-  descricao: string;
-  preco: number;
-  imagem?: string;
-  precoTotal: number;
-  unidades: number;
-  adicionais: string[];
-  cartId: number;
-  nome: string;
-  sobreNome: string;
-  cpf: string;
-  sexo: string;
-  nascimento: string;
-  email: string;
-  telefone: string;
-  cep: string;
-  estado: string;
-  cidade: string;
-  numero: string;
-  complemento: string;
+  item: Cart[];
+  user: User;
+  endereco: Address[];
   items: OrderItem[];
 }
 
@@ -71,7 +56,7 @@ export interface Adicional {
   id: number;
   nome: string;
   preco: number;
-  pizzaid: number;
+  pizzaId: number;
 }
 export interface Pizzas {
   id: number;
@@ -79,12 +64,11 @@ export interface Pizzas {
   descricao: string;
   preco: number;
   imagem: string;
-  adicional: Adicional[];
+  adicionais: Adicional[];
 }
 
 export interface Address {
   id: number;
-  userId: number;
   cep: string;
   estado: string;
   cidade: string;
@@ -92,4 +76,5 @@ export interface Address {
   rua: string;
   numero: string;
   complemento?: string;
+  userId: number;
 }

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
 import { api } from "../api/api";
-import type { Adicional, OrderItem, Pizzas } from "../types";
+import type { Adicional, Pizzas } from "../types";
 import { toast } from "react-toastify";
 import { usePizzaStore } from "../store/usePizzaStore";
 import { cartSchema } from "../schemas/cartSchema";
@@ -13,7 +13,7 @@ function useOrderItem() {
   const [modal, setModal] = useState<boolean>(false);
   const { sabor } = useParams();
   const [pizzas, setPizzas] = useState<Pizzas[]>([]);
-  const [orcamento, setOrcamento] = useState<OrderItem[]>([]);
+
   const [editId, setEditId] = useState<number | null>(null);
   const { pizzaSelecionada } = usePizzaStore();
 
@@ -22,6 +22,7 @@ function useOrderItem() {
       try {
         const response = await api.get("/pizzas/");
         setPizzas(response.data);
+        
       } catch (error) {
         console.log(error);
       }
@@ -36,13 +37,13 @@ function useOrderItem() {
     setPrecoTotal(total);
   }, [pizzaSelecionada, unidades,adicionaisSelecionados]);
 
-  const toggleAdicional = (adicional: Adicional) => {
+  const toggleAdicional = (adicionais: Adicional) => {
     setAdicionaisSelecionados((prev) => {
-      const jaTem = prev.find((item) => item.id === adicional.id);
+      const jaTem = prev.find((item) => item.id === adicionais.id);
       if (jaTem) {
-        return prev.filter((item) => item.id !== adicional.id);
+        return prev.filter((item) => item.id !== adicionais.id);
       } else {
-        return [...prev, adicional];
+        return [...prev, adicionais];
       }
     });
   };
@@ -54,7 +55,6 @@ function useOrderItem() {
     const newOrcamento = {
       ...pizzaSelecionada,
       unidades,
-
       precoTotal,
     };
 
@@ -78,8 +78,6 @@ function useOrderItem() {
     toggleAdicional,
     sabor,
     pizzas,
-    orcamento,
-    setOrcamento,
     setEditId,
     editId,
     pizzaSelecionada,

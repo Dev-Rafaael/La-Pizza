@@ -1,8 +1,9 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { Order, User } from "../types";
 
 interface Address {
-  id: number;
+  id:number;
   userId: number;
   cep: string;
   estado: string;
@@ -11,6 +12,8 @@ interface Address {
   rua: string;
   numero: string;
   complemento?: string;
+  user: User
+  order: Order
 }
 
 interface UserAddress {
@@ -34,13 +37,13 @@ export const useAddressStore = create<UserAddress>()(
       updateAddress: (id, updatedFields) =>
         set((state) => ({
           address: state.address.map((addr) =>
-            addr.id === id ? { ...addr, ...updatedFields } : addr
+            addr.userId === id ? { ...addr, ...updatedFields } : addr
           ),
         })),
 
       deleteAddress: (id) =>
         set((state) => ({
-          address: state.address.filter((addr) => addr.id !== id),
+          address: state.address.filter((addr) => addr.userId !== id),
         })),
 
       clearAddress: () => set({ address: [] }),

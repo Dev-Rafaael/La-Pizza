@@ -1,7 +1,7 @@
-import useCadastrar from "../hooks/useCadastrar";
-import styles from "../styles/Cadastrar.module.css";
+import useUserForm from "../../hooks/useUserForm";
+import styles from "../../styles/Cadastrar.module.css";
 
-function Cadastrar() {
+function UserForm() {
   const {
     nome,
     setNome,
@@ -21,12 +21,12 @@ function Cadastrar() {
     setSenha,
     loading,
     handleAccount,
-  } = useCadastrar();
+  } = useUserForm();
 
   return (
     <main className={styles.mainCadastro}>
       <div className={styles.navCadastro}>
-        <h1>CADASTRO DE USUÁRIO</h1>
+        <h1>IDENTIFICAÇÃO</h1>
       </div>
       <article className={styles.cadastroSection}>
         <form onSubmit={handleAccount} className={styles.formIdentificacao}>
@@ -155,4 +155,4 @@ function Cadastrar() {
   );
 }
 
-export default Cadastrar;
+export default UserForm;

@@ -22,7 +22,8 @@ function OrderItem() {
   const { pizzaSelecionada } = usePizzaStore();
   if (!pizzaSelecionada) return <p>Carregando...</p>;
 
-  console.log(pizzaSelecionada.adicional);
+
+
 
   return (
     <main className={styles.orcamento}>
@@ -60,7 +61,7 @@ function OrderItem() {
               </div>
               <div className={styles.inputForm}> <label htmlFor="Adicionais">Adicionais:</label>
               {pizzaSelecionada &&
-                pizzaSelecionada.adicional.map((pizza) => (
+                pizzaSelecionada.adicionais.map((pizza) => (
                   <label key={pizza.id} className={styles.checkboxContainer}>
                     <input
                       type="checkbox"

@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
-
+import { useAuthRedirect } from "../hooks/useAuthRedirect";
 import type { Cart } from "../types";
 import { cartSchema } from "../schemas/cartSchema";
 import { useUserCart } from "../store/useCartStore";
+import AuthModal from "../pages/AuthModal";
+import { useNavigate } from "react-router-dom";
 function useCart() {
   const [newQuantidade, setNewQuantidade] = useState<number>(0);
   const [editId, setEditId] = useState<number | null>(null);
@@ -13,6 +15,8 @@ function useCart() {
   const itemUpdate = useUserCart((s) => s.updateItem);
   const deleteItem = useUserCart((s) => s.deleteItem);
   const items = useUserCart((s) => s.items);
+const { requireAuth, showAuthModal, setShowAuthModal } = useAuthRedirect();
+const navigate = useNavigate()
 
   const deletarItem = async (cartId: number) => {
     if (!cartId) return;
@@ -68,6 +72,13 @@ function useCart() {
     }, 400);
   };
 
+
+const handleCheckout = () => {
+  if (requireAuth("/Identificação/")) {
+    navigate("/Identificação/");
+  }
+}
+
   return {
     items,
     newQuantidade,
@@ -79,6 +90,9 @@ function useCart() {
     editItem,
     valorTotal,
     triggerAnimation,
+   handleCheckout,
+       AuthModal,
+    showAuthModal, setShowAuthModal,
   } as const;
 }
 

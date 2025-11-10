@@ -2,11 +2,9 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { Adicional } from "../types";
 
-
 interface Cart {
- 
   id: number;
-   cartId: number;
+  cartId: number;
   sabor: string;
   descricao: string;
   preco: number;
@@ -19,31 +17,45 @@ interface Cart {
 interface UserCart {
   items: Cart[];
   addItem: (item: Cart) => void;
-  updateItem: (id: number, newData: Partial<Cart>) => void;
+updateItem: (cartId: number, newData: Partial<Cart>) => void;
   deleteItem: (id: number) => void;
   clearCart: () => void;
+  getTotal: () => number; // 👈 adicionamos aqui
 }
 
 export const useUserCart = create<UserCart>()(
   persist(
-    (set)=>({
-        items:[],
-         addItem: (item) =>
+    (set, get) => ({
+      items: [],
+
+      addItem: (item) =>
         set((state) => {
-         
-          const newItem = { ...item, cartId: Date.now() }; 
+          const newItem = { ...item, cartId: Date.now() };
           return { items: [...state.items, newItem] };
         }),
-        updateItem: (cartId,newData)=> set((state)=>({
-            items: state.items.map((item)=> item.cartId === cartId ? {...item,...newData}: item)
-        })),
-        deleteItem: (cartId)=> set((state)=>({
-            items: state.items.filter((item)=> item.cartId !== cartId)
-        })),
-        clearCart: ()=> set({items: []})
-    }),{
-        name:"cart-storage"
-    }
-),
 
-)
+      updateItem: (cartId, newData) =>
+        set((state) => ({
+          items: state.items.map((item) =>
+            item.cartId === cartId ? { ...item, ...newData } : item
+          ),
+        })),
+
+      deleteItem: (cartId) =>
+        set((state) => ({
+          items: state.items.filter((item) => item.cartId !== cartId),
+        })),
+
+      clearCart: () => set({ items: [] }),
+
+   
+      getTotal: () => {
+        const { items } = get();
+        return items.reduce((acc, item) => acc + item.precoTotal, 0);
+      },
+    }),
+    {
+      name: "cart-storage",
+    }
+  )
+);

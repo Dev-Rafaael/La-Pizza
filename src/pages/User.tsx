@@ -6,7 +6,8 @@ import { IMaskInput } from "react-imask";
 
 import UseAccount from "../hooks/useUser";
 function User() {
-const { account,
+const {
+  user,
     nome,
     setNome,
     sobreNome,
@@ -24,7 +25,7 @@ const { account,
     handleEdit} = UseAccount()
   return (
     <section className={styles.accountContent}>
-      {account.length === 0 ? (
+      {user === null ? (
         <main className={styles.accountVoid}>
           <h2>O CADASTRO ESTA VAZIO</h2>
           <div className={styles.buttonContainer}>
@@ -43,13 +44,13 @@ const { account,
           </header>
           <main className={styles.mainAccount}>
             <section className={styles.accountSection}>
-              {account.map((u, index) => (
-                <article key={index} className={styles.userCard}>
+             
+                <article  className={styles.userCard}>
                   <aside className={styles.accountAside}>
                     <figure>
                       <img
                         src={
-                          u.sexo === "feminino"
+                          user.sexo === "feminino"
                             ? "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava4-bg.webp"
                             : "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
                         }
@@ -57,7 +58,7 @@ const { account,
                       />
 
                       <figcaption>
-                        <h2>Olá {u.nome}</h2>
+                        <h2>Olá {user.nome}</h2>
                         <p>Bay Area, San Francisco, CA</p>
                       </figcaption>
 
@@ -79,34 +80,34 @@ const { account,
                         <div className={styles.flexRow}>
                           <dt>Nome Completo</dt>
                           <dd>
-                            {u.nome} {u.sobreNome}
+                            {user.nome} {user.sobreNome}
                           </dd>
                         </div>
 
                         <div className={styles.flexRow}>
                           <dt>Sexo</dt>
-                          <dd>{u.sexo}</dd>
+                          <dd>{user.sexo}</dd>
                         </div>
 
                         <div className={styles.flexRow}>
                           <dt>Email</dt>
-                          <dd>{u.email}</dd>
+                          <dd>{user.email}</dd>
                         </div>
 
                         <div className={styles.flexRow}>
                           <dt>Telefone</dt>
-                          <dd>{u.telefone}</dd>
+                          <dd>{user.telefone}</dd>
                         </div>
 
                         <div className={styles.flexRow}>
                           <dt>Data de Nascimento</dt>
-                          <dd>{u.nascimento}</dd>
+                          <dd>{user.nascimento}</dd>
                         </div>
                       </dl>
                     </article>
                   </section>
                 </article>
-              ))}
+            
             </section>
           </main>
         </>

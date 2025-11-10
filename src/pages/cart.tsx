@@ -5,7 +5,6 @@ import mastercard from "../assets/IMG/mastercard.png";
 import pix from "../assets/IMG/pix.png";
 import useCart from "../hooks/useCart";
 
-
 function Cart() {
   const {
     items,
@@ -18,11 +17,14 @@ function Cart() {
     editItem,
     valorTotal,
     triggerAnimation,
+     handleCheckout,
+       AuthModal,
+    showAuthModal, setShowAuthModal,
   } = useCart();
 
-
-  
-  return (
+  return (  
+    <> 
+      <AuthModal visible={showAuthModal} onClose={() => setShowAuthModal(false)} />
     <section className={styles.cartSection}>
       <div className={styles.navCart}>
         <h1>CARRINHO</h1>
@@ -31,7 +33,7 @@ function Cart() {
         <article className={styles.cartContent}>
           <div className={styles.itensList}>
             {items.map((pizza) => (
-              <article key={pizza.id} className={styles.item}>
+              <article key={pizza.cartId} className={styles.item}>
                 <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
                 <article className={styles.detailsList}>
                   <div className={styles.infoItem}>
@@ -53,7 +55,7 @@ function Cart() {
                               type="button"
                               className={styles.qtyBtn}
                               onClick={() => {
-                                setNewQuantidade((q) => q - 1);
+                                setNewQuantidade((q) => Math.max(1, q - 1));
                                 triggerAnimation(pizza.id);
                               }}
                             >
@@ -75,7 +77,7 @@ function Cart() {
                               type="button"
                               className={styles.qtyBtn}
                               onClick={() => {
-                                setNewQuantidade((q) => q + 1);
+                                setNewQuantidade((q) => Math.max(1, q + 1));
                                 triggerAnimation(pizza.id);
                               }}
                             >
@@ -112,14 +114,16 @@ function Cart() {
                       <span>Descrição</span> {pizza.descricao}
                     </h2>
                     <h2>
-                     
-                      <span>Adicionais</span> {pizza.adicionais.map((i)=> i.nome).join(', ')}
+                      <span>Adicionais</span>{" "}
+                      {pizza.adicionais.map((i) => i.nome).join(", ")}
                     </h2>
                   </div>
                 </article>
                 <div className={styles.actions}>
                   <div className={styles.actionBtn}>
-                    <button onClick={() => deletarItem(pizza.cartId)}>🗑️</button>
+                    <button onClick={() => deletarItem(pizza.cartId)}>
+                      🗑️
+                    </button>
                     <button
                       className={styles.editBtn}
                       onClick={() => edit(pizza)}
@@ -127,9 +131,7 @@ function Cart() {
                       ✏️
                     </button>
                   </div>{" "}
-                  
                 </div>
-                     
               </article>
             ))}
           </div>
@@ -147,9 +149,10 @@ function Cart() {
                 <img src={pix} alt="Pix" />
               </div>
             </div>
-     <div className={styles.actionPay}>
-                    <Link to={`/Identificação/`}>Pagar</Link>
-                  </div>
+            <div className={styles.actionPay}>
+              <button onClick={handleCheckout}>Finalizar Pedido</button>
+         
+            </div>
           </div>
         </article>
       ) : (
@@ -159,6 +162,7 @@ function Cart() {
         </div>
       )}
     </section>
+    </>
   );
 }
 

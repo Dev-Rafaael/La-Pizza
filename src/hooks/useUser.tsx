@@ -1,45 +1,49 @@
 import { useNavigate } from "react-router-dom";
-import type { User } from "../types";
+
 import { useEffect, useState, type FormEvent } from "react";
 import { useUserStore } from "../store/useUserStore";
 import { toast } from "react-toastify";
 import { api } from "../api/api";
 
-function UseAccount() {
-  const [account, setAccount] = useState<User[]>([]);
+function useUser() {
   const navigate = useNavigate();
+
+  // Zustand store
   const user = useUserStore((s) => s.user);
   const logout = useUserStore((s) => s.logout);
   const update = useUserStore((s) => s.updatedUser);
+
+  // Estados locais (apenas pro modal de edição)
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [nome, setNome] = useState<string>("");
-  const [sobreNome, setSobreNome] = useState<string>("");
-  const [nascimento, setNascimento] = useState<string>("");
-  const [sexo, setSexo] = useState<string>("");
-  const [telefone, setTelefone] = useState<string>("");
+  const [nome, setNome] = useState("");
+  const [sobreNome, setSobreNome] = useState("");
+  const [nascimento, setNascimento] = useState("");
+  const [sexo, setSexo] = useState("");
+  const [telefone, setTelefone] = useState("");
+
+  // Se não tiver usuário logado, manda pro login
   useEffect(() => {
-    if (user) {
-      try {
-        setAccount([user]);
-      } catch (error) {
-        console.error("Erro ao converter JSON do usuário:", error);
-        navigate("/login");
-      }
-    } else {
-      navigate("/perfil");
+    if (!user) {
+      navigate("/login");
     }
   }, [user, navigate]);
 
+  // Função para logout
   const deletarAccount = () => {
     logout();
-    setAccount([]);
+    toast.info("Você saiu da conta");
+    navigate("/login");
   };
+
+  // Fecha o modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  // Abre modal e carrega dados atuais
   const edit = () => {
-    setIsModalOpen(true);
     if (!user) return;
+    setIsModalOpen(true);
     setNome(user.nome);
     setSobreNome(user.sobreNome);
     setNascimento(user.nascimento);
@@ -47,12 +51,15 @@ function UseAccount() {
     setTelefone(user.telefone);
   };
 
+  // Atualiza dados no backend e Zustand
   const handleEdit = async (e: FormEvent) => {
     e.preventDefault();
+
     if (!user?.id) {
       toast.error("Usuário não encontrado!");
       return;
     }
+
     const dados = {
       nome,
       sobreNome,
@@ -60,20 +67,21 @@ function UseAccount() {
       sexo,
       telefone,
     };
+
     try {
-      const { data } = await api.put(`account/${user.id}`, dados);
+      const { data } = await api.put(`/account/${user.id}`, dados);
       update(data);
-      toast.success("Atualizado Com Sucesso ");
+      toast.success("✅ Conta atualizada com sucesso!");
     } catch (error) {
-      console.log(error);
-      toast.error("Erro ao Atualizar Conta");
+      console.error(error);
+      toast.error("Erro ao atualizar conta");
     } finally {
       setIsModalOpen(false);
     }
-     console.log(user);
   };
+
   return {
-    account,
+    user,
     nome,
     setNome,
     sobreNome,
@@ -92,4 +100,4 @@ function UseAccount() {
   } as const;
 }
 
-export default UseAccount;
+export default useUser;

@@ -3,18 +3,23 @@ import { api } from "../api/api";
 import { toast } from "react-toastify";
 import { addressSchema } from "../schemas/addressSchema";
 
-function useAddress() {
-  const [cep, setCEP] = useState<string>("");
-  const [estado, setEstado] = useState<string>("");
-  const [cidade, setCidade] = useState<string>("");
-  const [bairro, setBairro] = useState<string>("");
-  const [rua, setRua] = useState<string>("");
-  const [numero, setNumero] = useState<string>("");
-  const [complemento, setComplemento] = useState<string>("");
+function useAddress(onContinue: (addressId: number) => void, userId?: number) {
+const [cep, setCEP] = useState<string>("");
+const [estado, setEstado] = useState<string>("");
+const [cidade, setCidade] = useState<string>("");
+const [bairro, setBairro] = useState<string>("");
+const [rua, setRua] = useState<string>("");
+const [numero, setNumero] = useState<string>("");
+const [complemento, setComplemento] = useState<string>("");
 
-  const handleAddress = async (e: FormEvent) => {
+
+
+  const handleAddress = async (e:FormEvent) => {
     e.preventDefault();
-
+ if (!userId) {
+      toast.error("Usuário não identificado");
+      return;
+    }
     const addressData = {
       cep,
       estado,
@@ -30,14 +35,30 @@ function useAddress() {
         parseResult.error.issues.forEach((err) => {
           toast.error(err.message);
         });
+        return
       }
-      const address = await api.post("address", addressData);
-      console.log(address);
+      const {data} = await api.post("/address/", {
+        ...addressData,
+        userId
+      });
+
       toast.success("Endereço Criado Com Sucesso");
-    } catch (error) {
-      console.log(error);
+      onContinue(data.id)
+      setCEP("");
+      setEstado("");
+      setCidade("");
+      setBairro("");
+      setRua("");
+      setNumero("");
+      setComplemento("");
+
+    } catch (err) {
+      console.error(err);
+      toast.error("Erro ao salvar endereço");
+      
     }
   };
+
   return {
     cep,
     setCEP,
@@ -58,3 +79,4 @@ function useAddress() {
 }
 
 export default useAddress;
+
