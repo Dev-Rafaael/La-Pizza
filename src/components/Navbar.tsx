@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PizzaIcon from "../assets/IMG/faviconPizza.png";
 import styles from "../styles/NavBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,18 +9,27 @@ import {
 import { useEffect, useState } from "react";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import type { Cart } from "../types";
+import { api } from "../api/api";
+import { Link, useLocation } from "react-router-dom";
+
 function Navbar() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<Cart[]>([]);
+const location = useLocation();
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-    setIsMenuOpen(!isMenuOpen);
+const toggleModal = () => {
+  const next = !isModalOpen;
+  setIsModalOpen(next);
+  setIsMenuOpen(false);
+  if (next) {
     setSearchTerm("");
-  };
+    setSearchResults([]);
+  }
+};
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -39,23 +47,50 @@ function Navbar() {
     setSearchResults([]);
   };
 
+useEffect(() => {
+  if (searchTerm.trim() === "") {
+    setSearchResults([]);
+    return;
+  }
+
+  const timeout = setTimeout(async () => {
+    try {
+      const { data } = await api.get(`/pizzas/${searchTerm}`);
+      setSearchResults(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }, 400); 
+
+  return () => clearTimeout(timeout);
+}, [searchTerm]);
 
 
-  useEffect(() => {
-    const handleOutsideClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (
-        isMenuOpen &&
-        !target.closest(`.${styles.navItens}`) &&
-        !target.closest(`.${styles.hamburgerMenu}`)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
 
-    document.addEventListener("click", handleOutsideClick);
-    return () => document.removeEventListener("click", handleOutsideClick);
-  }, [isMenuOpen]);
+ useEffect(() => {
+  function handleOutsideClick(e: MouseEvent) {
+    const target = e.target as HTMLElement;
+    const isClickInsideMenu =
+      target.closest(`.${styles.navItens}`) ||
+      target.closest(`.${styles.hamburgerMenu}`);
+    if (isMenuOpen && !isClickInsideMenu) {
+      setIsMenuOpen(false);
+    }
+  }
+
+  document.addEventListener("mousedown", handleOutsideClick);
+  return () => document.removeEventListener("mousedown", handleOutsideClick);
+}, [isMenuOpen]);
+
+useEffect(() => {
+  document.body.style.overflow = isModalOpen ? "hidden" : "auto";
+}, [isModalOpen]);
+
+useEffect(() => {
+  setIsModalOpen(false);
+  setSearchTerm("");
+  setSearchResults([]);
+}, [location.pathname]);
 
   return (
     <section className={styles.navBar}>

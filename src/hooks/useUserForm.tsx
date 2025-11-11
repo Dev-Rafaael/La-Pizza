@@ -19,6 +19,8 @@ function useUserForm() {
   const [account, setAccount] = useState();
   const navigate = useNavigate(); 
   const storeCreate = useUserStore((s) => s.createUser);
+
+  
   const handleAccount = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -28,7 +30,7 @@ function useUserForm() {
         sobreNome,
         email,
         cpf,
-         sexo,
+        sexo,
         nascimento,
         telefone,
         senha,

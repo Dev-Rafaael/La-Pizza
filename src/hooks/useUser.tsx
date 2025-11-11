@@ -65,7 +65,7 @@ function useUser() {
     };
 
     try {
-      const { data } = await api.put(`/account/${user.id}`, dados);
+      const { data } = await api.put(`/users/${user.id}`, dados);
       update(data);
       toast.success("✅ Conta atualizada com sucesso!");
     } catch (error) {

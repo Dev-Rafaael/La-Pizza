@@ -2,9 +2,21 @@
 import styles from '../styles/Login.module.css'
 import useLogin from '../hooks/useLogin'
 import { useNavigate } from 'react-router-dom';
+import { useUserStore } from '../store/useUserStore';
+import { useEffect } from 'react';
 function Login() {
 const {email, setEmail,senha, setSenha,loading,handleSubmit} = useLogin()
+const{
+ user,
+ } = useUserStore()
 const navigate = useNavigate(); 
+
+useEffect(() => {
+  if (user?.email) {
+    setEmail(user.email);
+  }
+}, [user, setEmail]);
+
   return (
     <form  className={styles.loginForm} onSubmit={handleSubmit}>
       <div className={styles.loginContent}>
@@ -13,7 +25,7 @@ const navigate = useNavigate();
         <input
           type="email"
           placeholder="Email"
-          value={email}
+          value={email }
           onChange={(e) => setEmail(e.target.value)}
           required
         />

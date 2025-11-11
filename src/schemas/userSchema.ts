@@ -1,15 +1,12 @@
-
-import z from "zod";
-
-
+import { z } from "zod";
 
 export const userSchema = z.object({
-  nome: z.string().min(12,'deve ter Mais de 2 caracteres'),
-  sobreNome: z.string().min(3,'sobreNome deve ter Mais de 3 caracteres'), 
-  email: z.string().min(10,'Email deve ter Mais de 2 caracteres'),
-  senha: z.string().min(7,'A senha deve ter pelo menos 8  a 20 caracteres').max(20),
-  cpf: z.string().min(3,'CPF deve ter 9 caracteres'),
-  sexo: z.string().min(2,'sexo deve ter Mais de 2 caracteres'),
-  nascimento: z.date(),
-  telefone: z.string().min(2,'Telefone deve ter 11 caracteres').max(11),
-})
+  nome: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
+  sobreNome: z.string().min(3, 'Sobrenome deve ter pelo menos 3 caracteres'),
+  email: z.string().email('Email inválido'),
+  senha: z.string().min(8, 'A senha deve ter entre 8 e 20 caracteres').max(20),
+  cpf: z.string().min(11, 'CPF deve ter 11 caracteres').max(11),
+  sexo: z.string().min(1, 'Sexo é obrigatório'),
+  nascimento: z.coerce.date(),
+  telefone: z.string().min(10, 'Telefone deve ter 10 ou 11 caracteres').max(11),
+});
