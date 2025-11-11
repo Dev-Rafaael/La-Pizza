@@ -110,30 +110,44 @@ legend {
 
 /* BOTÃO */
 .btn {
+  width: 50%;
+  margin:  0 auto;
   display: flex;
+  gap: 0.4rem ;
   justify-content: center;
   margin-top: 1rem;
 }
 
-.btn button {
-  width: 30%;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  border: 1px solid transparent;
+.btnEntrar,
+.btnFechar {
+  flex: 1;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.4rem;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #e6b800;
-  color: white;
-  opacity: 0.85;
+  color: #fff;
   cursor: pointer;
-  transition: opacity 0.2s, transform 0.2s;
+  transition: opacity 0.2s ease;
 }
 
-.btn button:hover {
+.btnEntrar {
+  background-color: rgb(179, 138, 58);
+  opacity: 0.8;
+}
+
+.btnEntrar:hover {
   opacity: 1;
-  transform: scale(1.02);
 }
 
+.btnFechar {
+  background-color: rgb(93, 88, 88);
+  opacity: 0.8;
+}
+
+.btnFechar:hover {
+  opacity: 1;
+}
 /* =======================
    RESPONSIVIDADE
 ======================= */

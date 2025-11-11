@@ -8,7 +8,6 @@ import Sobre from "./pages/Sobre.tsx";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade.tsx";
 import Cardapio from "./pages/Pizza.tsx";
 import Carrinho from "./pages/Cart.tsx";
-import Account from "./pages/User.tsx";
 import Termos from "./pages/Termos.tsx";
 import "./index.css";
 import LayoutZap from "./components/LayoutZap.jsx";
@@ -17,6 +16,7 @@ import Login from "./pages/Login.tsx";
 import Order from "./pages/Order/Order.tsx";
 import OrderItem from "./pages/OrderItem.tsx";
 import ProtectedRoute from "./middlewares/ProtectedRoute.tsx";
+import User from "./pages/User.tsx";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "Perfil/",
-        element: <Account />,
+        element: <User />,
       },
      
       {

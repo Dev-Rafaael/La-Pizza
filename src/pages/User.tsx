@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IMaskInput } from "react-imask";
 
 import UseAccount from "../hooks/useUser";
+
 function User() {
 const {
-  user,
+    user,
     nome,
     setNome,
     sobreNome,
@@ -23,20 +24,21 @@ const {
     handleCloseModal,
     isModalOpen,
     handleEdit} = UseAccount()
+  
+    
   return (
     <section className={styles.accountContent}>
-      {user === null ? (
-        <main className={styles.accountVoid}>
-          <h2>O CADASTRO ESTA VAZIO</h2>
-          <div className={styles.buttonContainer}>
-            <Link to="/Cadastro" className={styles.btnCadastrar}>
-              Cadastrar
-            </Link>
-            <Link to="/Login" className={styles.btnLogar}>
-              Entrar
-            </Link>
-          </div>
-        </main>
+    {user === null  ? (
+   <main className={styles.accountVoid}>
+    <h2>Você ainda não tem uma conta</h2>
+      <p>Crie seu cadastro ou entre com uma conta existente para acessar seu perfil.</p>
+
+      <div className={styles.buttonContainer}>
+        <Link to="/Cadastro" className={styles.btnCadastrar}>Cadastrar</Link>
+        <Link to="/Login" className={styles.btnLogar}>Entrar</Link>
+      </div>
+    </main>
+
       ) : (
         <>
           <header className={styles.navAccount}>
@@ -59,7 +61,7 @@ const {
 
                       <figcaption>
                         <h2>Olá {user.nome}</h2>
-                        <p>Bay Area, San Francisco, CA</p>
+                        <p> {  user.sexo === "feminino" ? 'Seja Bem Vinda!': 'Seja Bem Vindo!'}</p>
                       </figcaption>
 
                       <div className={styles.userActions}>

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useUserStore } from "../store/useUserStore";
 import { toast } from "react-toastify";
 import { api } from "../api/api";
@@ -22,11 +22,7 @@ function useUser() {
   const [telefone, setTelefone] = useState("");
 
   // Se não tiver usuário logado, manda pro login
-  useEffect(() => {
-    if (!user) {
-      navigate("/login");
-    }
-  }, [user, navigate]);
+
 
   // Função para logout
   const deletarAccount = () => {

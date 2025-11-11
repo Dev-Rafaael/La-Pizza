@@ -1,14 +1,13 @@
+
 import useAddress from "../../hooks/useAddress";
 import styles from "../../styles/Address.module.css";
-import type { Cart } from "../../types";
 
-interface Props {
-  userId?: number;
+interface AddressFormProps {
+  userId: number;
   onContinue: (addressId: number) => void;
-  cartItems?: Cart[];
-  total?: number;
+  setShowForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
-function AddressForm({ userId, onContinue }: Props) {
+function AddressForm({ userId, onContinue, setShowForm }: AddressFormProps) {
   const {
     cep,
     setCEP,
@@ -121,10 +120,18 @@ function AddressForm({ userId, onContinue }: Props) {
             />
           </div>
         </div>
-
-        <button type="submit" className={styles.btn}>
+    <div className={styles.btn}>
+        <button type="submit" className={styles.btnSave}>
           Salvar Endereço
         </button>
+         <button
+          type="button"
+          className={styles.btnFechar}
+          onClick={() => setShowForm(false)}
+        >
+          Cancelar
+        </button>
+</div>
       </form>
     </section>
   );

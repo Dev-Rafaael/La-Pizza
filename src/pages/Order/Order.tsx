@@ -23,11 +23,12 @@ export default function Order() {
   };
 useEffect(() => {
   if (user?.id) {
-    api.get(`/addresses/user/${user.id}`).then((res) => {
+    api.get(`/address/user/${user.id}`).then((res) => {
       setEnderecos(res.data);
     });
   }
 }, [user]);
+
 
   return (
   <section>
@@ -73,7 +74,11 @@ useEffect(() => {
                   </button>
                 </>
               ) : (
-                <AddressForm userId={user?.id} onContinue={onContinue} />
+                 <AddressForm
+                  userId={user.id}
+                  onContinue={onContinue}
+                  setShowForm={setShowForm}
+                />
               )}
             </>
           )}

@@ -23,12 +23,24 @@
   font-style: italic;
   color: rgb(146, 117, 60);
 }
-
+.accountVoid{
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .accountVoid h2 {
   font-size: 1.8rem;
+  text-align: center;
   font-weight: bold;
   font-style: italic;
   color: rgb(146, 117, 60);
+  text-transform: uppercase;
+}
+.accountVoid p {
+  text-align: center;
+  color: rgb(185, 180, 180);
 }
 .buttonContainer {
   display: flex;

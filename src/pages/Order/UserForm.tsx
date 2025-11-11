@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import useUserForm from "../../hooks/useUserForm";
 import styles from "../../styles/Cadastrar.module.css";
 
@@ -22,7 +23,7 @@ function UserForm() {
     loading,
     handleAccount,
   } = useUserForm();
-
+const navigate = useNavigate(); 
   return (
     <main className={styles.mainCadastro}>
       <div className={styles.navCadastro}>
@@ -148,6 +149,7 @@ function UserForm() {
             >
               {loading ? "CADASTRANDO..." : "CADASTRAR-SE"}
             </button>
+                <button type="button"  className={styles.btnFechar} onClick={() => navigate(-1)}>Cancelar</button>
           </div>
         </form>
       </article>

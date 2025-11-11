@@ -57,7 +57,12 @@
   box-shadow: 0 0 0 2px rgba(245, 185, 66, 0.2);
 }
 
+
 .btn {
+  display: flex;
+  gap: 1rem;
+}
+.btnSave,.btnFechar {
   margin-top: 1.5rem;
   padding: 0.8rem;
   background-color: #f5b942;
@@ -67,10 +72,13 @@
   border-radius: 12px;
   cursor: pointer;
   transition: background 0.3s ease;
+  opacity: 0.9;
 }
-
-.btn:hover {
-  background-color: #e0a92e;
+.btnFechar {
+  background-color: #3d3d3b;
+}
+.btnSave:hover,.btnFechar:hover {
+ opacity: 1;
 }
 
 /* Responsividade */
