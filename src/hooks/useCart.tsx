@@ -30,11 +30,12 @@ const navigate = useNavigate()
   };
   const edit = (item: Cart) => {
     setEditId(item.cartId);
+  
     setNewQuantidade(item.unidades);
   };
   const editItem = async (e: FormEvent,   cartId:number) => {
     e.preventDefault();
-
+    
     if (!cartId) return;
 
     const itemOriginal = items.find((item) => item.cartId === cartId);
@@ -59,7 +60,8 @@ const navigate = useNavigate()
       }
     } catch (error) {
       console.log(error);
-      toast.success("🍕 Não Foi possivel atualizar!");
+    toast.error("🍕 Não foi possível atualizar!");
+
     }
   };
 
@@ -78,6 +80,10 @@ const handleCheckout = () => {
     navigate("/Identificação/");
   }
 }
+const handleQuantityChange = (delta: number, id: number) => {
+  setNewQuantidade(q => Math.max(1, q + delta));
+  triggerAnimation(id);
+};
 
   return {
     items,
@@ -92,7 +98,7 @@ const handleCheckout = () => {
     triggerAnimation,
    handleCheckout,
        AuthModal,
-    showAuthModal, setShowAuthModal,
+    showAuthModal, setShowAuthModal,handleQuantityChange
   } as const;
 }
 

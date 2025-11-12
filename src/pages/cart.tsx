@@ -19,7 +19,7 @@ function Cart() {
     triggerAnimation,
      handleCheckout,
        AuthModal,
-    showAuthModal, setShowAuthModal,
+    showAuthModal, setShowAuthModal,handleQuantityChange  
   } = useCart();
 
   return (  
@@ -45,9 +45,9 @@ function Cart() {
                     </h2>
                     <h2>
                       <span>Quantidade</span>
-                      {editId === pizza.id ? (
+                      {editId === pizza.cartId ? (
                         <form
-                          onSubmit={(e) => editItem(e, pizza.id)}
+                          onSubmit={(e) => editItem(e, pizza.cartId)}
                           className={styles.quantityForm}
                         >
                           <div className="">
@@ -55,7 +55,7 @@ function Cart() {
                               type="button"
                               className={styles.qtyBtn}
                               onClick={() => {
-                                setNewQuantidade((q) => Math.max(1, q - 1));
+                                handleQuantityChange(-1, pizza.id);
                                 triggerAnimation(pizza.id);
                               }}
                             >
@@ -77,7 +77,7 @@ function Cart() {
                               type="button"
                               className={styles.qtyBtn}
                               onClick={() => {
-                                setNewQuantidade((q) => Math.max(1, q + 1));
+                              handleQuantityChange(+1, pizza.id);
                                 triggerAnimation(pizza.id);
                               }}
                             >
@@ -103,7 +103,7 @@ function Cart() {
                         }`}
                       >
                         R$
-                        {editId === pizza.id
+                        {editId === pizza.cartId
                           ? (pizza.preco * newQuantidade).toFixed(2)
                           : pizza.precoTotal.toFixed(2)}
                       </p>

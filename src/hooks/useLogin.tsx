@@ -1,15 +1,15 @@
 import { useState, type FormEvent } from "react";
 import { api } from "../api/api";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../store/useUserStore";
 import { loginSchema } from "../schemas/loginSchema";
+import { useAuthRedirect } from "./useAuthRedirect";
 
 function useLogin() {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  const { handleLoginSuccess } = useAuthRedirect(); // <-- pega a função aqui
    const login = useUserStore((s)=> s.login)
 const handleSubmit = async (e: FormEvent) => {
  
@@ -30,7 +30,7 @@ const handleSubmit = async (e: FormEvent) => {
     if (data?.token && data?.user) {
       login(data.user,data.token)
       toast.success("Login feito com sucesso 🍕");
-      navigate("/perfil");
+   handleLoginSuccess();
     } else {
       throw new Error("Resposta inválida do servidor");
     }
