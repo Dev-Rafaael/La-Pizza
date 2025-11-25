@@ -1,9 +1,10 @@
 import { create } from "zustand";
-import type { Pizzas } from "../types";
+import type { Pizzas } from "@packages/types/types";
+
 
 interface PizzaState {
   pizzas: Pizzas[];
-  pizzaSelecionada: Pizzas | null;
+  pizzaSelecionada: Pizzas| null;
   modal: boolean;
   setPizzas: (pizzas: Pizzas[]) => void;
   setPizzaSelecionada: (pizza: Pizzas) => void;

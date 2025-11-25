@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { Adicional } from "../types";
+import type { Adicional } from "@packages/types/types";
 
 interface OrderItem{
   id: number;

@@ -4,7 +4,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IMaskInput } from "react-imask";
 
-import UseAccount from "../hooks/useUser";
+import UseAccount from "@packages/hooks/useUser";
 
 function User() {
 const {

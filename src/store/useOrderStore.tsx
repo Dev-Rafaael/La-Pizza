@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { OrderItem } from "../types";
+import type { OrderItem } from "@packages/types/types";
+
 
 
 

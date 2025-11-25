@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUserStore } from "../store/useUserStore";
+import  useUserStore  from "@packages/store/useUserStore";
 
 export default function ProtectedRoute() {
   const { user } = useUserStore();

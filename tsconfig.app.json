@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
@@ -21,7 +22,14 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* ALIASES AQUI */
+    "baseUrl": ".",
+    "paths": {
+      "@packages/*": ["../../Packages/*"]
+    }
   },
-  "include": ["src"]
+
+  "include": ["src", "src/hooks/useAuthRedirect.tsx", "src/hooks/useLogin.tsx", "../../Packages/hooks/useUser.tsx"]
 }

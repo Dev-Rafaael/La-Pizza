@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import type { Cart } from "../types";
-import { api } from "../api/api";
+import type { Cart } from "@packages/types/types";
+import { api } from "@packages/api/api";
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {

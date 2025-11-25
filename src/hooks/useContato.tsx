@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify';
-import { api } from '../api/api';
-import { contatoSchema } from '../schemas/contatoSchema';
+import { api } from '@packages/api/api';
+import { contatoSchema } from '@packages/schemas/contatoSchema';
 
 function UseContato() {
    const [loading, setLoading] = useState<boolean>(false);

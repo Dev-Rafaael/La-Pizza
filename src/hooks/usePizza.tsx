@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type {  Pizzas } from "../types";
-import { api } from "../api/api";
+import type {  Pizzas } from "@packages/types/types";
+import { api } from "@packages/api/api";
 import { usePizzaStore } from "../store/usePizzaStore";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,7 @@ function usePizza() {
           try {
             const responsePizza = await api.get("/pizzas/");
             setPizzas(responsePizza.data);
+           
           } catch (error) {
             console.log(error);
           }

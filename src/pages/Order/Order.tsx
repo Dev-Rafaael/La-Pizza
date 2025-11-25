@@ -1,37 +1,43 @@
-
 import styles from "../../styles/Order.module.css";
-import { useUserStore } from "../../store/useUserStore";
+import useUserStore  from "@packages/store/useUserStore";
 import AddressForm from "./AddressForm";
 import { useOrder } from "../../hooks/useOrder";
-import UserForm from "./UserForm"; // seu componente de cadastro/login
+import UserForm from "./UserForm";
 import OrderSummary from "./OrderSummary";
 import { useEffect, useState } from "react";
-import { api } from "../../api/api";
-import type { Address } from "../../types";
+import { api } from "@packages/api/api";
+import type { Address } from "@packages/types/types";
+import { toast } from "react-toastify";
 
 export default function Order() {
   const { user } = useUserStore();
-  const [enderecos,setEnderecos] = useState<Address[]>([])
+  const [enderecos, setEnderecos] = useState<Address[]>([]);
   const [showForm, setShowForm] = useState(false);
 
   const { handleSubmitOrder } = useOrder();
 
   // onContinue será chamado pelo AddressForm quando address criado
   const onContinue = async (addressId: number) => {
-    // cria order e redireciona (internamente em handleSubmitOrder)
-    await handleSubmitOrder(user?.id ?? null, addressId);
+    // VERIFICAÇÃO CRÍTICA: Garante que user existe antes de continuar
+    if (!user?.id) {
+      toast.error("Usuário não identificado. Faça login novamente.");
+      return;
+    }
+    
+    // Agora passa apenas user.id (number) em vez de user?.id ?? null
+await handleSubmitOrder(Number(user.id), addressId);
   };
-useEffect(() => {
-  if (user?.id) {
-    api.get(`/address/user/${user.id}`).then((res) => {
-      setEnderecos(res.data);
-    });
-  }
-}, [user]);
 
+  useEffect(() => {
+    if (user?.id) {
+      api.get(`/address/user/${user.id}`).then((res) => {
+        setEnderecos(res.data);
+      });
+    }
+  }, [user]);
 
   return (
-  <section>
+    <section>
       <div className={styles.navIdentificacao}>
         <h1>IDENTIFICAÇÃO</h1>
       </div>
@@ -74,7 +80,7 @@ useEffect(() => {
                   </button>
                 </>
               ) : (
-                 <AddressForm
+                <AddressForm
                   userId={user.id}
                   onContinue={onContinue}
                   setShowForm={setShowForm}
@@ -89,5 +95,3 @@ useEffect(() => {
     </section>
   );
 }
-
-

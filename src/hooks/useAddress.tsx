@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
-import { api } from "../api/api";
+import { api } from "@packages/api/api";
 import { toast } from "react-toastify";
-import { addressSchema } from "../schemas/addressSchema";
+import { addressSchema } from "@packages/schemas/addressSchema";
 
 function useAddress(onContinue: (addressId: number) => void, userId?: number) {
 const [cep, setCEP] = useState<string>("");

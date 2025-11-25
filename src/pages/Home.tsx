@@ -7,8 +7,7 @@ import Pizza1 from '../assets/IMG/pizza1.jpeg'
 import Pizza2 from '../assets/IMG/pizza2.jpg'
 import Pizza3 from '../assets/IMG/pizza3.jpg'
 import { Link } from 'react-router-dom'
-import avaliacoes from '../database/avaliacoes'
-import lista from '../database/beneficios'
+
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider, { type CustomArrowProps } from 'react-slick';
@@ -16,7 +15,6 @@ import { FaPlay } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import AOS from 'aos';
 import Modal from 'react-modal';
-import pizzas from '../database/pizzas'
 const CustomPrevArrow: React.FC<CustomArrowProps> =(props) => {
   const { className, style, onClick } = props;
   return (
@@ -167,7 +165,7 @@ function Home() {
 </section>
 
 {/* CARDÁPIO */}
-      <section className={styles.cardapio}>
+      {/* <section className={styles.cardapio}>
         <h1 className={styles.titleCardapio}>CARDÁPIO</h1>
         <article className={styles.cardapioItens}>
           {pizzas.slice(0,3).map((pizza, index) => (
@@ -183,7 +181,7 @@ function Home() {
           <article className={styles.cardapioOption}>
           <Link to={'/Cardapio'}>Ver Mais</Link>
         </article>
-      </section>
+      </section> */}
       {/* SOBRE */}
       <section className={styles.sobreSection} >
         <div className={styles.sobre}>
@@ -206,7 +204,7 @@ function Home() {
       
 
       {/* BENEFICIOS E DIFERENCIAS  */}
-      <section className={styles.beneficiosContent}>
+      {/* <section className={styles.beneficiosContent}>
   <h2 className={styles.title}>
     ⭐ Nossos Diferenciais
   </h2>
@@ -219,14 +217,14 @@ function Home() {
       </li>
     ))}
   </ul>
-</section>
+</section> */}
 
 
       {/* AVALIACOES  */}
  <section className={styles.avaliacoesContent}>
   <h2 className={styles.title}>⭐ Avaliações</h2>
 
-  <div className={styles.grid}>
+  {/* <div className={styles.grid}>
     {avaliacoes.map((avaliacao, index) => (
       <div key={index} className={styles.card}>
         <p className={styles.estrelas}>
@@ -239,7 +237,7 @@ function Home() {
         </p>
       </div>
     ))}
-  </div>
+  </div> */}
 </section>
 
     </section>  
