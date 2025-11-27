@@ -17,6 +17,9 @@ import Order from "./pages/Order/Order.tsx";
 import OrderItem from "./pages/OrderItem.tsx";
 import ProtectedRoute from "./middlewares/ProtectedRoute.tsx";
 import User from "./pages/User.tsx";
+import CancelPage from "./pages/CancelPage.tsx";
+import SuccessPage from "./pages/SuccessPage.tsx";
+import OrderStatus from "./pages/OrderStatus.tsx";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +71,18 @@ const router = createBrowserRouter([
       {
         path: "/Login",
         element: <Login />,
+      },  
+       {
+        path: "/cancel",
+        element: <CancelPage />,
+      }, 
+        {
+        path: "/success/",
+        element: <SuccessPage />,
+      },
+          {
+        path: "/order-status/:orderId",
+        element: <OrderStatus />,
       },
       {
         element: <ProtectedRoute />,

@@ -34,7 +34,7 @@ function UseContato() {
     }
 
     try {
-      await api.post("/contatos/criar", formData);
+      await api.post("/contatos/", formData);
       toast.success("🛎️ Mensagem Enviada com sucesso!");
       setFormData({
         nome: "",

@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
 import { api } from "@packages/api/api";
 import { useUserCart } from "../store/useCartStore";
-import { useNavigate } from "react-router-dom";
+
 
 export function useOrder() {
   const { items, clearCart, getTotal } = useUserCart();
-  const navigate = useNavigate();
+
 
   const handleSubmitOrder = async (
     userId: number | null | undefined,
@@ -36,11 +36,23 @@ export function useOrder() {
         status: 'PENDENTE'
       });
 
+
+       const stripeRes = await api.post("/pagamentos/checkout", {
+        items: itemsMapped.map((item) => ({
+          name: item.sabor,
+          quantity: item.quantidade,
+          price: item.precoUnitario,
+        })),
+        orderId: orderData.id,
+      });
+
+ 
+      window.location.href = stripeRes.data.url;
+
       toast.success("Pedido criado. Redirecionando para pagamento...");
       clearCart();
-      console.log(orderData);
 
-      navigate(`/pagamento/${orderData.id}`);
+
     } catch (err) {
       console.error(err);
       toast.error("Erro ao criar pedido");

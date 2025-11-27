@@ -1,0 +1,150 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.584), rgb(6, 6, 6));
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.navSuccess {
+  width: 100%;
+  height: 15rem;
+  background: linear-gradient(rgba(17, 17, 17, 0.55), rgba(10, 10, 10, 1)),
+    url(../assets/IMG/orcamentoLaPizza.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.navSuccess h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+  font-style: italic;
+  color: rgb(146, 117, 60);
+  text-align: center;
+}
+
+
+
+/* ORDER ID */
+.orderId {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #d6d6d6;
+}
+
+.orderId strong {
+  color: rgb(146, 117, 60);
+  font-size: 1.4rem;
+}
+
+
+/* ORDER BOX */
+.orderBox {
+  margin-top: 2rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(146, 117, 60, 0.3);
+}
+
+.orderBox h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: rgb(146, 117, 60);
+}
+
+.orderBox p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.loading {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.buttons {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.statusBtn {
+  padding: 0.9rem 1.6rem;
+  background: linear-gradient(135deg, #ff9100, #ff6a00);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 120, 20, 0.3);
+}
+
+.statusBtn:hover {
+  background: linear-gradient(135deg, #ffa733, #ff7b1c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(255, 120, 20, 0.45);
+}
+
+.backBtn {
+  padding: 0.9rem 1.6rem;
+  background: #fff;
+  color: #333;
+  border: 2px solid #ff6a00;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.backBtn:hover {
+  background: #ff6a00;
+  color: white;
+  border-color: #ff6a00;
+  transform: translateY(-2px);
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .navSuccess h1 {
+     font-size: 1.7rem;
+  }
+
+
+  .orderBox {
+    width: 95%;
+  }
+
+  .orderId {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
+
+  .navSuccess h1 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 1024px) {
+  .navSuccess h1 {
+    font-size: 2.5rem;
+  }
+
+}
