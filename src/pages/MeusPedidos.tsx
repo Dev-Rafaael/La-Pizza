@@ -10,7 +10,8 @@ import { useOrder } from "../hooks/useOrder";
 
 function MeusPedidos() {
   const user = useUserStore((s) => s.user);
-  const [pedidos, setPedidos] = useState<Order[]>([]);
+const [, setPedidos] = useState<Order[]>([]);
+
   const [modalOpen, setModalOpen] = useState(false);
   const [pedidoSelecionado, setPedidoSelecionado] = useState<number | null>(
     null
@@ -23,8 +24,10 @@ function MeusPedidos() {
 
   const handlePedido = async () => {
     const data = (await api.get(`/orders/`)).data;
-    const pedidosUser = data.filter((i) => i.userId === user?.id);
+
+    const pedidosUser = data.filter((i:Order) => i.userId === user?.id);
     setPedidos(pedidosUser);
+    
   };
   const fetchOrders = async () => {
     try {

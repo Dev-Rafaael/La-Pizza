@@ -22,7 +22,6 @@ function Navbar() {
     setToast,
     isModalOpen,
     isMenuOpen,
-    setIsMenuOpen,
     searchTerm,
     searchResults,
     unreadCount,
@@ -34,7 +33,7 @@ function Navbar() {
   } = useNavbar();
   const logout = useUserStore((s) => s.logout);
   const [userOpen, setUserOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLLIElement>(null);
   const notificationRef = useRef<HTMLLIElement | null>(null);
 useEffect(() => {
   function handleOutsideClick(e: MouseEvent | TouchEvent) {
@@ -56,7 +55,8 @@ useEffect(() => {
 }, []);
 
   useEffect(() => {
-    function handleClickOutside(e) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function handleClickOutside(e:any) {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
         setUserOpen(false);
       }
