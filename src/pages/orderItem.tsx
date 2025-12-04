@@ -5,6 +5,7 @@ import { usePizzaStore } from "../store/usePizzaStore";
 import styles from "../styles/OrderItem.module.css";
 import { useUserCart } from "../store/useCartStore";
 import { toast } from "react-toastify";
+import type { Adicional } from "@packages/types/types";
 
 function OrderItem() {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ function OrderItem() {
               </div>
               <div className={styles.inputForm}> <label htmlFor="Adicionais">Adicionais:</label>
               {pizzaSelecionada &&
-                pizzaSelecionada.adicionais.map((pizza) => (
+                pizzaSelecionada.adicionais.map((pizza:Adicional) => (
                   <label key={pizza.id} className={styles.checkboxContainer}>
                     <input
                       type="checkbox"

@@ -1,9 +1,9 @@
 import ModalCancelar from "../components/modais/ModalCancelar";
-import useUserStore from "../../../../Packages/store/useUserStore";
+import useUserStore from "@packages/store/useUserStore";
 import styles from "../styles/MeusPedidos.module.css";
 import { useEffect, useState } from "react";
-import { api } from "../../../../Packages/api/api";
-import type { Order } from "../../../../Packages/types/types";
+import { api } from "@packages/api/api";
+import type { Order } from "@packages/types/types";
 import getStatusClass from "../utils/getStatusClass";
 import { toast } from "react-toastify";
 import { useOrder } from "../hooks/useOrder";

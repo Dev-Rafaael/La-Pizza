@@ -1,3 +1,4 @@
+import type { Adicional } from "@packages/types/types";
 import { useUserCart } from "../../store/useCartStore";
 import styles from "../../styles/OrderSummary.module.css";
 
@@ -21,7 +22,7 @@ function OrderSummary() {
               </p>
               {item.adicionais?.length > 0 && (
                 <ul className={styles.adicionais}>
-                  {item.adicionais.map((ad) => (
+                  {item.adicionais.map((ad:Adicional) => (
                     <li key={ad.id}>
                       {ad.nome} +R${ad.preco.toFixed(2)}
                     </li>

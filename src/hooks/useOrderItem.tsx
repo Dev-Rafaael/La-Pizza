@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, type FormEvent } from "react";
-import { api } from "../../../../Packages/api/api";
-import type { Adicional, Pizzas } from "../../../../Packages/types/types";
+import { api } from "@packages/api/api";
+import type { Adicional, Pizzas } from "@packages/types/types";
 import { toast } from "react-toastify";
 import { usePizzaStore } from "../store/usePizzaStore";
-import { cartSchema } from "../../../../Packages/schemas/cartSchema";
+import { cartSchema } from "@packages/schemas/cartSchema";
 
 function useOrderItem() {
   const [precoTotal, setPrecoTotal] = useState<number>(0.0);

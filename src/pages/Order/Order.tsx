@@ -1,5 +1,5 @@
 import styles from "../../styles/Order.module.css";
-import useUserStore  from "../../../../../Packages/store/useUserStore";
+import useUserStore  from "@packages/store/useUserStore";
 import AddressForm from "./AddressForm";
 import { useOrder } from "../../hooks/useOrder";
 import UserForm from "./UserForm";
@@ -52,7 +52,7 @@ await handleSubmitOrder(Number(user.id), addressId);
                 <>
                   <h3>Escolha um endereço:</h3>
                   <ul className={styles.listaEnderecos}>
-                    {enderecos.map((endereco) => (
+                    {enderecos.map((endereco:Address) => (
                       <li key={endereco.id} className={styles.cardEndereco}>
                         <p>
                           {endereco.rua}, {endereco.numero}

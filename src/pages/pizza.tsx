@@ -1,6 +1,7 @@
 
 import styles from "../styles/Pizza.module.css";
 import usePizza from "../hooks/usePizza";
+import type { Pizzas } from "@packages/types/types";
 
 
 function Pizza() {
@@ -23,7 +24,7 @@ function Pizza() {
         </h2>
         <div className={styles.cardapioContainer}>
         
-          {pizzas.map((pizza) => (
+          {pizzas.map((pizza:Pizzas) => (
             <div key={pizza.id} className={styles.pizzaItem}>
               <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />
               <div className={styles.infoItens}>
