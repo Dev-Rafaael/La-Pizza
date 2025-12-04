@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
-import { api } from "@packages/api/api";
-import  useUserStore  from "@packages/store/useUserStore";
+import { api } from "../../../../Packages/api/api";
+import  useUserStore  from "../../../../Packages/store/useUserStore";
 import { useNavigate } from "react-router-dom";
-import { userSchema } from "@packages/schemas/userSchema";
+import { userSchema } from "../../../../Packages/schemas/userSchema";
 
 function useUserForm() {
   const [nome, setNome] = useState<string>("");

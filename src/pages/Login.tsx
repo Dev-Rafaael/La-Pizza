@@ -1,8 +1,8 @@
 
 import styles from '../styles/Login.module.css'
-import useLogin from '@packages/hooks/useLogin'
+import useLogin from '../../../../Packages/hooks/useLogin'
 import { useNavigate } from 'react-router-dom';
-import  useUserStore  from '@packages/store/useUserStore';
+import  useUserStore  from '../../../../Packages/store/useUserStore';
 import { useEffect } from 'react';
 function Login() {
 const {email, setEmail,senha, setSenha,loading,handleSubmit} = useLogin()
