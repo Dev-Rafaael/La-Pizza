@@ -266,6 +266,73 @@ color: #d18b08;
 .notFoundItem a:hover {
   opacity: 1;
 }
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== MAIN CARRINHO ====== */
+.cartSection {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* ====== HEADER ====== */
+.navCart h1 {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* ====== CONTEÚDO ====== */
+.cartContent,
+.itensList,
+.item,
+.detailsList,
+.infoItem,
+.infoAdicionais,
+.quantityForm,
+.valoresContent {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.2s;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* ====== INTERAÇÕES ====== */
+.qtyBtn:hover,
+.saveButton:hover,
+.actions button:hover,
+.actions a:hover,
+.actionPay:hover,
+.bandeiras img:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* ====== TOTAL ANIMAÇÃO ====== */
+.totalPrice.animate {
+  animation: fadeIn 0.3s ease-out forwards;
+  transform: scale(1.2);
+  color: #e6b800;
+}
+
+/* ====== CARRINHO VAZIO ====== */
+.notFoundItem,
+.notFoundItem h1,
+.notFoundItem a {
+  animation: slideUp 0.7s ease-out forwards;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.notFoundItem a:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
 
 /* Responsividade */
 @media (max-width: 1024px) {

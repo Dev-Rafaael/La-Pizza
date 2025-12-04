@@ -68,14 +68,48 @@
   line-height: 1.6;
 }
 
-/* =======================
-   RESPONSIVIDADE
-======================= */
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-/* Mobile até 768px */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
+/* ====== CONTAINER POLÍTICA ====== */
+.section {
+  animation: fadeIn 0.8s ease-out forwards;
+}
 
-/* Tablet até 1024px */
+/* ====== HEADER ====== */
+.navPoliticaPrivacidade h1,
+.navPoliticaPrivacidade p {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* ====== TÍTULOS E TEXTOS ====== */
+.title,
+.text,
+.list {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.2s;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ====== ITENS DA LISTA ====== */
+.list li {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.list li:hover {
+  transform: translateX(4px);
+  color: #f5d37f;
+}
+
 @media (max-width: 1024px) {
   .navPoliticaPrivacidade h1 {
     font-size: 2rem;

@@ -116,6 +116,42 @@
 .botaoNovoEndereco:hover {
   transform: scale(1.05);
 }
+/* ====== IDENTIFICAÇÃO / CHECKOUT ====== */
+
+/* Aparece suavemente de baixo pra cima */
+.navIdentificacao,
+.navIdentificacao h1,
+.checkout,
+.formSection,
+.listaEnderecos,
+.cardEndereco,
+.botaoUsarEndereco,
+.botaoNovoEndereco {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+/* Hover interativo nos cartões */
+.cardEndereco {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardEndereco:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(230, 208, 148, 0.45);
+}
+
+/* Botões */
+.botaoUsarEndereco,
+.botaoNovoEndereco {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0.9;
+}
+
+.botaoUsarEndereco:hover,
+.botaoNovoEndereco:hover {
+  transform: translateY(-3px) scale(1.05);
+  opacity: 1;
+}
 
 /* ===========================
    RESPONSIVIDADE

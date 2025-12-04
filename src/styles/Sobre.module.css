@@ -111,6 +111,51 @@
   height: 100%;
   border-radius: 1rem;
 }
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== SEÇÃO SOBRE ====== */
+.sobreSection {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* ====== HEADER ====== */
+.navSobre h1,
+.navSobre p {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* ====== CONTEÚDO ====== */
+.content,
+.text,
+.infoBlocks,
+.video {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.2s;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ====== PARÁGRAFOS E ITENS ====== */
+.text p,
+.infoBlocks p,
+.infoBlocks li {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.text p:hover,
+.infoBlocks li:hover {
+  transform: translateX(4px);
+  color: #f5d37f;
+}
 
 /* ==========================
    RESPONSIVIDADE

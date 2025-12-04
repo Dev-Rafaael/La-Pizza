@@ -66,11 +66,13 @@ const {
 
                       <div className={styles.userActions}>
                         <button onClick={() => deletarAccount()}>Logout</button>
+                        <Link to={'/Meus-Pedidos'}>Minha Compras</Link>
                         <FontAwesomeIcon
                           icon={faPenToSquare}
                           className={styles.editIcon}
                           onClick={() => edit()}
                         />
+                       
                       </div>
                     </figure>
                   </aside>

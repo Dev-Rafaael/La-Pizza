@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
-import { useAuthRedirect } from "../../../../Packages/hooks/useAuthRedirect";
+import { useAuthRedirect } from "@packages/hooks/useAuthRedirect";
 import type { Cart } from "@packages/types/types";
 import { cartSchema } from "@packages/schemas/cartSchema";
 import { useUserCart } from "../store/useCartStore";

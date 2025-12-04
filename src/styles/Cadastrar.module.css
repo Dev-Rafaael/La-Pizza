@@ -148,6 +148,101 @@ legend {
 .btnFechar:hover {
   opacity: 1;
 }
+/* ===================== */
+/*      ANIMAÇÕES        */
+/* ===================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== */
+/*     ENTRADA GERAL     */
+/* ===================== */
+
+.mainCadastro {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Banner */
+.navCadastro,
+.navCadastro h1 {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+/* ===================== */
+/*   SEÇÃO DO CADASTRO   */
+/* ===================== */
+
+.cadastroSection {
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.cadastroSection h1 {
+  animation: slideUp 0.75s ease-out forwards;
+  animation-delay: 0.18s;
+}
+
+/* Fieldset e legend */
+fieldset,
+legend {
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.22s;
+}
+
+/* Grid / Itens */
+.grid2,
+.grid2 div,
+.cadastroSection label,
+.cadastroSection input,
+.cadastroSection select {
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.25s;
+}
+
+/* ===================== */
+/*        INTERAÇÕES     */
+/* ===================== */
+
+/* Inputs */
+.cadastroSection input,
+.cadastroSection select {
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.cadastroSection input:hover,
+.cadastroSection select:hover {
+  transform: translateY(-3px);
+  border-color: rgb(183, 143, 63);
+}
+
+/* ===================== */
+/*         BOTÕES        */
+/* ===================== */
+
+.btn {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.35s;
+}
+
+.btnEntrar,
+.btnFechar {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.btnEntrar:hover,
+.btnFechar:hover {
+  transform: translateY(-3px) scale(1.03);
+  opacity: 1;
+}
+
 /* =======================
    RESPONSIVIDADE
 ======================= */

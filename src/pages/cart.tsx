@@ -153,7 +153,11 @@ function Cart() {
               <button onClick={handleCheckout}>Finalizar Pedido</button>
          
             </div>
-          </div>
+           
+          </div> <div className={styles.pedidos}>
+              <Link to="Meus-Pedidos">Meus Pedidos</Link>
+         
+            </div>
         </article>
       ) : (
         <div className={styles.notFoundItem}>

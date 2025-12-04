@@ -65,6 +65,45 @@
   color: rgb(149, 143, 143);
   line-height: 1.6rem;
 }
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== SEÇÃO TERMOS ====== */
+.termosSection {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* ====== HEADER ====== */
+.navTermos h1,
+.navTermos p {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* ====== CONTEÚDO ====== */
+.termosContent,
+.termosContent h2,
+.termosContent p,
+.termosContent li {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.2s;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* ====== INTERAÇÕES ====== */
+.termosContent p:hover,
+.termosContent li:hover {
+  transform: translateX(3px);
+  color: #f5d37f;
+}
 
 /* =====================
    RESPONSIVIDADE

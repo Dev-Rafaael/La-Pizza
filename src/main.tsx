@@ -20,6 +20,7 @@ import User from "./pages/User.tsx";
 import CancelPage from "./pages/CancelPage.tsx";
 import SuccessPage from "./pages/SuccessPage.tsx";
 import OrderStatus from "./pages/OrderStatus.tsx";
+import MeusPedidos from "./pages/MeusPedidos.tsx";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/Carrinho/",
         element: <Carrinho />,
+      },
+       {
+        path: "/Meus-Pedidos/",
+        element: <MeusPedidos />,
       },
       {
         path: "Perfil/",

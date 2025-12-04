@@ -6,8 +6,8 @@ import usePizza from "../hooks/usePizza";
 function Pizza() {
   const {pizzas,selectedPizza} = usePizza()
   
-  if (!pizzas.length) return <p>Carregando pizzas...</p>;
-console.log(pizzas);
+  if (!pizzas.length) return <p className={styles.loadingPizza}>Carregando pizzas...</p>;
+
 
   
 
@@ -22,6 +22,7 @@ console.log(pizzas);
           ENCONTRE AQUI A <span>PIZZA</span> IDEAL PARA <span>VOCÊ</span>
         </h2>
         <div className={styles.cardapioContainer}>
+        
           {pizzas.map((pizza) => (
             <div key={pizza.id} className={styles.pizzaItem}>
               <img src={pizza.imagem} alt={`Pizza sabor ${pizza.sabor}`} />

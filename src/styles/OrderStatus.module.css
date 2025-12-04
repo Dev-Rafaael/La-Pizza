@@ -58,12 +58,14 @@
 
 .step {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  flex-direction: column; /* <-- muda para coluna */
+  align-items: flex-start; /* conteúdo à esquerda */
+  gap: 10px;
   opacity: 0.9;
   transition: 0.3s;
   color: #333;
 }
+
 
 .active {
   opacity: 1;
@@ -85,6 +87,27 @@
 .active .circle {
   background: #ff4d2d;
   color: white;
+}
+.successMessage {
+  margin-top: 20px;
+  padding: 20px;
+  background: #fff7f0;
+  border-left: 4px solid #ff6a00;
+  border-radius: 10px;
+  animation: fadeIn 0.4s ease forwards;
+  box-shadow: 0 4px 10px rgba(255, 120, 20, 0.15);
+}
+
+.successTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ff6a00;
+  margin-bottom: 6px;
+}
+
+.successText {
+  font-size: 0.95rem;
+  color: #555;
 }
 
 .obs {
@@ -136,6 +159,86 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(255, 120, 20, 0.45);
 }
+
+
+/* ========================== */
+/*        ANIMAÇÕES           */
+/* ========================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 77, 45, 0.0); }
+  50% { transform: scale(1.07); box-shadow: 0 0 8px rgba(255, 77, 45, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 77, 45, 0); }
+}
+
+/* ========================== */
+/*      ENTRADAS DA TELA      */
+/* ========================== */
+
+.container {
+  animation: fadeIn 0.9s ease-out forwards;
+}
+
+.navOrderStatus h1 {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+.contentStatus {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* ========================== */
+/*          TIMELINE          */
+/* ========================== */
+
+.timeline {
+  animation: slideUp 1s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+.step {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+/* Active com destaque */
+.active .circle {
+  animation: pulseGlow 1.4s ease-in-out infinite;
+}
+
+/* Hover leve nos steps */
+.step:hover {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* ========================== */
+/*          BOTÕES            */
+/* ========================== */
+
+.backBtn,
+.reloadBtn {
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.25s;
+  transition: 0.25s ease;
+}
+
+.backBtn:hover,
+.reloadBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
 @media (max-width: 768px) {
 
   .navOrderStatus h1 {

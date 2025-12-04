@@ -624,6 +624,123 @@ opacity: 1;
   font-weight: bold;
   color: #333;
 }
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== HOME ====== */
+.homeContent,
+.contentHome h1,
+.contentHome h3,
+.contentHome span,
+.options a {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.options a {
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.options a:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* ====== VIDEO ====== */
+.video, .contentVideo iframe, .playIcon, .bola {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* ====== APRESENTACAO PIZZAS ====== */
+.pizzaSection,
+.pizzaContainer,
+.content,
+.content h3,
+.content h4,
+.content span,
+.content p,
+.contentBtn a {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.contentBtn a {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contentBtn a:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
+
+/* ====== CARDÁPIO ====== */
+.cardapio,
+.cardapioItens,
+.pizzaItem,
+.pizzaItem h1,
+.pizzaItem p,
+.pizzaItem h4,
+.cardapioOption a {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.cardapioOption a:hover,
+.cardapioItens a:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
+
+/* ====== SOBRE NOS ====== */
+.sobreSection,
+.sobre,
+.sobreInfo,
+.sobreNos,
+.sobre h3,
+.sobre span,
+.sobre h5,
+.sobre h5 span,
+.sobreBtn a,
+.sobrefotos img {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.sobreBtn a:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
+
+/* ====== BENEFÍCIOS ====== */
+.beneficiosContent,
+.title,
+.lista,
+.item,
+.icone {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+/* ====== AVALIAÇÕES ====== */
+.avaliacoesContent,
+.avaliacoesContent .title,
+.grid,
+.card,
+.estrelas,
+.texto,
+.nome {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
 
 /* RESPONSIVIDADE */
 

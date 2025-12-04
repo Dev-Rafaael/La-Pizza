@@ -314,16 +314,73 @@ dt {
   background-color: rgb(219, 186, 96);
 }
 
-/* Animação suave */
+/* ====== ANIMAÇÕES ====== */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== MAIN ACCOUNT ====== */
+.mainAccount {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* ====== HEADER ====== */
+.navAccount h1 {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* ====== MENSAGEM VAZIA ====== */
+.accountVoid h2,
+.accountVoid p,
+.buttonContainer {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.2s;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* ====== USER CARDS ====== */
+.userCard {
+  animation: fadeIn 0.7s ease-out forwards;
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.userCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+}
+
+/* ====== ACCOUNT ASIDE E INFO ====== */
+.accountAside,
+.infoSection {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.25s;
+}
+
+/* ====== BOTÕES ====== */
+.userActions button,
+.editIcon,
+.btnCadastrar,
+.btnLogar,
+.closeButton,
+.saveButton {
+  transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+}
+
+.userActions button:hover,
+.editIcon:hover,
+.btnCadastrar:hover,
+.btnLogar:hover,
+.closeButton:hover,
+.saveButton:hover {
+  transform: translateY(-2px) scale(1.05);
+  opacity: 1;
 }
 
 /* Responsividade */

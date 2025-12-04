@@ -80,6 +80,101 @@
 .btnSave:hover,.btnFechar:hover {
  opacity: 1;
 }
+/* ===================== */
+/*      ANIMAÇÕES        */
+/* ===================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ===================== */
+/*   ENTRADA DO CARD     */
+/* ===================== */
+
+.container {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Título */
+.header h1 {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.1s;
+}
+
+/* Form completo */
+.form {
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+/* Grids */
+.grid {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Cada campo */
+.field {
+  animation: slideUp 0.7s ease-out forwards;
+  animation-delay: 0.25s;
+}
+
+/* ===================== */
+/*     INTERAÇÕES        */
+/* ===================== */
+
+/* Inputs */
+.field input,
+.field select {
+  transition: 
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Hover */
+.field input:hover,
+.field select:hover {
+  transform: translateY(-2px);
+  border-color: #f5b942;
+}
+
+/* Focus já estava bom, então mantive :) */
+
+
+/* ===================== */
+/*       BOTÕES          */
+/* ===================== */
+
+.btnSave,
+.btnFechar {
+  transition: 
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Animação de entrada */
+.btn {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.28s;
+}
+
+/* Hover */
+.btnSave:hover,
+.btnFechar:hover {
+  transform: translateY(-3px) scale(1.03);
+  opacity: 1;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
 
 /* Responsividade */
 @media (max-width: 768px) {

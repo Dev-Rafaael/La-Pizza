@@ -74,6 +74,114 @@
   padding: 1rem 0;
   color: #aaa;
 }
+/* ========================== */
+/*        ANIMAÇÕES           */
+/* ========================== */
+
+/* Fade suave para cima */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Slide mais longo */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Brilho pulsando (já existente) */
+@keyframes pulseGlow {
+  0%   { transform: scale(1);   box-shadow: 0 0 0px rgba(255,120,20,0); }
+  50%  { transform: scale(1.06); box-shadow: 0 0 10px rgba(255,120,20,0.45); }
+  100% { transform: scale(1);   box-shadow: 0 0 0px rgba(255,120,20,0); }
+}
+
+/* Fade + leve zoom */
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Elemento vindo levemente da direita */
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Brilho pulsante mais suave */
+@keyframes softGlow {
+  0%   { box-shadow: 0 0 0px rgba(255, 150, 60, 0); }
+  50%  { box-shadow: 0 0 12px rgba(255, 150, 60, 0.25); }
+  100% { box-shadow: 0 0 0px rgba(255, 150, 60, 0); }
+}
+
+/* Balanço sutil */
+@keyframes softFloat {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+
+/* ========================== */
+/*      ENTRADA DA TELA       */
+/* ========================== */
+
+.container {
+  animation: fadeIn 0.85s ease-out forwards;
+}
+
+.navCancel {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.05s;
+}
+
+.navCancel h1 {
+  animation: slideUp 0.9s ease-out forwards;
+  animation-delay: 0.15s;
+}
+
+.message {
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.25s;
+}
+
+/* Elementos extras caso queira usar */
+.extraFadeRight {
+  animation: fadeRight 0.8s ease-out forwards;
+}
+
+.extraFadeZoom {
+  animation: fadeZoom 0.8s ease-out forwards;
+}
+
+
+/* ========================== */
+/*          BOTÃO             */
+/* ========================== */
+
+.backBtn {
+  animation: 
+    slideUp 0.9s ease-out forwards,
+    pulseGlow 1.6s ease-in-out 0.7s; /* destaque inicial */
+  transition: 0.25s ease;
+}
+
+/* hover */
+.backBtn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* glow mais suave opcional */
+.backBtn.soft {
+  animation: softGlow 2s ease-in-out infinite;
+}
+
+/* pequeno flutuar contínuo */
+.backBtn.float {
+  animation: softFloat 3s ease-in-out infinite;
+}
 
 /* =====================
    📱 RESPONSIVIDADE

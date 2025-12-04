@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styles from "../styles/OrderStatus.module.css";
 import { api } from "@packages/api/api";
 
+
 type StatusType =
   | "pendente"
   | "pago"
@@ -15,22 +16,24 @@ function OrderStatus() {
   const [status, setStatus] = useState<StatusType>("pendente");
 
   const steps = [
-    { id: "pago", label: "Pagamento aprovado" },
-    { id: "em_preparacao", label: "Em preparo" },
-    { id: "saiu_para_entrega", label: "Saiu para entrega" },
-    { id: "entregue", label: "Entregue" },
+    { id: "PAGO", label: "Pagamento aprovado" },
+    { id: "EM_PREPARAÇÃO", label: "Em preparo" },
+    { id: "SAIU_PARA_ENTREGA", label: "Saiu para entrega" },
+    { id: "ENTREGUE", label: "Entregue" },
   ];
   useEffect(() => {
   async function loadOrderStatus() {
         try {
-          const response = (await api.post(`/orders/${orderId}`)).data;
+          const response = (await api.get(`/orders/${orderId}`)).data;
           setStatus(response.status);
         } catch (err) {
           console.log("Erro ao buscar pedido:", err);
         }
       }
+   
        if (orderId) loadOrderStatus();
   }, [orderId]);
+console.log(status );
 
   return (
     <section className={styles.container}>
@@ -38,7 +41,7 @@ function OrderStatus() {
         <h1>🍕 Acompanhe seu pedido #{orderId}</h1>
       </div>
       <article className={styles.contentStatus}>
-        <div className={styles.timeline}>
+        <article className={styles.timeline}>
           {steps.map((step) => {
             const isActive =
               steps.findIndex((s) => s.id === status) >=
@@ -51,11 +54,22 @@ function OrderStatus() {
               >
                 <div className={styles.circle}>{isActive ? "✔" : ""}</div>
                 <p>{step.label}</p>
-              </div>
-            );
-          })}
-        </div>
 
+                    {step.label === "Entregue" && isActive && (
+          <div className={styles.successMessage}>
+            <h1 className={styles.successTitle}>Obrigado pela compra! 🎉</h1>
+            <p className={styles.successText}>Seu pedido foi entregue com sucesso.</p>
+          </div>
+        )}
+
+              </div>
+              
+             
+            );
+            
+          })}
+        </article>
+          
         <p className={styles.obs}>
           A página atualiza automaticamente a cada 5 segundos.
         </p>

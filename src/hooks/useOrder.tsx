@@ -1,6 +1,7 @@
 import { toast } from "react-toastify";
 import { api } from "@packages/api/api";
 import { useUserCart } from "../store/useCartStore";
+import type { Order } from "@packages/types/types";
 
 
 export function useOrder() {
@@ -58,6 +59,25 @@ export function useOrder() {
       toast.error("Erro ao criar pedido");
     }
   };
+ const pagarPedido = async (pedido: Order) => {
+    try {
+      const itemsMapped = pedido.items.map((item) => ({
+        name: item.sabor,
+        quantity: item.quantidade,
+        price: item.precoUnitario,
+      }));
 
-  return { handleSubmitOrder };
+      const stripeRes = await api.post("/pagamentos/checkout", {
+        items: itemsMapped,
+        orderId: pedido.id,
+      });
+
+      window.location.href = stripeRes.data.url;
+    } catch (err) {
+      console.error(err);
+      toast.error("Erro ao iniciar pagamento.");
+    }
+  };
+
+  return { handleSubmitOrder,pagarPedido };
 }

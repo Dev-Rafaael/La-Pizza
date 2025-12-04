@@ -75,6 +75,32 @@
 .btnFechar:hover {
   opacity: 1;
 }
+/* ====== LOGIN ====== */
+.loginForm,
+.loginContent,
+.loginContent h2,
+.loginContent input,
+.btnLogin,
+.btnEntrar,
+.btnFechar {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.loginContent input,
+.btnEntrar,
+.btnFechar {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.loginContent input:focus {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btnEntrar:hover,
+.btnFechar:hover {
+  transform: translateY(-2px) scale(1.03);
+  opacity: 1;
+}
 
 /* 📱 Responsividade para Tablets */
 @media (min-width: 769px) and(max-width: 992px) {

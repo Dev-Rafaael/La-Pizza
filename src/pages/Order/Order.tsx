@@ -16,15 +16,13 @@ export default function Order() {
 
   const { handleSubmitOrder } = useOrder();
 
-  // onContinue será chamado pelo AddressForm quando address criado
   const onContinue = async (addressId: number) => {
-    // VERIFICAÇÃO CRÍTICA: Garante que user existe antes de continuar
     if (!user?.id) {
       toast.error("Usuário não identificado. Faça login novamente.");
       return;
     }
     
-    // Agora passa apenas user.id (number) em vez de user?.id ?? null
+ 
 await handleSubmitOrder(Number(user.id), addressId);
   };
 

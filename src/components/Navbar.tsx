@@ -4,96 +4,78 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
   faUser,
+  faBell,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import type { Cart } from "@packages/types/types";
-import { api } from "@packages/api/api";
-import { Link, useLocation } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { NotificationDropdown } from "./NotificationDropdown";
+import { ToastNotification } from "./ToastNotification";
+import useNavbar from "../hooks/useNavbar";
+import { useState, useEffect, useRef } from "react";
+import useUserStore from "@packages/store/useUserStore";
 function Navbar() {
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<Cart[]>([]);
-const location = useLocation();
-
-const toggleModal = () => {
-  const next = !isModalOpen;
-  setIsModalOpen(next);
-  setIsMenuOpen(false);
-  if (next) {
-    setSearchTerm("");
-    setSearchResults([]);
-  }
-};
-
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const clearSearch = () => {
-    setSearchTerm("");
-    setSearchResults([]);
-  };
-
+  const {
+    open,
+    setOpen,
+    toast,
+    setToast,
+    isModalOpen,
+    isMenuOpen,
+    setIsMenuOpen,
+    searchTerm,
+    searchResults,
+    unreadCount,
+    toggleModal,
+    toggleMenu,
+    closeModal,
+    handleSearchChange,
+    clearSearch,
+  } = useNavbar();
+  const logout = useUserStore((s) => s.logout);
+  const [userOpen, setUserOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const notificationRef = useRef<HTMLLIElement | null>(null);
 useEffect(() => {
-  if (searchTerm.trim() === "") {
-    setSearchResults([]);
-    return;
-  }
-
-  const timeout = setTimeout(async () => {
-    try {
-      const { data } = await api.get(`/pizzas/${searchTerm}`);
-      setSearchResults(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, 400); 
-
-  return () => clearTimeout(timeout);
-}, [searchTerm]);
-
-
-
- useEffect(() => {
-  function handleOutsideClick(e: MouseEvent) {
-    const target = e.target as HTMLElement;
-    const isClickInsideMenu =
-      target.closest(`.${styles.navItens}`) ||
-      target.closest(`.${styles.hamburgerMenu}`);
-    if (isMenuOpen && !isClickInsideMenu) {
-      setIsMenuOpen(false);
+  function handleOutsideClick(e: MouseEvent | TouchEvent) {
+    if (
+      notificationRef.current &&
+      !notificationRef.current.contains(e.target as Node)
+    ) {
+      setOpen(false);
     }
   }
 
   document.addEventListener("mousedown", handleOutsideClick);
-  return () => document.removeEventListener("mousedown", handleOutsideClick);
-}, [isMenuOpen]);
+  document.addEventListener("touchstart", handleOutsideClick);
 
-useEffect(() => {
-  document.body.style.overflow = isModalOpen ? "hidden" : "auto";
-}, [isModalOpen]);
+  return () => {
+    document.removeEventListener("mousedown", handleOutsideClick);
+    document.removeEventListener("touchstart", handleOutsideClick);
+  };
+}, []);
 
-useEffect(() => {
-  setIsModalOpen(false);
-  setSearchTerm("");
-  setSearchResults([]);
-}, [location.pathname]);
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setUserOpen(false);
+      }
+    }
 
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
   return (
     <section className={styles.navBar}>
+      {toast && (
+        <ToastNotification message={toast} onClose={() => setToast(null)} />
+      )}
+
       <div className={styles.content}>
         <div className={styles.hamburgerMenu} onClick={toggleMenu}>
           <FontAwesomeIcon icon={isMenuOpen ? faXmark : faBars} />
@@ -134,11 +116,36 @@ useEffect(() => {
                   <FontAwesomeIcon icon={faCartShopping} />
                 </Link>
               </li>
-              <li>
-                <Link to="/Perfil">
+              <li className={styles.userMenu} ref={menuRef}>
+                <button
+                  className={styles.userButton}
+                  onClick={() => setUserOpen((prev) => !prev)}
+                >
                   <FontAwesomeIcon icon={faUser} />
-                </Link>
+                </button>
+
+                {userOpen && (
+                  <div className={styles.userDropdown}>
+                    <Link to="/Perfil">Minha Conta</Link>
+                    <Link to="/Meus-Pedidos">Meus Pedidos</Link>
+                    <button onClick={logout}>Logout</button>
+                  </div>
+                )}
               </li>
+                  <li
+            className={styles.notificationWrapper}
+            ref={notificationRef}
+            onClick={() => setOpen(prev => !prev)}
+          >
+            <FontAwesomeIcon icon={faBell} className={styles.bell} />
+
+            {unreadCount > 0 && (
+              <span className={styles.notificationBadge}>{unreadCount}</span>
+            )}
+
+            {open && <NotificationDropdown />}
+          </li>
+
             </ul>
           </div>
         </nav>

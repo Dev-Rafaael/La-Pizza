@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Modal from "../components/Modal";
+import Modal from "../components/modais/Modal";
 import useOrderItem from "../hooks/useOrderItem";
 import { usePizzaStore } from "../store/usePizzaStore";
 import styles from "../styles/OrderItem.module.css";
@@ -20,7 +20,7 @@ function OrderItem() {
     setModal,
   } = useOrderItem();
   const { pizzaSelecionada } = usePizzaStore();
-  if (!pizzaSelecionada) return <p>Carregando...</p>;
+  if (!pizzaSelecionada) return <p className={styles.loadingOrcamento}>Carregando...</p>;
 
 
 
