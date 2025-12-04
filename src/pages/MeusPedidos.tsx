@@ -8,7 +8,7 @@ import getStatusClass from "../utils/getStatusClass";
 import { toast } from "react-toastify";
 import { useOrder } from "../hooks/useOrder";
 
-function MeusPedidos() {
+function MeusPedidos() {  
   const user = useUserStore((s) => s.user);
 const [, setPedidos] = useState<Order[]>([]);
 
