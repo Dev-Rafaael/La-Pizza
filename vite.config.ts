@@ -11,12 +11,15 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      "@packages": path.resolve(__dirname, "../../packages"),
+      "@packages": path.resolve(__dirname, "../../Packages"),
+      "@backend": path.resolve(__dirname, "../../Apps/Back-End"),
+      "@frontend": path.resolve(__dirname, "../../Apps/Front-End"),
+      "@dashboard": path.resolve(__dirname, "../../Apps/Dashboard"),
     },
-    dedupe: ["react", "react-dom"]   // 🔥 ESSENCIAL
+    dedupe: ["react", "react-dom"]
   },
 
   optimizeDeps: {
-    include: ["react", "react-dom"], // 🔥 AJUDA EM DEV
+    include: ["react", "react-dom"],
   },
 })

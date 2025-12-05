@@ -141,10 +141,11 @@ const [, setPedidos] = useState<Order[]>([]);
                 {pedido.items.map((item) => (
                   <div key={item.id} className={styles.item}>
                     <img src={item.imagem!} alt={item.sabor} />
-                    <div>
+                    <div className={styles.itemInfo}>
                       <h3>{item.sabor}</h3>
-                      <p>{item.descricao}</p>
-                      <strong>R$ {item.precoUnitario.toFixed(2)}</strong>
+                      <h4>{item.descricao}</h4>
+                      <h4>Quantidade: {item.quantidade}</h4>
+                      <p><strong>R$ {item.precoUnitario.toFixed(2)}</strong></p>
                     </div>
                   </div>
                 ))}
@@ -152,7 +153,9 @@ const [, setPedidos] = useState<Order[]>([]);
 
               <footer className={styles.pedidoFooter}>
                 <h3>Total: R$ {pedido.precoTotal.toFixed(2)}</h3>
+</footer>
 
+<div className={styles.btnOption}>
                 {pedido.status === "PENDENTE" && (
                   <button
                     className={styles.btnPagar}
@@ -172,7 +175,7 @@ const [, setPedidos] = useState<Order[]>([]);
                     Cancelar pedido
                   </button>
                 )}
-              </footer>
+              </div>
             </div>
           ))
         )}

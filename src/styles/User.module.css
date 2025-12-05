@@ -136,7 +136,21 @@
 .userActions button:hover {
   background-color: #c0392b;
 }
+.userActions .btnPedidos {
+  background:rgb(146, 117, 60);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: 0.2s;
+}
 
+.userActions .btnPedidos:hover {
+  background: rgb(123, 99, 51);
+}
 .editIcon {
   cursor: pointer;
   font-size: 1.2rem;
@@ -287,7 +301,8 @@ dt {
 }
 
 .closeButton,
-.saveButton {
+.saveButton
+ {
   padding: 0.8rem 1.2rem;
   border: none;
   border-radius: 8px;
@@ -369,7 +384,8 @@ dt {
 .btnCadastrar,
 .btnLogar,
 .closeButton,
-.saveButton {
+.saveButton,
+.btnPedidos {
   transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
 }
 
@@ -378,7 +394,8 @@ dt {
 .btnCadastrar:hover,
 .btnLogar:hover,
 .closeButton:hover,
-.saveButton:hover {
+.saveButton:hover,
+.btnPedidos:hover {
   transform: translateY(-2px) scale(1.05);
   opacity: 1;
 }

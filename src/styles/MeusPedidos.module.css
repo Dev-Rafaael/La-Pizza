@@ -17,28 +17,10 @@
   font-style: italic;
   color: rgb(146, 117, 60);
 }
-.navPedidos {
-  width: 100%;
-  height: 15rem;
-  background: linear-gradient(rgba(17, 17, 17, 0.412), rgba(20, 20, 20, 1)), url(../assets/IMG/orcamentoLaPizza.jpg);
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-.navPedidos h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  letter-spacing: -2px;
-  font-style: italic;
-  color: rgb(146, 117, 60);
-}
 
 .pedidosContainer {
-gap: 2rem;
+background-color: rgba(17, 17, 17, 0.789);
 }
 
 
@@ -80,7 +62,7 @@ height: 80vh;
 
 
 .cardPedido {
-  background: rgba(34, 34, 34, 0.7);
+  background: rgba(47, 46, 46, 0.7);
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -88,10 +70,11 @@ height: 80vh;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .cardPedido:hover {
-  background: var(--bg-hover);
+ 
   transform: translateY(-2px);
 }
 
@@ -134,14 +117,18 @@ height: 80vh;
 }
 
 .itemInfo h3 {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  color: rgb(255, 255, 255);
+  color: rgb(146, 117, 60);
 }
 
-.itemInfo p {
-  color: rgb(188, 184, 183);
+.itemInfo h4 {
+  color: rgb(200, 197, 196);
   font-size: 0.9rem;
+}
+.itemInfo p {
+  color: rgb(245, 241, 240);
+  font-size: 1.2rem;
 }
 
 /* Rodapé com total e botões */
@@ -192,7 +179,7 @@ width: fit-content;
 }
 .btnCancelar {
   margin-top: 12px;
-  background: #991b1b;
+  background: #e50e0e;
   color: #fff;
   border: none;
   padding: 10px 14px;
@@ -204,10 +191,28 @@ width: fit-content;
 }
 
 .btnCancelar:hover {
-  background: #b91c1c;
+  background: #e11111;
+}
+.btnPagar {
+  margin-top: 12px;
+  background:rgb(146, 117, 60);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: 0.2s;
 }
 
-
+.btnPagar:hover {
+  background: rgb(123, 99, 51);
+}
+.btnOption{
+  display: flex;
+  gap: 1rem;
+}
 
 
 

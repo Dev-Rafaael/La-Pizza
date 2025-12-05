@@ -66,7 +66,7 @@ const {
 
                       <div className={styles.userActions}>
                         <button onClick={() => deletarAccount()}>Logout</button>
-                        <Link to={'/Meus-Pedidos'}>Minha Compras</Link>
+                        <Link to={'/Meus-Pedidos'} className={styles.btnPedidos}>Minha Compras</Link>
                         <FontAwesomeIcon
                           icon={faPenToSquare}
                           className={styles.editIcon}
