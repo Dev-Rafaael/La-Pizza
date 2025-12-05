@@ -2,7 +2,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@packages/*": ["../../packages/*"],
+      "@packages/*": ["../../Packages/*"],
+      "@backend/*": ["../../Apps/Back-End/*"],
+      "@frontend/*": ["./*"],
+      "@dashboard/*": ["../../Apps/Dashboard/*"],
       "types": ["vitest/globals"]
     }
   },
