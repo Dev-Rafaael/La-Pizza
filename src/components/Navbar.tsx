@@ -13,7 +13,7 @@ import { NotificationDropdown } from "./NotificationDropdown";
 import { ToastNotification } from "./ToastNotification";
 import useNavbar from "../hooks/useNavbar";
 import { useState, useEffect, useRef } from "react";
-import useUserStore from "@packages/store/useUserStore";
+import {useUserStore, type UserStore} from "@packages/store/useUserStore";
 function Navbar() {
   const {
     open,
@@ -31,7 +31,7 @@ function Navbar() {
     handleSearchChange,
     clearSearch,
   } = useNavbar();
-  const logout = useUserStore((s) => s.logout);
+  const logout = useUserStore((s:UserStore) => s.logout);
   const [userOpen, setUserOpen] = useState(false);
   const menuRef = useRef<HTMLLIElement>(null);
   const notificationRef = useRef<HTMLLIElement | null>(null);

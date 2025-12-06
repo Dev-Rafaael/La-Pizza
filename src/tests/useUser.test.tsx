@@ -1,7 +1,7 @@
 import UseAccount from "@packages/hooks/useUser";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { api } from "@packages/api/api";
-import toast from 'react-toastify'
+import { toast } from 'react-toastify'
 import { describe, expect, it, vi } from "vitest";
 
 
@@ -27,7 +27,7 @@ vi.mock('react-router-dom',()=>({
 
 vi.mock('react-toastify',()=>({
     toast:{
-        sucess: vi.fn(),
+        success: vi.fn(),
         error: vi.fn()
     }
 }))
@@ -79,7 +79,7 @@ const MockUseAccount = () => {
               fireEvent.click(screen.getByText('Editar'))
               fireEvent.click(screen.getByPlaceholderText('Nome'), {target:{value:'NovoNome'}})
               expect(api.put).toHaveBeenCalledWith('acccount/1',expect.objectContaining({nome:'NovoNome'}))
-              expect(toast.toast.success).toHaveBeenCalledWith('Atualizado Com Sucesso')
+              expect(toast.success).toHaveBeenCalledWith('Atualizado Com Sucesso')
         });
         it('deve deletar a conta ', () => {
             render(<MockUseAccount/>)

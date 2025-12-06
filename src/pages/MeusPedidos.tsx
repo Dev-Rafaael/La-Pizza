@@ -1,5 +1,5 @@
 import ModalCancelar from "../components/modais/ModalCancelar";
-import useUserStore from "@packages/store/useUserStore";
+import {useUserStore, type UserStore} from "@packages/store/useUserStore";
 import styles from "../styles/MeusPedidos.module.css";
 import { useEffect, useState } from "react";
 import { api } from "@packages/api/api";
@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useOrder } from "../hooks/useOrder";
 
 function MeusPedidos() {  
-  const user = useUserStore((s) => s.user);
+  const user = useUserStore((s:UserStore) => s.user);
 const [, setPedidos] = useState<Order[]>([]);
 
   const [modalOpen, setModalOpen] = useState(false);

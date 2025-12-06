@@ -1,17 +1,24 @@
 {
+  "extends": "../../tsconfig.json",
+
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
+
+    "declaration": false,
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+
     "paths": {
-      "@packages/*": ["../../Packages/*"],
-      "@backend/*": ["../../Apps/Back-End/*"],
-      "@frontend/*": ["./*"],
-      "@dashboard/*": ["../../Apps/Dashboard/*"],
-      "types": ["vitest/globals"]
+      "@packages/api/*": ["../../Packages/api/*"],
+      "@packages/types/*": ["../../Packages/types/*"],
+      "@packages/store/*": ["../../Packages/store/*"],
+      "@packages/hooks/*": ["../../Packages/hooks/*"],
+      "@packages/schemas/*": ["../../Packages/schemas/*"],
+      "@packages/*": ["../../Packages/*"]
     }
   },
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+
+  "include": ["src"],
+  "files": []
 }

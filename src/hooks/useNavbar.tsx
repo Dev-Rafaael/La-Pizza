@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useUserNotification } from "../store/useNotificationStore";
 import { socket } from "../socket/socket";
 
-import useUserStore from "@packages/store/useUserStore";
+import {useUserStore, type UserStore} from "@packages/store/useUserStore";
 
 function useNavbar() {
   const [open, setOpen] = useState(false);
@@ -18,7 +18,7 @@ function useNavbar() {
   const addNotification = useUserNotification((s) => s.addNotification);
   const notifications = useUserNotification((s) => s.notifications);
   const unreadCount = notifications.filter((n) => !n.lida).length;
-  const user = useUserStore((s) => s.user);
+  const user = useUserStore((s:UserStore) => s.user);
   useEffect(() => {
     socket.on("orderStatusUpdated", (data) => {
       addNotification({

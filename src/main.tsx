@@ -1,26 +1,26 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home.tsx";
-import Contato from "./pages/Contato.tsx";
-import Sobre from "./pages/Sobre.tsx";
-import PoliticaPrivacidade from "./pages/PoliticaPrivacidade.tsx";
-import Cardapio from "./pages/Pizza.tsx";
-import Carrinho from "./pages/Cart.tsx";
-import Termos from "./pages/Termos.tsx";
+import Home from "./pages/Home";
+import Contato from "./pages/Contato";
+import Sobre from "./pages/Sobre";
+import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
+import Cardapio from "./pages/Pizza";
+import Carrinho from "./pages/Cart";
+import Termos from "./pages/Termos";
 import "./index.css";
-import LayoutZap from "./components/LayoutZap.jsx";
-import Cadastrar from "./pages/Order/UserForm.tsx";
-import Login from "./pages/Login.tsx";
-import Order from "./pages/Order/Order.tsx";
-import OrderItem from "./pages/OrderItem.tsx";
-import ProtectedRoute from "./middlewares/ProtectedRoute.tsx";
-import User from "./pages/User.tsx";
-import CancelPage from "./pages/CancelPage.tsx";
-import SuccessPage from "./pages/SuccessPage.tsx";
-import OrderStatus from "./pages/OrderStatus.tsx";
-import MeusPedidos from "./pages/MeusPedidos.tsx";
+import LayoutZap from "./components/LayoutZap";
+import Cadastrar from "./pages/Order/UserForm";
+import Login from "./pages/Login";
+import Order from "./pages/Order/Order";
+import OrderItem from "./pages/OrderItem";
+import ProtectedRoute from "./middlewares/ProtectedRoute";
+import User from "./pages/User";
+import CancelPage from "./pages/CancelPage";
+import SuccessPage from "./pages/SuccessPage";
+import OrderStatus from "./pages/OrderStatus";
+import MeusPedidos from "./pages/MeusPedidos";
 
 const router = createBrowserRouter([
   {

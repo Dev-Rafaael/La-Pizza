@@ -31,5 +31,5 @@
     }
   },
 
-  "include": ["src", "src/hooks/useAuthRedirect.tsx", "src/hooks/useLogin.tsx", "../../Packages/hooks/useUser.tsx", "vitest.config.ts", "src/setupTests.ts"]
+  "include": ["src", "src/hooks/useAuthRedirect.ts", "src/hooks/useLogin.ts", "../../Packages/hooks/useUser.ts", "vitest.config.ts", "src/setupTests.ts"]
 }

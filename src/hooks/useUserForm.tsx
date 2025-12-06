@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "react-toastify";
 import { api } from "@packages/api/api";
-import  useUserStore  from "@packages/store/useUserStore";
+import  {useUserStore, type UserStore}  from "@packages/store/useUserStore";
 import { useNavigate } from "react-router-dom";
 import { userSchema } from "@packages/schemas/userSchema";
 
@@ -18,7 +18,7 @@ function useUserForm() {
   const [loading, setLoading] = useState(false);
   const [account, setAccount] = useState();
   const navigate = useNavigate(); 
-  const storeCreate = useUserStore((s) => s.createUser);
+  const storeCreate = useUserStore((s:UserStore) => s.createUser);
 
   
   const handleAccount = async (e: FormEvent) => {
